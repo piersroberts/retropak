@@ -739,6 +739,8 @@ Use cases:
 | `cdtv`          | [CDTV](https://en.wikipedia.org/wiki/Commodore_CDTV)                                      | Commodore          | 1991  |
 | `cd32`          | [Amiga CD32](https://en.wikipedia.org/wiki/Amiga_CD32)                                    | Commodore          | 1993  |
 | `fmtowns`       | [FM Towns](https://en.wikipedia.org/wiki/FM_Towns)                                        | Fujitsu            | 1989  |
+| `gp32`          | [GP32](https://en.wikipedia.org/wiki/GP32)                                                | GamePark           | 2001  |
+| `gp2x`          | [GP2X](https://en.wikipedia.org/wiki/GP2X)                                                | GamePark Holdings  | 2005  |
 | `vectrex`       | [Vectrex](https://en.wikipedia.org/wiki/Vectrex)                                          | GCE/Milton Bradley | 1982  |
 | `dos`           | [DOS](https://en.wikipedia.org/wiki/DOS)                                                  | IBM/Microsoft      | 1981  |
 | `o2`            | [Odyssey²](https://en.wikipedia.org/wiki/Magnavox_Odyssey_2)                              | Magnavox/Philips   | 1978  |
@@ -773,8 +775,6 @@ Use cases:
 | `sms`           | [Master System](https://en.wikipedia.org/wiki/Master_System)                              | Sega               | 1985  |
 | `md`            | [Mega Drive / Genesis](https://en.wikipedia.org/wiki/Sega_Genesis)                        | Sega               | 1988  |
 | `gg`            | [Game Gear](https://en.wikipedia.org/wiki/Game_Gear)                                      | Sega               | 1990  |
-| `gp32`          | [GP32](https://en.wikipedia.org/wiki/GP32)                                                | GamePark           | 2001  |
-| `gp2x`          | [GP2X](https://en.wikipedia.org/wiki/GP2X)                                                | GamePark Holdings  | 2005  |
 | `mcd`           | [Mega CD / Sega CD](https://en.wikipedia.org/wiki/Sega_CD)                                | Sega               | 1991  |
 | `pico`          | [Sega Pico](https://en.wikipedia.org/wiki/Sega_Pico)                                      | Sega               | 1993  |
 | `32x`           | [32X](https://en.wikipedia.org/wiki/32X)                                                  | Sega               | 1994  |
