@@ -650,85 +650,85 @@ Use cases:
 - **Multi-word names** become abbreviations: `pce`, `gba`, `sms`
 - **Number-only names** get a manufacturer prefix: `a2600`, `a7800`, `ps2`
 
-| ID | Platform | Manufacturer |
-|----|----------|--------------|
-| `3do` | 3DO Interactive Multiplayer | Panasonic/others |
-| `3ds` | Nintendo 3DS | Nintendo |
-| `32x` | 32X | Sega |
-| `a800` | Atari 800 | Atari |
-| `a2600` | Atari 2600 | Atari |
-| `a5200` | Atari 5200 | Atari |
-| `a7800` | Atari 7800 | Atari |
-| `amiga` | Amiga | Commodore |
-| `apple2` | Apple II | Apple |
-| `arcade` | Arcade | Various |
-| `bbc` | BBC Micro | Acorn |
-| `c64` | Commodore 64 | Commodore |
-| `c128` | Commodore 128 | Commodore |
-| `cd32` | Amiga CD32 | Commodore |
-| `cdi` | CD-i | Philips |
-| `cdtv` | CDTV | Commodore |
-| `coleco` | ColecoVision | Coleco |
-| `cpc` | Amstrad CPC | Amstrad |
-| `dos` | DOS | IBM/Microsoft |
-| `dreamcast` | Dreamcast | Sega |
-| `fds` | Famicom Disk System | Nintendo |
-| `fmtowns` | FM Towns | Fujitsu |
-| `gamecube` | GameCube | Nintendo |
-| `gb` | Game Boy | Nintendo |
-| `gba` | Game Boy Advance | Nintendo |
-| `gbc` | Game Boy Color | Nintendo |
-| `gg` | Game Gear | Sega |
-| `gnw` | Game & Watch | Nintendo |
-| `intellivision` | Intellivision | Mattel |
-| `jaguar` | Jaguar | Atari |
-| `jaguarcd` | Jaguar CD | Atari |
-| `lynx` | Lynx | Atari |
-| `mcd` | Mega CD / Sega CD | Sega |
-| `md` | Mega Drive / Genesis | Sega |
-| `msx` | MSX | Various |
-| `msx2` | MSX2 | Various |
-| `n64` | Nintendo 64 | Nintendo |
-| `nds` | Nintendo DS | Nintendo |
-| `nes` | NES / Famicom | Nintendo |
-| `ng` | Neo Geo AES/MVS | SNK |
-| `ngcd` | Neo Geo CD | SNK |
-| `ngp` | Neo Geo Pocket | SNK |
-| `ngpc` | Neo Geo Pocket Color | SNK |
-| `o2` | Odyssey² / Videopac | Magnavox/Philips |
-| `pce` | PC Engine / TurboGrafx-16 | NEC |
-| `pcecd` | PC Engine CD / TurboGrafx-CD | NEC |
-| `pcfx` | PC-FX | NEC |
-| `pico` | Pico | Sega |
-| `plus4` | Plus/4 | Commodore |
-| `pokemini` | Pokémon mini | Nintendo |
-| `ps2` | PlayStation 2 | Sony |
-| `ps3` | PlayStation 3 | Sony |
-| `ps4` | PlayStation 4 | Sony |
-| `ps5` | PlayStation 5 | Sony |
-| `psp` | PlayStation Portable | Sony |
-| `psx` | PlayStation | Sony |
-| `saturn` | Saturn | Sega |
-| `sg1000` | SG-1000 | Sega |
-| `sgx` | SuperGrafx | NEC |
-| `sms` | Master System | Sega |
-| `snes` | SNES / Super Famicom | Nintendo |
-| `spectrum` | ZX Spectrum | Sinclair |
-| `st` | Atari ST | Atari |
-| `switch` | Nintendo Switch | Nintendo |
-| `vb` | Virtual Boy | Nintendo |
-| `vectrex` | Vectrex | GCE/Milton Bradley |
-| `vic20` | VIC-20 | Commodore |
-| `vita` | PlayStation Vita | Sony |
-| `wii` | Wii | Nintendo |
-| `wiiu` | Wii U | Nintendo |
-| `ws` | WonderSwan | Bandai |
-| `wsc` | WonderSwan Color | Bandai |
-| `x360` | Xbox 360 | Microsoft |
-| `x68000` | X68000 | Sharp |
-| `xbox` | Xbox | Microsoft |
-| `xone` | Xbox One | Microsoft |
-| `xsx` | Xbox Series X/S | Microsoft |
+| ID | Platform | Manufacturer | Year |
+|----|----------|--------------|------|
+| `bbc` | BBC Micro | Acorn | 1981 |
+| `cpc` | Amstrad CPC | Amstrad | 1984 |
+| `apple2` | Apple II | Apple | 1977 |
+| `a2600` | Atari 2600 | Atari | 1977 |
+| `a800` | Atari 800 | Atari | 1979 |
+| `a5200` | Atari 5200 | Atari | 1982 |
+| `st` | Atari ST | Atari | 1985 |
+| `a7800` | Atari 7800 | Atari | 1986 |
+| `lynx` | Lynx | Atari | 1989 |
+| `jaguar` | Jaguar | Atari | 1993 |
+| `jaguarcd` | Jaguar CD | Atari | 1993 |
+| `ws` | WonderSwan | Bandai | 1999 |
+| `wsc` | WonderSwan Color | Bandai | 2000 |
+| `coleco` | ColecoVision | Coleco | 1982 |
+| `vic20` | VIC-20 | Commodore | 1980 |
+| `c64` | Commodore 64 | Commodore | 1982 |
+| `plus4` | Plus/4 | Commodore | 1984 |
+| `c128` | Commodore 128 | Commodore | 1985 |
+| `amiga` | Amiga | Commodore | 1985 |
+| `cdtv` | CDTV | Commodore | 1991 |
+| `cd32` | Amiga CD32 | Commodore | 1993 |
+| `fmtowns` | FM Towns | Fujitsu | 1989 |
+| `vectrex` | Vectrex | GCE/Milton Bradley | 1982 |
+| `dos` | DOS | IBM/Microsoft | 1981 |
+| `o2` | Odyssey² / Videopac | Magnavox/Philips | 1978 |
+| `intellivision` | Intellivision | Mattel | 1979 |
+| `xbox` | Xbox | Microsoft | 2001 |
+| `x360` | Xbox 360 | Microsoft | 2005 |
+| `xone` | Xbox One | Microsoft | 2013 |
+| `xsx` | Xbox Series X/S | Microsoft | 2020 |
+| `pce` | PC Engine / TurboGrafx-16 | NEC | 1987 |
+| `pcecd` | PC Engine CD / TurboGrafx-CD | NEC | 1988 |
+| `sgx` | SuperGrafx | NEC | 1989 |
+| `pcfx` | PC-FX | NEC | 1994 |
+| `gnw` | Game & Watch | Nintendo | 1980 |
+| `nes` | NES / Famicom | Nintendo | 1983 |
+| `fds` | Famicom Disk System | Nintendo | 1986 |
+| `gb` | Game Boy | Nintendo | 1989 |
+| `snes` | SNES / Super Famicom | Nintendo | 1990 |
+| `vb` | Virtual Boy | Nintendo | 1995 |
+| `n64` | Nintendo 64 | Nintendo | 1996 |
+| `gbc` | Game Boy Color | Nintendo | 1998 |
+| `gba` | Game Boy Advance | Nintendo | 2001 |
+| `gamecube` | GameCube | Nintendo | 2001 |
+| `pokemini` | Pokémon mini | Nintendo | 2001 |
+| `nds` | Nintendo DS | Nintendo | 2004 |
+| `wii` | Wii | Nintendo | 2006 |
+| `3ds` | Nintendo 3DS | Nintendo | 2011 |
+| `wiiu` | Wii U | Nintendo | 2012 |
+| `switch` | Nintendo Switch | Nintendo | 2017 |
+| `3do` | 3DO Interactive Multiplayer | Panasonic/others | 1993 |
+| `cdi` | CD-i | Philips | 1991 |
+| `sg1000` | SG-1000 | Sega | 1983 |
+| `sms` | Master System | Sega | 1985 |
+| `md` | Mega Drive / Genesis | Sega | 1988 |
+| `gg` | Game Gear | Sega | 1990 |
+| `mcd` | Mega CD / Sega CD | Sega | 1991 |
+| `pico` | Pico | Sega | 1993 |
+| `32x` | 32X | Sega | 1994 |
+| `saturn` | Saturn | Sega | 1994 |
+| `dreamcast` | Dreamcast | Sega | 1998 |
+| `x68000` | X68000 | Sharp | 1987 |
+| `spectrum` | ZX Spectrum | Sinclair | 1982 |
+| `ng` | Neo Geo AES/MVS | SNK | 1990 |
+| `ngcd` | Neo Geo CD | SNK | 1994 |
+| `ngp` | Neo Geo Pocket | SNK | 1998 |
+| `ngpc` | Neo Geo Pocket Color | SNK | 1999 |
+| `psx` | PlayStation | Sony | 1994 |
+| `ps2` | PlayStation 2 | Sony | 2000 |
+| `psp` | PlayStation Portable | Sony | 2004 |
+| `ps3` | PlayStation 3 | Sony | 2006 |
+| `vita` | PlayStation Vita | Sony | 2011 |
+| `ps4` | PlayStation 4 | Sony | 2013 |
+| `ps5` | PlayStation 5 | Sony | 2020 |
+| `msx` | MSX | Various | 1983 |
+| `msx2` | MSX2 | Various | 1985 |
+| `arcade` | Arcade | Various | N/A |
 
 ---
 

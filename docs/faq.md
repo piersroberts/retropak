@@ -42,11 +42,7 @@ Yes! The specification is extensible. Propose additions via GitHub.
 
 ### How do I validate a Retropak?
 
-Use the JSON schema or validation tools:
-
-```bash
-rpk-verify game.rpk
-```
+Use the JSON schema with any standard JSON Schema validator. A dedicated validation tool does not currently exist but contributions are welcome.
 
 ### What's the maximum file size?
 
@@ -66,13 +62,7 @@ No. Only `retropak.json`, the `software/` directory, and at least one media file
 
 ### Can I include save files?
 
-Yes, but consider:
-
-- Save files are user-specific
-- Put them in `docs/` or create a `saves/` directory
-- Document them in `info.notes`
-
-Better: Let emulators create saves externally.
+No. Save files are user-specific and should not be included in Retropak archives. Let emulators create and manage saves externally.
 
 ### What about cheat codes?
 
@@ -119,6 +109,7 @@ Choose the most authoritative source. Note discrepancies in `info.notes`.
 ### How do I handle regional differences?
 
 - Use `alternativeTitles` for regional names
+- Use `languages` array for supported languages
 - Set `releaseDate` to original release
 - Use `region` in media for ROM region
 - Use `country` for development country
@@ -142,7 +133,9 @@ It's optional but strongly recommended for accessibility.
 
 ### Can I use AI-generated artwork?
 
-Yes, but disclose it in `notes` or asset credits. Original scans are preferred for preservation.
+**Caution:** Always prioritize original scans and authentic artwork. Original materials are essential for proper preservation.
+
+AI tools may be used to restore or enhance damaged original artwork, but should never be used to create entirely new original artwork. If AI restoration is used, disclose it in `notes` or asset credits.
 
 ### What about watermarked images?
 
@@ -158,13 +151,13 @@ Yes. The format itself is legal and open (CC0 license). However:
 
 - **ROMs:** May be copyrighted. Consult local laws.
 - **Artwork:** May be copyrighted. Fair use varies by jurisdiction.
-- **Homebrew:** Usually freely distributable, but check license.
+- **Homebrew:** Always check with the author and verify the license terms.
 
 ### Can I distribute Retropaks commercially?
 
 The format is open, but content may be restricted:
 
-- **Homebrew with permissive licenses:** Usually yes
+- **Homebrew:** Check with the author and verify license terms
 - **Copyrighted games:** Requires rights holder permission
 - **Artwork/manuals:** May require separate permission
 
@@ -199,9 +192,7 @@ No. Signing is optional but recommended for distribution.
 
 ### How do users verify signatures?
 
-```bash
-rpk-verify -S -K allowed_signers game.rpk
-```
+Extract the signature files and verify using standard GPG or SSH tools. See the specification for detailed verification procedures.
 
 Users must trust your public key.
 
@@ -215,15 +206,11 @@ No, if the private key is secure. Verification cryptographically proves authenti
 
 ### Will my emulator support .rpk files?
 
-Not yet, but we're working with emulator developers. For now, extract and use normally.
+Not currently. We would like to work with emulator developers to add native `.rpk` support. For now, extract and use files normally.
 
 ### Can I convert existing ROM sets?
 
-Yes. Tools are planned for:
-
-- No-Intro DAT → Retropak
-- Redump DAT → Retropak
-- EmulationStation gamelist.xml → Retropak
+Conversion tools do not currently exist. Contributions of such tools are welcome.
 
 ### How do I convert back to plain ROMs?
 
@@ -237,11 +224,7 @@ cd software/
 
 ### Will this work with [my frontend]?
 
-Native support depends on adoption. Plugins are planned for:
-
-- EmulationStation
-- Launchbox
-- Kodi
+Native support depends on adoption. We would love to see `.rpk` support in frontends such as EmulationStation, Launchbox, and similar software.
 
 ---
 
@@ -277,29 +260,12 @@ Open an issue with:
 
 ### Where can I ask questions?
 
+- [Retropak Discord](https://discord.gg/retropak)
 - GitHub Issues
-- Community forums (coming soon)
-- Discord server (coming soon)
-
-### Is there a mailing list?
-
-Not yet. Check back soon.
 
 ### Can I get help creating Retropaks?
 
 Yes! Share your use case and we'll help.
-
----
-
-## Future Plans
-
-### What's on the roadmap?
-
-- Official Python/JavaScript libraries
-- Web-based validator
-- Emulator integration
-- Frontend plugins
-- Conversion tools
 
 ### Will the spec change?
 

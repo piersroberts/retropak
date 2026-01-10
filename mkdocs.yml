@@ -6,6 +6,42 @@ repo_name: piersroberts/retropak
 
 theme:
   name: material
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: pink
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: pink
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: Fira Code
+  icon:
+    logo: material/package-variant
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
 
 nav:
   - Home: index.md
