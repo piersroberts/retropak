@@ -83,7 +83,7 @@ Or mount directly in supported emulators and frontends (coming soon).
 
 ## Features
 
-- **77 supported platforms**: From Atari 2600 to Xbox Series X
+- **94 supported platforms**: From Atari 2600 to Xbox Series X
 - **Comprehensive metadata**: Genre, players, features, ratings, credits
 - **Multi-disc support**: Handles CD swapping, boot disks, compilations
 - **ROM verification**: MD5/SHA1/CRC32 checksums with database validation
@@ -95,7 +95,7 @@ Or mount directly in supported emulators and frontends (coming soon).
 
 ## Platform Support
 
-Retropak supports 92 platforms including:
+Retropak supports 94 platforms including:
 
 **Cartridge-based:** NES, SNES, Genesis, Game Boy, N64, PSX, Saturn, Dreamcast
 

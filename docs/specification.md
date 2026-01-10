@@ -709,7 +709,7 @@ Use cases:
 
 ## Platforms
 
-92 platforms are currently supported. Platform IDs follow these rules:
+94 platforms are currently supported. Platform IDs follow these rules:
 
 - **Single-word names** stay as-is: `saturn`, `dreamcast`, `wii`
 - **Multi-word names** become abbreviations: `pce`, `gba`, `sms`
@@ -773,6 +773,8 @@ Use cases:
 | `sms`           | [Master System](https://en.wikipedia.org/wiki/Master_System)                              | Sega               | 1985  |
 | `md`            | [Mega Drive / Genesis](https://en.wikipedia.org/wiki/Sega_Genesis)                        | Sega               | 1988  |
 | `gg`            | [Game Gear](https://en.wikipedia.org/wiki/Game_Gear)                                      | Sega               | 1990  |
+| `gp32`          | [GP32](https://en.wikipedia.org/wiki/GP32)                                                | GamePark           | 2001  |
+| `gp2x`          | [GP2X](https://en.wikipedia.org/wiki/GP2X)                                                | GamePark Holdings  | 2005  |
 | `mcd`           | [Mega CD / Sega CD](https://en.wikipedia.org/wiki/Sega_CD)                                | Sega               | 1991  |
 | `pico`          | [Sega Pico](https://en.wikipedia.org/wiki/Sega_Pico)                                      | Sega               | 1993  |
 | `32x`           | [32X](https://en.wikipedia.org/wiki/32X)                                                  | Sega               | 1994  |

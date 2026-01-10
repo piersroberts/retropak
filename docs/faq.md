@@ -47,7 +47,7 @@ Yes. Retropak files are standard ZIP archives with a manifest. Any tool can extr
 
 ### What platforms are supported?
 
-92 platforms from Atari 2600 to Xbox Series X. [See the full list →](specification.md#platforms)
+94 platforms from Atari 2600 to Xbox Series X. [See the full list →](specification.md#platforms)
 
 ### Can I add new platforms?
 
