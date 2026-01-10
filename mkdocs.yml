@@ -42,6 +42,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - attr_list
+  - tables
 
 nav:
   - Home: index.md
