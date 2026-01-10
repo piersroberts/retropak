@@ -53,3 +53,6 @@ nav:
   - JSON Schema: schema.md
   - FAQ: faq.md
   - Tools: tools.md
+
+extra_css:
+  - stylesheets/custom.css

@@ -1,0 +1,31 @@
+/* Custom fonts for Retropak documentation */
+
+/* Headings - using a more distinctive font */
+h1, h2, h3, h4, h5, h6,
+.md-header__topic,
+.md-nav__title {
+  font-family: 'Space Grotesk', 'Roboto', sans-serif;
+  font-weight: 600;
+}
+
+/* Main body text - keeping Inter but can be changed */
+body,
+.md-typeset p,
+.md-typeset li,
+.md-typeset td {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+}
+
+/* Optional: Adjust heading weights for better hierarchy */
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+h3, h4, h5, h6 {
+  font-weight: 600;
+}
