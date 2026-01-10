@@ -48,5 +48,6 @@ nav:
   - Getting Started: getting-started.md
   - Specification: specification.md
   - Examples: examples.md
+  - JSON Schema: schema.md
   - FAQ: faq.md
   - Tools: tools.md

@@ -26,7 +26,7 @@ Everything needed to preserve and present retro software in one self-contained p
 
 ## Features
 
-- **77 supported platforms**: From Atari 2600 to Xbox Series X
+- **92 supported platforms**: From Atari 2600 to Xbox Series X
 - **Rich metadata**: Genre, players, features, ratings, credits
 - **Multi-disc support**: CD swapping, boot disks, compilations
 - **ROM verification**: MD5/SHA1/CRC32 checksums for database/DAT file validation

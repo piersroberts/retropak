@@ -644,7 +644,7 @@ Use cases:
 
 ## Platforms
 
-77 platforms are currently supported. Platform IDs follow these rules:
+92 platforms are currently supported. Platform IDs follow these rules:
 
 - **Single-word names** stay as-is: `saturn`, `dreamcast`, `wii`
 - **Multi-word names** become abbreviations: `pce`, `gba`, `sms`
@@ -726,9 +726,28 @@ Use cases:
 | `vita` | PlayStation Vita | Sony | 2011 |
 | `ps4` | PlayStation 4 | Sony | 2013 |
 | `ps5` | PlayStation 5 | Sony | 2020 |
+| `ti994a` | TI-99/4A | Texas Instruments | 1981 |
+| `trs80` | TRS-80 | Tandy | 1977 |
+| `pet` | PET | Commodore | 1977 |
+| `aquarius` | Aquarius | Mattel | 1983 |
+| `einstein` | Einstein | Tatung | 1984 |
+| `oric` | Oric-1 / Atmos | Tangerine | 1983 |
+| `sam` | SAM Coupé | Miles Gordon | 1989 |
+| `supervision` | SuperVision | Watara | 1992 |
+| `vcg` | Cassette Vision / Super Cassette Vision | Epoch | 1981 |
+| `gamewave` | Game Wave | ZAPiT Games | 2005 |
+| `zeebo` | Zeebo | Zeebo Inc. | 2009 |
+| `xavix` | XaviXPORT | SSD Company | 2004 |
+| `hyperscan` | HyperScan | Mattel | 2006 |
+| `tigerhandheld` | Tiger Electronics Handhelds | Tiger Electronics | 1990s |
+| `microvision` | Microvision | Milton Bradley | 1979 |
+| `laseractive` | LaserActive | Pioneer | 1993 |
+| `nuon` | NUON | VM Labs | 2000 |
+| `pippin` | Pippin | Apple/Bandai | 1995 |
+| `gamecom` | Game.com | Tiger Electronics | 1997 |
+| `ngage` | N-Gage | Nokia | 2003 |
 | `msx` | MSX | Various | 1983 |
 | `msx2` | MSX2 | Various | 1985 |
-| `arcade` | Arcade | Various | N/A |
 
 ---
 

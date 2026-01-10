@@ -34,11 +34,22 @@ Yes. Retropak files are standard ZIP archives with a manifest. Any tool can extr
 
 ### What platforms are supported?
 
-77 platforms from Atari 2600 to Xbox Series X. [See the full list →](specification.md#platforms)
+92 platforms from Atari 2600 to Xbox Series X. [See the full list →](specification.md#platforms)
 
 ### Can I add new platforms?
 
 Yes! The specification is extensible. Propose additions via GitHub.
+
+### Why is arcade not supported?
+
+Arcade games are fundamentally different from home platforms:
+
+- **Board-specific**: Games are tied to specific arcade hardware (CPS1, CPS2, Neo Geo MVS, etc.), not a unified platform
+- **Complex emulation**: Arcade ROMs require specific emulator configurations and BIOS files per board
+- **ROM set fragmentation**: MAME ROM sets are split, merged, or use parent/clone relationships that don't fit the self-contained Retropak model
+- **Metadata challenges**: Arcade games span decades and hundreds of board types with vastly different technical requirements
+
+MAME and other arcade emulators already have robust distribution formats. Retropak focuses on home platforms with consistent hardware and media formats.
 
 ### How do I validate a Retropak?
 
@@ -199,6 +210,18 @@ Users must trust your public key.
 ### Can signatures be faked?
 
 No, if the private key is secure. Verification cryptographically proves authenticity.
+
+### How do I claim authorship of a Retropak?
+
+Sign it. Your cryptographic signature is your identity. The `retropak.sig.info` file contains your public key fingerprint, which serves as your verifiable identity.
+
+There is no author/packager name field in `retropak.json` because:
+
+- **Names can be spoofed** — Anyone could claim to be anyone
+- **Cryptographic identity is verifiable** — Key fingerprints cannot be faked without the private key
+- **Separation of concerns** — The JSON describes the software, signatures describe the package
+
+If you want to be known, publish your public key with your name on your website, GitHub, or Keybase. Build reputation through your fingerprint.
 
 ---
 

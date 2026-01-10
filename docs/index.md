@@ -95,7 +95,7 @@ Or mount directly in supported emulators and frontends (coming soon).
 
 ## Platform Support
 
-Retropak supports 77 platforms including:
+Retropak supports 92 platforms including:
 
 **Cartridge-based:** NES, SNES, Genesis, Game Boy, N64, PSX, Saturn, Dreamcast
 
