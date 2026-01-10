@@ -115,7 +115,9 @@
                 "adventure",
                 "arcade",
                 "artillery",
-                "beat_em_up",                "bullet_hell",                "board_game",
+                "beat_em_up",
+                "bullet_hell",
+                "board_game",
                 "card_game",
                 "casino",
                 "casual",
@@ -662,15 +664,15 @@
     },
     "type": "object",
     "required": [
-        "specVersion",
+        "schemaVersion",
         "info",
         "media"
     ],
     "properties": {
-        "specVersion": {
+        "schemaVersion": {
             "type": "string",
-            "pattern": "^\\d+\\.\\d+$",
-            "description": "The version of the Retropak spec this manifest conforms to (e.g., '1.0')."
+            "pattern": "^\\d+\\-\\d+\\-\\d+$",
+            "description": "The version of the Retropak spec this manifest conforms to (e.g., '1-0-0')."
         },
         "manifestVersion": {
             "type": "string",

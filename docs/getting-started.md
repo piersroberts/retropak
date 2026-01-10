@@ -68,7 +68,7 @@ Only `title` and `platform` are required, but additional metadata provides more 
 
 ```json
 {
-  "specVersion": "1.0",
+  "schemaVersion": "1-0-0",
   "info": {
     "title": "Sonic the Hedgehog",
     "platform": "md",
