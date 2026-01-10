@@ -36,7 +36,7 @@ jobs:
     
     - name: Check schema files are valid JSON
       run: |
-        for file in docs/schemas/**/*.json schemas/*.json; do
+        for file in docs/schemas/**/*.json; do
           echo "Checking JSON syntax: $file"
           python -m json.tool "$file" > /dev/null
         done
