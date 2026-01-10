@@ -21,7 +21,7 @@ The schema is hosted at: `https://retropak.org/schemas/v1/retropak.schema.json`
 Using a JSON Schema validator, you can validate your manifest:
 
 ```bash
-jsonschema -i manifest.json schemas/retropak.schema.json
+jsonschema -i manifest.json schemas/v1/retropak.schema.json
 ```
 
 Or reference it directly in your manifest file:
