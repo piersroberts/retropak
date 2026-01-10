@@ -1,0 +1,12 @@
+site_name: Retropak Docs
+site_description: Official documentation for Retropak
+site_author: Piers Roberts
+repo_url: https://github.com/piersroberts/retropak
+repo_name: piersroberts/retropak
+
+theme:
+  name: readthedocs
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
