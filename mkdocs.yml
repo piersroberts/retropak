@@ -5,7 +5,7 @@ repo_url: https://github.com/piersroberts/retropak
 repo_name: piersroberts/retropak
 
 theme:
-  name: readthedocs
+  name: material
 
 nav:
   - Home: index.md
