@@ -5,7 +5,7 @@ The complete JSON Schema for Retropak manifests.
 ## Schema Definition
 
 ```json
---8<-- "schemas/retropak.schema.json"
+--8<-- "schemas/v1/retropak.schema.json"
 ```
 
 ## Using the Schema
