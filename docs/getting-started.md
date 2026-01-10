@@ -47,7 +47,7 @@ The `retropak.json` file describes everything. Start with the minimum:
 
 ```json
 {
-  "specVersion": "1.0", // (1)!
+  "schemaVersion": "1-0-0", // (1)!
   "info": {
     "title": "Sonic the Hedgehog", // (2)!
     "platform": "md" // (3)!

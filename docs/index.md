@@ -52,7 +52,7 @@ cp manual.pdf docs/
 # Create manifest
 cat > retropak.json << 'EOF'
 {
-  "specVersion": "1.0",
+  "schemaVersion": "1-0-0",
   "info": {
     "title": "My Game",
     "platform": "nes"

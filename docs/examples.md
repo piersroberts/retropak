@@ -10,7 +10,7 @@ The simplest valid Retropak:
 
 ```json
 {
-  "specVersion": "1.0",
+  "schemaVersion": "1-0-0",
   "info": {
     "title": "Tetris",
     "platform": "gb"
@@ -39,7 +39,7 @@ A fully featured package:
 
 ```json
 {
-  "specVersion": "1.0",
+  "schemaVersion": "1-0-0",
   "manifestVersion": "2",
   "info": {
     "title": "Sonic the Hedgehog",
@@ -139,7 +139,7 @@ PlayStation game with multiple discs:
 
 ```json
 {
-  "specVersion": "1.0",
+  "schemaVersion": "1-0-0",
   "info": {
     "title": "Final Fantasy VII",
     "platform": "psx",
@@ -223,7 +223,7 @@ Multi-game compilation disc:
 
 ```json
 {
-  "specVersion": "1.0",
+  "schemaVersion": "1-0-0",
   "info": {
     "title": "Namco Museum Vol. 1",
     "platform": "psx",
@@ -267,7 +267,7 @@ Modern homebrew game:
 
 ```json
 {
-  "specVersion": "1.0",
+  "schemaVersion": "1-0-0",
   "info": {
     "title": "Micro Mages",
     "platform": "nes",
@@ -314,7 +314,7 @@ Digital distribution format:
 
 ```json
 {
-  "specVersion": "1.0",
+  "schemaVersion": "1-0-0",
   "info": {
     "title": "Streets of Rage 2",
     "platform": "md",
@@ -342,7 +342,7 @@ PC game with multiple files:
 
 ```json
 {
-  "specVersion": "1.0",
+  "schemaVersion": "1-0-0",
   "info": {
     "title": "DOOM",
     "platform": "dos",
@@ -380,7 +380,7 @@ Game requiring code wheel:
 
 ```json
 {
-  "specVersion": "1.0",
+  "schemaVersion": "1-0-0",
   "info": {
     "title": "King's Quest V",
     "platform": "dos",

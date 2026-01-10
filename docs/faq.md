@@ -301,7 +301,7 @@ The core spec (1.0) is stable. Future versions may add optional fields but won't
 
 ### How is versioning handled?
 
-The `specVersion` field indicates compatibility. Tools check this before parsing.
+The `schemaVersion` field indicates compatibility. Tools check this before parsing.
 
 ---
 

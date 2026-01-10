@@ -29,6 +29,60 @@ Retro software distribution is fragmented. ROMs live in one folder, box art in a
 
 ---
 
+## Versioning
+
+Retropak uses **[Schemaver](https://snowplowanalytics.com/blog/2014/05/13/introducing-schemaver-for-semantic-versioning-of-schemas/)** (Schema Versioning) to track format evolution. Unlike semver, schemaver explicitly distinguishes between changes that break consumers, producers, or neither.
+
+### Format: MODEL-REVISION-ADDITION
+
+Retropak schema versions follow the pattern `MODEL-REVISION-ADDITION` (e.g., `1-0-0`):
+
+- **MODEL** - Breaking changes that prevent consumers from reading old files
+  - Example: Changing `title` from string to object
+  - Example: Removing or renaming required fields
+  - **Impact:** Frontends/emulators must update to support new files
+
+- **REVISION** - Changes that break producers but not consumers
+  - Example: Adding new required fields
+  - Example: Stricter validation (removing enum values)
+  - **Impact:** Tools creating .rpk files must update; old files still work
+
+- **ADDITION** - Backward-compatible additions
+  - Example: Adding optional fields
+  - Example: Adding new platform/genre enum values
+  - **Impact:** No one needs to update immediately
+
+### Current Version
+
+The current schema version is **1-0-0** (initial release). This version must be declared in every `retropak.json` manifest:
+
+```json
+{
+  "$schema": "https://retropak.org/schemas/v1/retropak.schema.json",
+  "schemaVersion": "1-0-0",
+  "info": {
+    "title": "Example Game",
+    ...
+  }
+}
+```
+
+### Schema Organization
+
+- Schema files are organized by MODEL version: `/schemas/v1/`, `/schemas/v2/`
+- The URL `https://retropak.org/schemas/v1/retropak.schema.json` always points to the latest `1-x-x` version
+- This ensures frontends can validate against `v1` and accept any `1-x-x` manifest
+
+### Why Schemaver?
+
+Schemaver provides critical clarity for data formats:
+
+- **Semver's MINOR** conflates two very different things (new features vs. stricter validation)
+- **Schemaver's REVISION** explicitly captures "old files work, but new files have stricter rules"
+- Perfect for preservation: consumers can confidently read any `1-x-x` file regardless of REVISION/ADDITION changes
+
+---
+
 ## Container Format
 
 A `.rpk` file is a standard ZIP archive using Deflate compression. The extension must be `.rpk`.
@@ -47,7 +101,7 @@ A `.rpk` file is a standard ZIP archive using Deflate compression. The extension
 
 ??? question "Why these specific names?"
     **Why `retropak.json`?** - We avoided the generic `manifest.json` (used by PWAs, Chrome extensions, etc.) to make files immediately identifiable and prevent format collisions.
-    
+
     **Why `software/`?** - The folder contains ROMs, disc images, and executables—not just "games." Using `software/` reflects our inclusive terminology.
 
 ---
@@ -224,13 +278,13 @@ Soundtrack files should balance quality with practical file sizes.
 
 The manifest has four top-level sections:
 
-| Section       | Required | Purpose                                      |
-| ------------- | -------- | -------------------------------------------- |
-| `specVersion` | Yes      | Schema version for compatibility             |
-| `info`        | Yes      | Title metadata (name, platform, genre, etc.) |
-| `media`       | Yes      | The actual software files                    |
-| `assets`      | No       | Artwork, music, documentation                |
-| `config`      | No       | Emulator configuration files                 |
+| Section          | Required | Purpose                                      |
+| ---------------- | -------- | -------------------------------------------- |
+| `schemaVersion`  | Yes      | Schema version using schemaver format        |
+| `info`           | Yes      | Title metadata (name, platform, genre, etc.) |
+| `media`          | Yes      | The actual software files                    |
+| `assets`         | No       | Artwork, music, documentation                |
+| `config`         | No       | Emulator configuration files                 |
 
 ---
 
@@ -285,11 +339,11 @@ Category is an array because software can be multiple things—a "game" that's a
 
 #### Categories
 
-`game`, `demo`, `shareware`, `application`, `educational`, `multimedia`, `bios`, `homebrew`, `prototype`, `beta`, `coverdisk`, `scene_demo`, `firmware`, `utility`
+`addon`, `application`, `beta`, `bios`, `compilation`, `coverdisk`, `demo`, `educational`, `firmware`, `freeware`, `game`, `homebrew`, `multimedia`, `promotional`, `prototype`, `scene_demo`, `shareware`, `unlicensed`, `utility`
 
 #### Genres
 
-`action`, `action_rpg`, `adventure`, `arcade`, `beat_em_up`, `board_game`, `card_game`, `casino`, `dating_sim`, `dungeon_crawler`, `educational`, `endless_runner`, `fighting`, `flight`, `fps`, `hack_and_slash`, `horror`, `life_sim`, `light_gun`, `maze`, `metroidvania`, `music_rhythm`, `open_world`, `party`, `pinball`, `platformer`, `point_and_click`, `puzzle`, `racing`, `roguelike`, `rpg`, `run_and_gun`, `sandbox`, `shoot_em_up`, `shooter`, `simulation`, `sports`, `stealth`, `strategy`, `survival`, `tactical_rpg`, `text_adventure`, `tower_defense`, `trivia`, `twin_stick`, `visual_novel`, `wrestling`
+`action`, `action_rpg`, `adventure`, `american_football`, `arcade`, `artillery`, `athletics`, `baseball`, `basketball`, `beat_em_up`, `billiards`, `block_puzzle`, `board_game`, `bowling`, `boxing`, `bullet_hell`, `card_game`, `casino`, `casual`, `cricket`, `cute_em_up`, `dating_sim`, `dungeon_crawler`, `educational`, `endless_runner`, `extreme_sports`, `fighting`, `fishing`, `flight`, `fps`, `golf`, `hack_and_slash`, `hockey`, `horse_racing`, `horror`, `life_sim`, `light_gun`, `logic_puzzle`, `mahjong`, `management`, `match_3`, `maze`, `mech`, `metroidvania`, `minigames`, `mmorpg`, `moba`, `music_rhythm`, `open_world`, `pachinko`, `party`, `pinball`, `platformer`, `point_and_click`, `pool`, `puzzle`, `quiz`, `racing`, `rail_shooter`, `real_time_strategy`, `roguelike`, `rpg`, `run_and_gun`, `sandbox`, `shoot_em_up`, `shooter`, `simulation`, `skateboarding`, `skiing`, `snooker`, `snowboarding`, `soccer`, `sports`, `stealth`, `strategy`, `surfing`, `survival`, `tactical_rpg`, `tennis`, `text_adventure`, `tower_defense`, `trivia`, `turn_based_strategy`, `twin_stick`, `vehicle_combat`, `visual_novel`, `volleyball`, `word_puzzle`, `wrestling`
 
 ### Players
 
@@ -327,7 +381,7 @@ Features include input devices, peripherals, and capabilities. We separate requi
 
 #### Feature Values
 
-`analog_stick`, `dance_mat`, `drums`, `flight_stick`, `gamepad`, `guitar`, `keyboard`, `light_gun`, `link_cable`, `maracas`, `microphone`, `mouse`, `multitap`, `online`, `paddle`, `pointer`, `rumble`, `save_file`, `spinner`, `steering_wheel`, `stylus`, `touch_screen`, `trackball`, `twin_stick`, `vr_headset`, `zapper`
+`analog_stick`, `arcade_stick`, `balance_board`, `bongos`, `buzzer`, `camera`, `dance_mat`, `dongle`, `drums`, `fishing_rod`, `flight_stick`, `gamepad`, `guitar`, `keyboard`, `keyboard_controller`, `light_gun`, `link_cable`, `maracas`, `mech_controller`, `microphone`, `motion_controls`, `mouse`, `multitap`, `nfc_portal`, `online`, `paddle`, `pedals`, `pointer`, `rumble`, `save_file`, `spinner`, `steering_wheel`, `stylus`, `touch_screen`, `trackball`, `train_controller`, `turntable`, `twin_stick`, `vr_headset`, `zapper`
 
 **Why is `online` a feature?** - It's a capability, like rumble support. Putting it here keeps player counts simple (local players only) while still indicating network play was available.
 
@@ -766,7 +820,7 @@ Use cases:
 
 ```json
 {
-  "specVersion": "1.0",
+  "schemaVersion": "1-0-0",
   "manifestVersion": "1",
   "info": {
     "title": "Sonic the Hedgehog",
@@ -889,7 +943,7 @@ Example:
 
 #### Version Numbers
 
-- **specVersion** - Format `MAJOR.MINOR` (e.g., `1.0`, `2.1`)
+- **schemaVersion** - Format `MODEL-REVISION-ADDITION` using schemaver (e.g., `1-0-0`, `1-2-1`)
 - **manifestVersion** - Flexible versioning supporting integers or dot-separated numbers (e.g., `1`, `2.1`, `3.2.1`)
 
 These patterns ensure data consistency and make validation reliable across different tools and implementations.
