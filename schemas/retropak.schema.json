@@ -203,7 +203,6 @@
             "type": "string",
             "description": "A classification for the type/nature of the software.",
             "enum": [
-                "game",
                 "addon",
                 "application",
                 "beta",
@@ -214,6 +213,7 @@
                 "educational",
                 "firmware",
                 "freeware",
+                "game",
                 "homebrew",
                 "multimedia",
                 "promotional",

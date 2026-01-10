@@ -1,0 +1,47 @@
+name: Validate JSON Schema
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/schemas/**/*.json'
+      - 'schemas/**/*.json'
+      - '.github/workflows/validate-schema.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'docs/schemas/**/*.json'
+      - 'schemas/**/*.json'
+      - '.github/workflows/validate-schema.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+        cache: 'pip'
+    
+    - name: Install check-jsonschema
+      run: pip install check-jsonschema
+    
+    - name: Validate schema against JSON Schema Draft 7
+      run: |
+        echo "Validating docs/schemas/v1/retropak.schema.json..."
+        check-jsonschema --check-metaschema docs/schemas/v1/retropak.schema.json
+        
+        echo "Validating schemas/retropak.schema.json..."
+        check-jsonschema --check-metaschema schemas/retropak.schema.json
+    
+    - name: Check schema files are valid JSON
+      run: |
+        for file in docs/schemas/**/*.json schemas/*.json; do
+          echo "Checking JSON syntax: $file"
+          python -m json.tool "$file" > /dev/null
+        done
