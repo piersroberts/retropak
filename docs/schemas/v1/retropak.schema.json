@@ -3,7 +3,7 @@
     "$id": "https://retropak.org/schemas/v1/retropak.schema.json",
     "version": "1-0-0",
     "title": "Retropak Manifest",
-    "description": "Metadata specification for Retropak software containers (schema version 1-0-0)",
+    "description": "Metadata specification for Retropak software containers",
     "$defs": {
         "platform": {
             "type": "string",
