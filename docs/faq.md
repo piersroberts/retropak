@@ -42,6 +42,9 @@ Yes! The specification is extensible. Propose additions via GitHub.
 
 ### Why is arcade not supported?
 
+!!! info "Arcade Games Are Different"
+    Arcade games don't fit the Retropak model because they're fundamentally different from home platforms.
+
 Arcade games are fundamentally different from home platforms:
 
 - **Board-specific**: Games are tied to specific arcade hardware (CPS1, CPS2, Neo Geo MVS, etc.), not a unified platform
@@ -61,7 +64,8 @@ ZIP format supports up to 4GB (ZIP64 extends this to 16EB, though practical limi
 
 ### Can I stream from a Retropak without extracting?
 
-Yes! ZIP allows random access. Emulators can read files directly from the archive.
+!!! success "Yes! Direct Access Works"
+    ZIP format supports random access, so emulators can read files directly from the `.rpk` archive without extracting everything first. This saves disk space and load time.
 
 ---
 
@@ -73,7 +77,8 @@ No. Only `retropak.json`, the `software/` directory, and at least one media file
 
 ### Can I include save files?
 
-No. Save files are user-specific and should not be included in Retropak archives. Let emulators create and manage saves externally.
+!!! danger "Never Include Save Files"
+    Save files are user-specific and should **never** be included in Retropak archives. They can overwrite user progress and contain personal data. Let emulators create and manage saves externally.
 
 ### What about cheat codes?
 

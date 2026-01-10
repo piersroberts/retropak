@@ -155,8 +155,8 @@ PlayStation game with multiple discs:
       "filename": "software/ff7_disc1.bin",
       "label": "Disc 1",
       "type": "cdrom",
-      "index": 1,
-      "bootable": true,
+      "index": 1, // (1)!
+      "bootable": true, // (2)!
       "region": "ntsc-u"
     },
     {
@@ -164,7 +164,7 @@ PlayStation game with multiple discs:
       "label": "Disc 2",
       "type": "cdrom",
       "index": 2,
-      "bootable": false,
+      "bootable": false, // (3)!
       "region": "ntsc-u"
     },
     {
@@ -205,9 +205,19 @@ PlayStation game with multiple discs:
 }
 ```
 
+1. Order matters! Use sequential indices starting at 1
+2. Only the first disc is bootable - this is what the emulator loads initially
+3. Subsequent discs are swapped during gameplay
+
+!!! info "Multi-Disc Games"
+    For sequential disc games, only mark the first disc as `bootable: true`. The emulator will prompt for disc swaps when needed.
+
 ---
 
 ## Compilation Example
+
+!!! tip "Compilations vs Separate Retropaks"
+    Use `type: "compilation"` for official multi-game releases like Namco Museum. For unrelated games, create separate `.rpk` files instead.
 
 Multi-game compilation disc:
 
@@ -221,7 +231,7 @@ Multi-game compilation disc:
     "publisher": "Namco",
     "releaseDate": "1995-11-22",
     "type": "compilation",
-    "contents": [
+    "contents": [ // (1)!
       "Pac-Man",
       "Galaga",
       "Pole Position",
@@ -246,6 +256,8 @@ Multi-game compilation disc:
   }
 }
 ```
+
+1. List all included games for searchability and filtering
 
 ---
 

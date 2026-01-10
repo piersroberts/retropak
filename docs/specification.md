@@ -12,6 +12,9 @@ Retro software distribution is fragmented. ROMs live in one folder, box art in a
 
 ### Design Principles
 
+!!! success "Built for Preservation"
+    Retropak isn't just for games - it's for preserving **all** retro software with complete context.
+
 1. **Inclusive, not game-centric** - We use "title" and "software" instead of "game" because Retropak supports demos, applications, educational software, scene demos, and more.
 
 2. **Self-describing** - A `.rpk` file contains everything needed to display, launch, and understand the software. No external scraping required.
@@ -42,9 +45,10 @@ A `.rpk` file is a standard ZIP archive using Deflate compression. The extension
 └── config/             (Optional: Emulator configs)
 ```
 
-**Why `retropak.json`?** - We avoided the generic `manifest.json` (used by PWAs, Chrome extensions, etc.) to make files immediately identifiable and prevent format collisions.
-
-**Why `software/`?** - The folder contains ROMs, disc images, and executables—not just "games." Using `software/` reflects our inclusive terminology.
+??? question "Why these specific names?"
+    **Why `retropak.json`?** - We avoided the generic `manifest.json` (used by PWAs, Chrome extensions, etc.) to make files immediately identifiable and prevent format collisions.
+    
+    **Why `software/`?** - The folder contains ROMs, disc images, and executables—not just "games." Using `software/` reflects our inclusive terminology.
 
 ---
 
@@ -115,7 +119,8 @@ Signing establishes:
 2. **Integrity** - Nothing has been tampered with
 3. **Non-repudiation** - The signer cannot deny signing (with their key)
 
-**Important:** Signature verification proves the archive is unmodified, but you must trust the signer's public key through your own verification process.
+!!! warning "Trust Is Not Automatic"
+    Signature verification proves the archive is unmodified, but you must trust the signer's public key through your own verification process. A valid signature doesn't mean the content is safe—only that it hasn't been altered since signing!
 
 ---
 
@@ -139,7 +144,9 @@ Software files should be stored in their original, unmodified format. Do not re-
 
 #### Compression Notes
 
-- **CHD (Compressed Hunks of Data)** - Highly recommended for optical media. Lossless, significant size reduction, widely supported by emulators.
+!!! tip "CHD for Disc Images"
+    CHD (Compressed Hunks of Data) is highly recommended for optical media. It provides lossless compression with 40-60% size reduction and is widely supported by modern emulators like RetroArch.
+
 - **Do not** use `.zip` or `.7z` for individual ROMs inside the archive—double compression wastes space and slows loading.
 - Keep multi-file disc images together (e.g., `.bin` + `.cue`, `.mds` + `.mdf`).
 
@@ -171,9 +178,11 @@ All artwork should prioritize quality while remaining practical for distribution
 | `gameplay`      | Native resolution | 1920×1080 | Preserve original aspect ratio          |
 | `map`           | As needed         | 4000×4000 | Can be large for detailed maps          |
 
+!!! warning "Preserve Aspect Ratios"
+    Never stretch screenshots! A 4:3 game should remain 4:3. Distorted screenshots look unprofessional and misrepresent the original game.
+
 **Notes:**
 
-- Screenshots should preserve the original aspect ratio—don't stretch 4:3 to 16:9.
 - For pixel art, use nearest-neighbor scaling or keep at native resolution.
 - Backdrop images should be clean artwork without text/logos that clash with UI overlays.
 
@@ -246,29 +255,31 @@ Only `title` and `platform` are required. Everything else is optional but recomm
 
 ```json
 {
-  "title": "Final Fantasy VI",
-  "alternativeTitles": ["Final Fantasy III", "ファイナルファンタジーVI"]
+  "title": "Final Fantasy VI", // (1)!
+  "alternativeTitles": ["Final Fantasy III", "ファイナルファンタジーVI"] // (2)!
 }
 ```
 
-- `title` - The primary display name
-- `alternativeTitles` - Regional variants, translated names, or original titles
+1. Primary display name - usually the most recent or widely recognized version
+2. Regional variants, original titles, or localized names
 
-**Why not separate fields for each region?** - Too rigid. A title might have 3 Japanese names and 2 English ones. An array handles any scenario.
+!!! tip "Flexible Alternative Titles"
+    Use an array because titles don't fit rigid regional categories. Some games have multiple names in the same language or region-specific variants that don't map to simple "US/EU/JP" fields.
 
 ### Category vs Genre
 
 ```json
 {
-  "category": ["game", "demo"],
-  "genre": ["platformer", "action"]
+  "category": ["game", "demo"], // (1)!
+  "genre": ["platformer", "action"] // (2)!
 }
 ```
 
-These serve different purposes:
+1. **What it is**: game, demo, homebrew, educational software, etc.
+2. **How it plays**: platformer, RPG, puzzle, strategy, etc.
 
-- **Category** describes *what the software is*: a game, demo, application, homebrew, prototype, etc.
-- **Genre** describes *how it plays*: platformer, RPG, puzzle, etc.
+!!! note "Why Two Fields?"
+    Category describes *what the software is*, while genre describes *how it plays*. A shareware demo of an RPG would have `category: ["game", "demo", "shareware"]` and `genre: ["rpg"]`.
 
 Category is an array because software can be multiple things—a "game" that's also a "demo," or "homebrew" that's also a "prototype."
 

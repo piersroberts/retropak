@@ -35,23 +35,34 @@ my_game/
     └── manual.pdf
 ```
 
+!!! warning "File Paths Matter"
+    All paths in `retropak.json` must match your actual file structure exactly. They're case-sensitive on most systems!
+
 ### Step 3: Create the Manifest
 
 The `retropak.json` file describes everything. Start with the minimum:
 
+!!! tip "Quick Start"
+    You only need `title` and `platform` to get started. Add more metadata as you go!
+
 ```json
 {
-  "specVersion": "1.0",
+  "specVersion": "1.0", // (1)!
   "info": {
-    "title": "Sonic the Hedgehog",
-    "platform": "md"
+    "title": "Sonic the Hedgehog", // (2)!
+    "platform": "md" // (3)!
   },
-  "media": [{
+  "media": [{ // (4)!
     "filename": "software/game.rom",
     "type": "cartridge"
   }]
 }
 ```
+
+1. Always use `"1.0"` for the current specification version
+2. The title as it appears on the box or title screen
+3. Platform code - `md` is Sega Genesis/Mega Drive
+4. Array of software files - at least one is required
 
 Only `title` and `platform` are required, but additional metadata provides more value:
 
@@ -76,17 +87,20 @@ Only `title` and `platform` are required, but additional metadata provides more 
     "filename": "software/game.rom",
     "type": "cartridge",
     "region": "ntsc-u",
-    "md5": "d41d8cd98f00b204e9800998ecf8427e"
+    "md5": "d41d8cd98f00b204e9800998ecf8427e" // (1)!
   }],
   "assets": {
     "boxFront": {
       "file": "art/box_front.jpg",
-      "alt": "Sonic pointing forward with the game logo above"
+      "alt": "Sonic pointing forward with the game logo above" // (2)!
     },
     "manual": "docs/manual.pdf"
   }
 }
 ```
+
+1. Including checksums helps verify ROM authenticity and matches against known good dumps
+2. Alt text makes your Retropak accessible to screen readers - describe what's visible!
 
 ### Step 4: Package It
 
@@ -158,17 +172,21 @@ Add music tracks:
   {
     "title": "Green Hill Zone",
     "file": "audio/green_hill.mp3",
-    "background": true
+    "background": true // (1)!
   },
   {
     "title": "Boss Battle",
     "file": "audio/boss.mp3",
-    "background": false
+    "background": false // (2)!
   }
 ]
 ```
 
-The `background` flag indicates which tracks work well for menu music.
+1. Calm tracks make great menu background music
+2. Intense tracks like boss battles usually don't loop well in menus
+
+!!! tip "Soundtrack Tips"
+    The `background` flag helps frontends choose appropriate menu music. Pick tracks that loop smoothly and aren't too intense or quiet.
 
 ---
 
