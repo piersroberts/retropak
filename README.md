@@ -1,43 +1,39 @@
-# retropak
+# Retropak
 
-## Documentation
+> A modern container format for retro software preservation
 
-This repository includes MkDocs-based documentation that can be built and deployed to Cloudflare Pages.
+Retropak (`.rpk`) is an open standard for distributing retro software with everything in one place: ROMs, artwork, soundtracks, manuals, and metadata.
 
-### Installing MkDocs
+## Quick Links
 
-To work with the documentation locally, you need to install MkDocs:
+- **[Read the Specification](docs/specification.md)**: Complete technical specification
+- **[Visit the Website](https://retropak.org)**: Documentation and guides
+- **[View the Schema](docs/schemas/v1/retropak.schema.json)**: JSON Schema for validation
+- **[Contributing](CONTRIBUTING.md)**: How to build and contribute to the docs
 
-```bash
-pip install mkdocs
-```
+## What is Retropak?
 
-### Building the Documentation
+A `.rpk` file is a ZIP archive containing:
 
-To build the static documentation site:
+- **Software**: ROMs, disc images, executables
+- **Metadata**: Title, platform, genre, developer, release date
+- **Artwork**: Box art, screenshots, logos
+- **Documentation**: Manuals, maps, guides
+- **Audio**: Soundtracks and music
+- **Configuration**: Emulator settings
 
-```bash
-mkdocs build
-```
+Everything needed to preserve and present retro software in one self-contained package.
 
-This will generate the static site in the `site/` directory.
+## Features
 
-### Local Development Server
+- **77 supported platforms**: From Atari 2600 to Xbox Series X
+- **Rich metadata**: Genre, players, features, ratings, credits
+- **Multi-disc support**: CD swapping, boot disks, compilations
+- **ROM verification**: MD5/SHA1/CRC32 checksums for database/DAT file validation
+- **Cryptographic signing**: GPG and SSH signatures for authenticity
+- **Accessibility**: Alt text support for all images
+- **Preservation-focused**: Version tracking, dump status, source attribution
 
-To preview the documentation locally with live reloading:
+## License
 
-```bash
-mkdocs serve
-```
-
-Then visit `http://127.0.0.1:8000/` in your browser.
-
-### Deploying to Cloudflare Pages
-
-To deploy the documentation to Cloudflare Pages:
-
-1. Connect your repository to Cloudflare Pages
-2. Set the **Build command** to: `pip install mkdocs && mkdocs build`
-3. Set the **Build output directory** to: `site/`
-
-Cloudflare Pages will automatically build and deploy your documentation on every push.
+This specification is released under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Use it however you like.

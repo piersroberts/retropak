@@ -1,0 +1,7 @@
+# Cloudflare Pages Headers
+# Sets correct MIME types for JSON Schema files
+
+/schemas/v1/*.json
+  Content-Type: application/schema+json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600

@@ -1,7 +1,8 @@
 {
-  "name": "retropak",
-  "compatibility_date": "2026-01-10",
-  "assets": {
-    "directory": "./site"
-  }
+    "name": "retropak",
+    "compatibility_date": "2026-01-10",
+    "assets": {
+        "directory": "./site",
+        "binding": "ASSETS"
+    }
 }
