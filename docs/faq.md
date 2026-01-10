@@ -29,11 +29,11 @@ Retropak bundles everything in an open, standardized way.
 !!! tip "One Format, All Platforms"
     Every Retropak uses `.rpk` regardless of whether it contains NES, PlayStation, or DOS software. This design choice has important benefits.
 
-**File format consistency** — Retropak is a container format, not a platform-specific format. Just like `.zip` works for any files inside, `.rpk` works for any platform. The actual platform is declared in the manifest's `platform` field, not the file extension.
+**File format consistency** — Retropak is a container format, not a platform-specific format. Just like `.zip` works for any files inside, `.rpk` works for any platform. All platform information is stored in the JSON manifest's `platform` field inside the archive, not encoded in the file extension.
 
-**Simplified tooling** — Emulators and frontends only need to recognize one extension (`.rpk`). They read the manifest to determine the platform, rather than maintaining a list of platform-specific extensions (`.rpk-nes`, `.rpk-ps1`, etc.).
+**Simplified tooling** — Emulators and frontends only need to recognize one extension (`.rpk`). They open the archive, read `retropak.json`, and determine the platform from the manifest—no filename parsing or extension variants needed.
 
-**Flexible naming** — You can still include platform information in the filename if you want. For example: `Sonic.md.rpk`, `Zelda (NES).rpk`, or `Final Fantasy VII (PSX).rpk`. The filename is up to you—only the `.rpk` extension matters for file associations.
+**Flexible naming** — You can still include platform information in the filename if you want. For example: `Sonic.md.rpk`, `Zelda (NES).rpk`, or `Final Fantasy VII (PSX).rpk`. The filename is up to you—only the `.rpk` extension matters for file associations. Tools ignore the filename and read the platform from the manifest.
 
 The platform-specific software files (ROMs, ISOs, etc.) inside each Retropak still retain their original extensions for emulator compatibility.
 
