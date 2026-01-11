@@ -1,6 +1,6 @@
 # Retropak
 
-> The modern container format for retro software preservation
+> A modern container format for retro software preservation
 
 Retropak (`.rpk`) is an open standard for distributing retro software with everything in one place: ROMs, artwork, soundtracks, manuals, and metadata. A `.rpk` file is a single, self-contained package that preserves everything about a title.
 
