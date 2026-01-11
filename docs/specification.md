@@ -381,7 +381,7 @@ Features include input devices, peripherals, and capabilities. We separate requi
 
 #### Feature Values
 
-`analog_stick`, `arcade_stick`, `balance_board`, `bongos`, `buzzer`, `camera`, `dance_mat`, `dongle`, `drums`, `fishing_rod`, `flight_stick`, `gamepad`, `guitar`, `keyboard`, `keyboard_controller`, `light_gun`, `link_cable`, `maracas`, `mech_controller`, `microphone`, `motion_controls`, `mouse`, `multitap`, `nfc_portal`, `online`, `paddle`, `pedals`, `pointer`, `rumble`, `save_file`, `spinner`, `steering_wheel`, `stylus`, `touch_screen`, `trackball`, `train_controller`, `turntable`, `twin_stick`, `vr_headset`, `zapper`
+`analog_stick`, `arcade_stick`, `balance_board`, `bongos`, `buzzer`, `camera`, `crank`, `dance_mat`, `dongle`, `drums`, `fishing_rod`, `flight_stick`, `gamepad`, `guitar`, `keyboard`, `keyboard_controller`, `light_gun`, `link_cable`, `maracas`, `mech_controller`, `microphone`, `motion_controls`, `mouse`, `multitap`, `nfc_portal`, `online`, `paddle`, `pedals`, `pointer`, `rumble`, `save_file`, `spinner`, `steering_wheel`, `stylus`, `touch_screen`, `trackball`, `train_controller`, `turntable`, `twin_stick`, `vr_headset`, `zapper`
 
 **Why is `online` a feature?** - It's a capability, like rumble support. Putting it here keeps player counts simple (local players only) while still indicating network play was available.
 
@@ -709,7 +709,7 @@ Use cases:
 
 ## Platforms
 
-120 platforms are currently supported. Platform IDs follow these rules:
+125 platforms are currently supported. Platform IDs follow these rules:
 
 - **Single-word names** stay as-is: `saturn`, `dreamcast`, `wii`
 - **Multi-word names** become abbreviations: `pce`, `gba`, `sms`
@@ -727,6 +727,7 @@ Use cases:
 | `mp1000`        | [APF-MP1000](https://en.wikipedia.org/wiki/APF_Imagination_Machine)                       | APF                | 1978  |
 | `msx`           | [MSX](https://en.wikipedia.org/wiki/MSX)                                                  | ASCII Corporation  | 1983  |
 | `msx2`          | [MSX2](https://en.wikipedia.org/wiki/MSX#MSX2)                                            | ASCII Corporation  | 1985  |
+| `arduboy`       | [Arduboy](https://en.wikipedia.org/wiki/Arduboy)                                          | Arduboy            | 2016  |
 | `a2600`         | [Atari 2600](https://en.wikipedia.org/wiki/Atari_2600)                                    | Atari              | 1977  |
 | `a800`          | [Atari 8-bit](https://en.wikipedia.org/wiki/Atari_8-bit_family)                           | Atari              | 1979  |
 | `a5200`         | [Atari 5200](https://en.wikipedia.org/wiki/Atari_5200)                                    | Atari              | 1982  |
@@ -738,6 +739,7 @@ Use cases:
 | `astrocade`     | [Bally Astrocade](https://en.wikipedia.org/wiki/Bally_Astrocade)                          | Bally/Astrocade    | 1977  |
 | `ws`            | [WonderSwan](https://en.wikipedia.org/wiki/WonderSwan)                                    | Bandai             | 1999  |
 | `wsc`           | [WonderSwan Color](https://en.wikipedia.org/wiki/WonderSwan)                              | Bandai             | 2000  |
+| `gamate`        | [Gamate](https://en.wikipedia.org/wiki/Gamate)                                            | Bit Corporation    | 1990  |
 | `pv1000`        | [Casio PV-1000](https://en.wikipedia.org/wiki/Casio_PV-1000)                              | Casio              | 1983  |
 | `coleco`        | [ColecoVision](https://en.wikipedia.org/wiki/ColecoVision)                                | Coleco             | 1982  |
 | `pet`           | [Commodore PET](https://en.wikipedia.org/wiki/Commodore_PET)                              | Commodore          | 1977  |
@@ -763,6 +765,7 @@ Use cases:
 | `intellivision` | [Intellivision](https://en.wikipedia.org/wiki/Intellivision)                              | Mattel             | 1979  |
 | `aquarius`      | [Aquarius](https://en.wikipedia.org/wiki/Mattel_Aquarius)                                 | Mattel             | 1983  |
 | `hyperscan`     | [HyperScan](https://en.wikipedia.org/wiki/HyperScan)                                      | Mattel             | 2006  |
+| `megaduck`      | [Mega Duck](https://en.wikipedia.org/wiki/Mega_Duck)                                      | Welback Holdings   | 1993  |
 | `xbox`          | [Xbox](https://en.wikipedia.org/wiki/Xbox_(console))                                      | Microsoft          | 2001  |
 | `x360`          | [Xbox 360](https://en.wikipedia.org/wiki/Xbox_360)                                        | Microsoft          | 2005  |
 | `xone`          | [Xbox One](https://en.wikipedia.org/wiki/Xbox_One)                                        | Microsoft          | 2013  |
@@ -793,6 +796,7 @@ Use cases:
 | `switch`        | [Nintendo Switch](https://en.wikipedia.org/wiki/Nintendo_Switch)                          | Nintendo           | 2017  |
 | `ngage`         | [N-Gage](https://en.wikipedia.org/wiki/N-Gage_(device))                                   | Nokia              | 2003  |
 | `3do`           | [3DO Interactive Multiplayer](https://en.wikipedia.org/wiki/3DO_Interactive_Multiplayer)  | Panasonic/others   | 1993  |
+| `playdate`      | [Playdate](https://en.wikipedia.org/wiki/Playdate_(console))                              | Panic              | 2022  |
 | `cdi`           | [CD-i](https://en.wikipedia.org/wiki/CD-i)                                                | Philips            | 1991  |
 | `videopac`      | [Videopac+ / G7400](https://en.wikipedia.org/wiki/Videopac%2B_G7400)                      | Philips            | 1983  |
 | `laseractive`   | [LaserActive](https://en.wikipedia.org/wiki/LaserActive)                                  | Pioneer            | 1993  |
@@ -828,6 +832,7 @@ Use cases:
 | `coco`          | [TRS-80 Color Computer](https://en.wikipedia.org/wiki/TRS-80_Color_Computer)              | Tandy              | 1980  |
 | `oric`          | [Oric](https://en.wikipedia.org/wiki/Oric_(computer))                                     | Tangerine          | 1983  |
 | `thomson`       | [Thomson MO5/TO7](https://en.wikipedia.org/wiki/Thomson_computers)                        | Thomson            | 1984  |
+| `gizmondo`      | [Gizmondo](https://en.wikipedia.org/wiki/Gizmondo)                                        | Tiger Telematics   | 2005  |
 | `einstein`      | [Tatung Einstein](https://en.wikipedia.org/wiki/Tatung_Einstein)                          | Tatung             | 1984  |
 | `ti994a`        | [TI-99/4A](https://en.wikipedia.org/wiki/Texas_Instruments_TI-99/4A)                      | Texas Instruments  | 1981  |
 | `tutor`         | [Tomy Tutor](https://en.wikipedia.org/wiki/Tomy_Tutor)                                    | Tomy               | 1983  |
