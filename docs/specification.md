@@ -278,13 +278,13 @@ Soundtrack files should balance quality with practical file sizes.
 
 The manifest has four top-level sections:
 
-| Section          | Required | Purpose                                      |
-| ---------------- | -------- | -------------------------------------------- |
-| `schemaVersion`  | Yes      | Schema version using schemaver format        |
-| `info`           | Yes      | Title metadata (name, platform, genre, etc.) |
-| `media`          | Yes      | The actual software files                    |
-| `assets`         | No       | Artwork, music, documentation                |
-| `config`         | No       | Emulator configuration files                 |
+| Section         | Required | Purpose                                      |
+| --------------- | -------- | -------------------------------------------- |
+| `schemaVersion` | Yes      | Schema version using schemaver format        |
+| `info`          | Yes      | Title metadata (name, platform, genre, etc.) |
+| `media`         | Yes      | The actual software files                    |
+| `assets`        | No       | Artwork, music, documentation                |
+| `config`        | No       | Emulator configuration files                 |
 
 ---
 
@@ -591,7 +591,7 @@ Start from Disc 1, swap when prompted:
 
 ### Regions
 
-`asia`, `brazil`, `china`, `korea`, `ntsc-j`, `ntsc-u`, `pal`, `pal-a`, `pal-b`, `world`
+`asia`, `australia`, `brazil`, `canada`, `china`, `europe`, `france`, `germany`, `hong-kong`, `india`, `italy`, `japan`, `korea`, `mexico`, `netherlands`, `ntsc-j`, `ntsc-u`, `pal`, `pal-a`, `pal-b`, `pal-g`, `russia`, `scandinavia`, `spain`, `taiwan`, `uk`, `usa`, `world`
 
 ---
 
@@ -709,7 +709,7 @@ Use cases:
 
 ## Platforms
 
-94 platforms are currently supported. Platform IDs follow these rules:
+120 platforms are currently supported. Platform IDs follow these rules:
 
 - **Single-word names** stay as-is: `saturn`, `dreamcast`, `wii`
 - **Multi-word names** become abbreviations: `pce`, `gba`, `sms`
@@ -718,8 +718,15 @@ Use cases:
 | ID              | Platform                                                                                  | Manufacturer       | Year  |
 | --------------- | ----------------------------------------------------------------------------------------- | ------------------ | ----- |
 | `bbc`           | [BBC Micro](https://en.wikipedia.org/wiki/BBC_Micro)                                      | Acorn              | 1981  |
+| `electron`      | [Acorn Electron](https://en.wikipedia.org/wiki/Acorn_Electron)                            | Acorn              | 1983  |
+| `archimedes`    | [Acorn Archimedes](https://en.wikipedia.org/wiki/Acorn_Archimedes)                        | Acorn              | 1987  |
 | `cpc`           | [Amstrad CPC](https://en.wikipedia.org/wiki/Amstrad_CPC)                                  | Amstrad            | 1984  |
+| `gx4000`        | [Amstrad GX4000](https://en.wikipedia.org/wiki/Amstrad_GX4000)                            | Amstrad            | 1990  |
 | `apple2`        | [Apple II](https://en.wikipedia.org/wiki/Apple_II)                                        | Apple              | 1977  |
+| `pippin`        | [Pippin](https://en.wikipedia.org/wiki/Apple_Bandai_Pippin)                               | Apple/Bandai       | 1995  |
+| `mp1000`        | [APF-MP1000](https://en.wikipedia.org/wiki/APF_Imagination_Machine)                       | APF                | 1978  |
+| `msx`           | [MSX](https://en.wikipedia.org/wiki/MSX)                                                  | ASCII Corporation  | 1983  |
+| `msx2`          | [MSX2](https://en.wikipedia.org/wiki/MSX#MSX2)                                            | ASCII Corporation  | 1985  |
 | `a2600`         | [Atari 2600](https://en.wikipedia.org/wiki/Atari_2600)                                    | Atari              | 1977  |
 | `a800`          | [Atari 8-bit](https://en.wikipedia.org/wiki/Atari_8-bit_family)                           | Atari              | 1979  |
 | `a5200`         | [Atari 5200](https://en.wikipedia.org/wiki/Atari_5200)                                    | Atari              | 1982  |
@@ -728,9 +735,12 @@ Use cases:
 | `lynx`          | [Atari Lynx](https://en.wikipedia.org/wiki/Atari_Lynx)                                    | Atari              | 1989  |
 | `jaguar`        | [Atari Jaguar](https://en.wikipedia.org/wiki/Atari_Jaguar)                                | Atari              | 1993  |
 | `jaguarcd`      | [Jaguar CD](https://en.wikipedia.org/wiki/Atari_Jaguar_CD)                                | Atari              | 1993  |
+| `astrocade`     | [Bally Astrocade](https://en.wikipedia.org/wiki/Bally_Astrocade)                          | Bally/Astrocade    | 1977  |
 | `ws`            | [WonderSwan](https://en.wikipedia.org/wiki/WonderSwan)                                    | Bandai             | 1999  |
 | `wsc`           | [WonderSwan Color](https://en.wikipedia.org/wiki/WonderSwan)                              | Bandai             | 2000  |
+| `pv1000`        | [Casio PV-1000](https://en.wikipedia.org/wiki/Casio_PV-1000)                              | Casio              | 1983  |
 | `coleco`        | [ColecoVision](https://en.wikipedia.org/wiki/ColecoVision)                                | Coleco             | 1982  |
+| `pet`           | [Commodore PET](https://en.wikipedia.org/wiki/Commodore_PET)                              | Commodore          | 1977  |
 | `vic20`         | [VIC-20](https://en.wikipedia.org/wiki/VIC-20)                                            | Commodore          | 1980  |
 | `c64`           | [Commodore 64](https://en.wikipedia.org/wiki/Commodore_64)                                | Commodore          | 1982  |
 | `plus4`         | [Commodore Plus/4](https://en.wikipedia.org/wiki/Commodore_Plus/4)                        | Commodore          | 1984  |
@@ -738,6 +748,12 @@ Use cases:
 | `amiga`         | [Amiga](https://en.wikipedia.org/wiki/Amiga)                                              | Commodore          | 1985  |
 | `cdtv`          | [CDTV](https://en.wikipedia.org/wiki/Commodore_CDTV)                                      | Commodore          | 1991  |
 | `cd32`          | [Amiga CD32](https://en.wikipedia.org/wiki/Amiga_CD32)                                    | Commodore          | 1993  |
+| `dragon`        | [Dragon 32/64](https://en.wikipedia.org/wiki/Dragon_32/64)                                | Dragon Data        | 1982  |
+| `emerson`       | [Emerson Arcadia 2001](https://en.wikipedia.org/wiki/Emerson_Arcadia_2001)                | Emerson            | 1982  |
+| `enterprise`    | [Enterprise 64/128](https://en.wikipedia.org/wiki/Enterprise_(computer))                  | Enterprise         | 1984  |
+| `vcg`           | [Cassette Vision](https://en.wikipedia.org/wiki/Cassette_Vision)                          | Epoch              | 1981  |
+| `scv`           | [Super Cassette Vision](https://en.wikipedia.org/wiki/Super_Cassette_Vision)              | Epoch              | 1984  |
+| `channelf`      | [Channel F](https://en.wikipedia.org/wiki/Fairchild_Channel_F)                            | Fairchild          | 1976  |
 | `fmtowns`       | [FM Towns](https://en.wikipedia.org/wiki/FM_Towns)                                        | Fujitsu            | 1989  |
 | `gp32`          | [GP32](https://en.wikipedia.org/wiki/GP32)                                                | GamePark           | 2001  |
 | `gp2x`          | [GP2X](https://en.wikipedia.org/wiki/GP2X)                                                | GamePark Holdings  | 2005  |
@@ -745,10 +761,16 @@ Use cases:
 | `dos`           | [DOS](https://en.wikipedia.org/wiki/DOS)                                                  | IBM/Microsoft      | 1981  |
 | `o2`            | [Odyssey²](https://en.wikipedia.org/wiki/Magnavox_Odyssey_2)                              | Magnavox/Philips   | 1978  |
 | `intellivision` | [Intellivision](https://en.wikipedia.org/wiki/Intellivision)                              | Mattel             | 1979  |
+| `aquarius`      | [Aquarius](https://en.wikipedia.org/wiki/Mattel_Aquarius)                                 | Mattel             | 1983  |
+| `hyperscan`     | [HyperScan](https://en.wikipedia.org/wiki/HyperScan)                                      | Mattel             | 2006  |
 | `xbox`          | [Xbox](https://en.wikipedia.org/wiki/Xbox_(console))                                      | Microsoft          | 2001  |
 | `x360`          | [Xbox 360](https://en.wikipedia.org/wiki/Xbox_360)                                        | Microsoft          | 2005  |
 | `xone`          | [Xbox One](https://en.wikipedia.org/wiki/Xbox_One)                                        | Microsoft          | 2013  |
 | `xsx`           | [Xbox Series X/S](https://en.wikipedia.org/wiki/Xbox_Series_X_and_Series_S)               | Microsoft          | 2020  |
+| `sam`           | [SAM Coupé](https://en.wikipedia.org/wiki/SAM_Coup%C3%A9)                                 | Miles Gordon       | 1989  |
+| `microvision`   | [Microvision](https://en.wikipedia.org/wiki/Microvision)                                  | Milton Bradley     | 1979  |
+| `pc88`          | [PC-88](https://en.wikipedia.org/wiki/PC-8800_series)                                     | NEC                | 1981  |
+| `pc98`          | [PC-98](https://en.wikipedia.org/wiki/PC-9800_series)                                     | NEC                | 1982  |
 | `pce`           | [PC Engine / TurboGrafx-16](https://en.wikipedia.org/wiki/TurboGrafx-16)                  | NEC                | 1987  |
 | `pcecd`         | [PC Engine CD](https://en.wikipedia.org/wiki/TurboGrafx-16#Add-ons)                       | NEC                | 1988  |
 | `sgx`           | [SuperGrafx](https://en.wikipedia.org/wiki/PC_Engine_SuperGrafx)                          | NEC                | 1989  |
@@ -769,9 +791,14 @@ Use cases:
 | `3ds`           | [Nintendo 3DS](https://en.wikipedia.org/wiki/Nintendo_3DS)                                | Nintendo           | 2011  |
 | `wiiu`          | [Wii U](https://en.wikipedia.org/wiki/Wii_U)                                              | Nintendo           | 2012  |
 | `switch`        | [Nintendo Switch](https://en.wikipedia.org/wiki/Nintendo_Switch)                          | Nintendo           | 2017  |
+| `ngage`         | [N-Gage](https://en.wikipedia.org/wiki/N-Gage_(device))                                   | Nokia              | 2003  |
 | `3do`           | [3DO Interactive Multiplayer](https://en.wikipedia.org/wiki/3DO_Interactive_Multiplayer)  | Panasonic/others   | 1993  |
 | `cdi`           | [CD-i](https://en.wikipedia.org/wiki/CD-i)                                                | Philips            | 1991  |
+| `videopac`      | [Videopac+ / G7400](https://en.wikipedia.org/wiki/Videopac%2B_G7400)                      | Philips            | 1983  |
+| `laseractive`   | [LaserActive](https://en.wikipedia.org/wiki/LaserActive)                                  | Pioneer            | 1993  |
+| `studio2`       | [RCA Studio II](https://en.wikipedia.org/wiki/RCA_Studio_II)                              | RCA                | 1977  |
 | `sg1000`        | [SG-1000](https://en.wikipedia.org/wiki/SG-1000)                                          | Sega               | 1983  |
+| `markiii`       | [Sega Mark III](https://en.wikipedia.org/wiki/Master_System#Mark_III)                     | Sega               | 1985  |
 | `sms`           | [Master System](https://en.wikipedia.org/wiki/Master_System)                              | Sega               | 1985  |
 | `md`            | [Mega Drive / Genesis](https://en.wikipedia.org/wiki/Sega_Genesis)                        | Sega               | 1988  |
 | `gg`            | [Game Gear](https://en.wikipedia.org/wiki/Game_Gear)                                      | Sega               | 1990  |
@@ -781,7 +808,10 @@ Use cases:
 | `saturn`        | [Saturn](https://en.wikipedia.org/wiki/Sega_Saturn)                                       | Sega               | 1994  |
 | `dreamcast`     | [Dreamcast](https://en.wikipedia.org/wiki/Dreamcast)                                      | Sega               | 1998  |
 | `x68000`        | [X68000](https://en.wikipedia.org/wiki/X68000)                                            | Sharp              | 1987  |
+| `zx80`          | [ZX80](https://en.wikipedia.org/wiki/ZX80)                                                | Sinclair           | 1980  |
+| `zx81`          | [ZX81](https://en.wikipedia.org/wiki/ZX81)                                                | Sinclair           | 1981  |
 | `spectrum`      | [ZX Spectrum](https://en.wikipedia.org/wiki/ZX_Spectrum)                                  | Sinclair           | 1982  |
+| `ql`            | [Sinclair QL](https://en.wikipedia.org/wiki/Sinclair_QL)                                  | Sinclair           | 1984  |
 | `ng`            | [Neo Geo](https://en.wikipedia.org/wiki/Neo_Geo_(system))                                 | SNK                | 1990  |
 | `ngcd`          | [Neo Geo CD](https://en.wikipedia.org/wiki/Neo_Geo_CD)                                    | SNK                | 1994  |
 | `ngp`           | [Neo Geo Pocket](https://en.wikipedia.org/wiki/Neo_Geo_Pocket)                            | SNK                | 1998  |
@@ -793,28 +823,20 @@ Use cases:
 | `vita`          | [PlayStation Vita](https://en.wikipedia.org/wiki/PlayStation_Vita)                        | Sony               | 2011  |
 | `ps4`           | [PlayStation 4](https://en.wikipedia.org/wiki/PlayStation_4)                              | Sony               | 2013  |
 | `ps5`           | [PlayStation 5](https://en.wikipedia.org/wiki/PlayStation_5)                              | Sony               | 2020  |
-| `ti994a`        | [TI-99/4A](https://en.wikipedia.org/wiki/Texas_Instruments_TI-99/4A)                      | Texas Instruments  | 1981  |
+| `xavix`         | [XaviXPORT](https://en.wikipedia.org/wiki/XaviX)                                          | SSD Company        | 2004  |
 | `trs80`         | [TRS-80](https://en.wikipedia.org/wiki/TRS-80)                                            | Tandy              | 1977  |
-| `pet`           | [Commodore PET](https://en.wikipedia.org/wiki/Commodore_PET)                              | Commodore          | 1977  |
-| `aquarius`      | [Aquarius](https://en.wikipedia.org/wiki/Mattel_Aquarius)                                 | Mattel             | 1983  |
+| `coco`          | [TRS-80 Color Computer](https://en.wikipedia.org/wiki/TRS-80_Color_Computer)              | Tandy              | 1980  |
+| `oric`          | [Oric](https://en.wikipedia.org/wiki/Oric_(computer))                                     | Tangerine          | 1983  |
+| `thomson`       | [Thomson MO5/TO7](https://en.wikipedia.org/wiki/Thomson_computers)                        | Thomson            | 1984  |
 | `einstein`      | [Tatung Einstein](https://en.wikipedia.org/wiki/Tatung_Einstein)                          | Tatung             | 1984  |
-| `oric`          | [Oric](https://en.wikipedia.org/wiki/Oric_(computer))                          | Tangerine          | 1983  |
-| `sam`           | [SAM Coupé](https://en.wikipedia.org/wiki/SAM_Coup%C3%A9)                                 | Miles Gordon       | 1989  |
+| `ti994a`        | [TI-99/4A](https://en.wikipedia.org/wiki/Texas_Instruments_TI-99/4A)                      | Texas Instruments  | 1981  |
+| `tutor`         | [Tomy Tutor](https://en.wikipedia.org/wiki/Tomy_Tutor)                                    | Tomy               | 1983  |
+| `tigerhandheld` | [Tiger Handhelds](https://en.wikipedia.org/wiki/Tiger_Electronics#Handheld_games)         | Tiger Electronics  | 1990s |
+| `gamecom`       | [Game.com](https://en.wikipedia.org/wiki/Game.com)                                        | Tiger Electronics  | 1997  |
+| `nuon`          | [NUON](https://en.wikipedia.org/wiki/Nuon_(DVD_technology))                               | VM Labs            | 2000  |
 | `supervision`   | [Watara SuperVision](https://en.wikipedia.org/wiki/Watara_SuperVision)                    | Watara             | 1992  |
-| `vcg`           | [Cassette Vision](https://en.wikipedia.org/wiki/Cassette_Vision)                          | Epoch              | 1981  |
 | `gamewave`      | [Game Wave](https://en.wikipedia.org/wiki/Game_Wave_Family_Entertainment_System)          | ZAPiT Games        | 2005  |
 | `zeebo`         | [Zeebo](https://en.wikipedia.org/wiki/Zeebo)                                              | Zeebo Inc.         | 2009  |
-| `xavix`         | [XaviXPORT](https://en.wikipedia.org/wiki/XaviX)                                          | SSD Company        | 2004  |
-| `hyperscan`     | [HyperScan](https://en.wikipedia.org/wiki/HyperScan)                                      | Mattel             | 2006  |
-| `tigerhandheld` | [Tiger Handhelds](https://en.wikipedia.org/wiki/Tiger_Electronics#Handheld_games)         | Tiger Electronics  | 1990s |
-| `microvision`   | [Microvision](https://en.wikipedia.org/wiki/Microvision)                                  | Milton Bradley     | 1979  |
-| `laseractive`   | [LaserActive](https://en.wikipedia.org/wiki/LaserActive)                                  | Pioneer            | 1993  |
-| `nuon`          | [NUON](https://en.wikipedia.org/wiki/Nuon_(DVD_technology))                               | VM Labs            | 2000  |
-| `pippin`        | [Pippin](https://en.wikipedia.org/wiki/Apple_Bandai_Pippin)                               | Apple/Bandai       | 1995  |
-| `gamecom`       | [Game.com](https://en.wikipedia.org/wiki/Game.com)                                        | Tiger Electronics  | 1997  |
-| `ngage`         | [N-Gage](https://en.wikipedia.org/wiki/N-Gage_(device))                                   | Nokia              | 2003  |
-| `msx`           | [MSX](https://en.wikipedia.org/wiki/MSX)                                                  | Various            | 1983  |
-| `msx2`          | [MSX2](https://en.wikipedia.org/wiki/MSX#MSX2)                                            | Various            | 1985  |
 
 ---
 

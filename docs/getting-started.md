@@ -20,7 +20,7 @@ Gather everything for your title:
 
 Create a directory with this structure:
 
-```
+```text
 my_game/
 ├── retropak.json
 ├── software/

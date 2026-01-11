@@ -1,6 +1,6 @@
 # Retropak
 
-**The modern container format for retro software preservation**
+> The modern container format for retro software preservation
 
 Retropak (`.rpk`) is an open standard for distributing retro software with everything in one place: ROMs, artwork, soundtracks, manuals, and metadata. A `.rpk` file is a single, self-contained package that preserves everything about a title.
 
@@ -10,7 +10,7 @@ Retropak (`.rpk`) is an open standard for distributing retro software with every
 
 ### Everything in One File
 
-Box art, manuals, soundtracks, and save states all travel together with the software. No more scattered folders across different directories.
+Box art, manuals, and soundtracks all travel together with the software. No more scattered folders across different directories.
 
 ### Self-Describing
 
@@ -71,19 +71,17 @@ zip -r mygame.rpk mygame.rpk/
 
 ### Using a Retropak
 
-Extract with any ZIP tool:
+Emulators that support RPK will treat them natively without needing to unzip. For other tools, extract with any ZIP tool:
 
 ```bash
 unzip mygame.rpk
 ```
 
-Or mount directly in supported emulators and frontends (coming soon).
-
 ---
 
 ## Features
 
-- **94 supported platforms**: From Atari 2600 to Xbox Series X
+- **120 supported platforms**: From Atari 2600 to Xbox Series X
 - **Comprehensive metadata**: Genre, players, features, ratings, credits
 - **Multi-disc support**: Handles CD swapping, boot disks, compilations
 - **ROM verification**: MD5/SHA1/CRC32 checksums with database validation
@@ -95,7 +93,7 @@ Or mount directly in supported emulators and frontends (coming soon).
 
 ## Platform Support
 
-Retropak supports 94 platforms including:
+Retropak supports 120 platforms including:
 
 **Cartridge-based:** NES, SNES, Genesis, Game Boy, N64, PSX, Saturn, Dreamcast
 
