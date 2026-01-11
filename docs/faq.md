@@ -315,7 +315,7 @@ Open an issue with:
 
 ### Where can I ask questions?
 
-- [Retropak Discord](https://discord.gg/retropak)
+- [Retropak Discord]({{ extra.discord_url }})
 - GitHub Issues
 
 ### Can I get help creating Retropaks?

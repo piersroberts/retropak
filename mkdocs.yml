@@ -61,3 +61,6 @@ nav:
 
 extra_css:
   - stylesheets/custom.css
+
+extra:
+  discord_url: https://discord.gg/VUgHZkESWr

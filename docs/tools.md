@@ -19,7 +19,7 @@ We would like to hear from emulator developers interested in adding native `.rpk
 - Handle multi-disc titles seamlessly
 - Verify ROM authenticity through checksums
 
-If you develop or maintain an emulator and would like to integrate Retropak support, please get in touch via the [Retropak Discord](https://discord.gg/retropak).
+If you develop or maintain an emulator and would like to integrate Retropak support, please get in touch via the [Retropak Discord]({{ extra.discord_url }}).
 
 ---
 
@@ -136,7 +136,7 @@ Have an idea for a tool? Want to contribute an implementation?
 1. Read the [specification](specification.md)
 2. Use the [JSON schema](https://retropak.org/schemas/v1/retropak.schema.json) for validation
 3. Review the code examples above
-4. Join the [Retropak Discord](https://discord.gg/retropak) to discuss ideas
+4. Join the [Retropak Discord]({{ extra.discord_url }}) to discuss ideas
 5. Build your implementation
 
 Contributions of libraries, converters, and integrations are welcome.
