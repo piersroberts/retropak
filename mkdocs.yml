@@ -50,6 +50,10 @@ markdown_extensions:
   - attr_list
   - tables
 
+plugins:
+  - search
+  - macros
+
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
