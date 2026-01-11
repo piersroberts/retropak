@@ -75,6 +75,20 @@ Use the JSON schema with any standard JSON Schema validator. A dedicated validat
 
 ZIP format supports up to 4GB (ZIP64 extends this to 16EB, though practical limits apply).
 
+### What happens if my Retropak exceeds 4GB?
+
+!!! warning "Standard ZIP Has a 4GB Limit"
+    Classic ZIP format has a 4GB limit per archive. If your Retropak exceeds this, you need ZIP64 support.
+
+If your Retropak exceeds 4GB (common with CD/DVD games), you have two options:
+
+**Use ZIP64** — Modern ZIP tools like 7-Zip, WinZip, and `zip` on Linux/macOS support ZIP64, which extends the limit to 16 exabytes. Most archiving tools created after 2006 support ZIP64 automatically.
+
+
+**Compression levels** — Use maximum compression to reduce file size. Uncompressed audio (soundtracks) can be compressed externally before adding to the Retropak.
+
+Most extraction tools and emulators support ZIP64, but verify compatibility with your target tools before distributing large Retropaks.
+
 ### Can I stream from a Retropak without extracting?
 
 !!! success "Yes! Direct Access Works"
