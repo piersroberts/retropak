@@ -4,12 +4,12 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'docs/schemas/**/*.json'
+      - 'schemas/**/*.json'
       - '.github/workflows/validate-schema.yml'
   pull_request:
     branches: [ main ]
     paths:
-      - 'docs/schemas/**/*.json'
+      - 'schemas/**/*.json'
       - '.github/workflows/validate-schema.yml'
 
 jobs:
@@ -31,12 +31,12 @@ jobs:
     
     - name: Validate schema against JSON Schema Draft 7
       run: |
-        echo "Validating docs/schemas/v1/retropak.schema.json..."
-        check-jsonschema --check-metaschema docs/schemas/v1/retropak.schema.json
+        echo "Validating schemas/v1/retropak.schema.json..."
+        check-jsonschema --check-metaschema schemas/v1/retropak.schema.json
     
     - name: Check schema files are valid JSON
       run: |
-        for file in docs/schemas/**/*.json; do
+        for file in schemas/**/*.json; do
           echo "Checking JSON syntax: $file"
           python -m json.tool "$file" > /dev/null
         done
