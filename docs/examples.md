@@ -230,8 +230,8 @@ Multi-game compilation disc:
     "developer": "Namco",
     "publisher": "Namco",
     "releaseDate": "1995-11-22",
-    "type": "compilation",
-    "contents": [ // (1)!
+    "category": ["game", "compilation"], // (1)!
+    "contents": [ // (2)!
       "Pac-Man",
       "Galaga",
       "Pole Position",
@@ -240,7 +240,6 @@ Multi-game compilation disc:
       "Bosconian",
       "Toy Pop"
     ],
-    "category": ["game"],
     "genre": ["arcade"]
   },
   "media": [{
@@ -257,7 +256,8 @@ Multi-game compilation disc:
 }
 ```
 
-1. List all included games for searchability and filtering
+1. Include `"compilation"` in the category array for compilation releases
+2. List all included games for searchability and filtering
 
 ---
 

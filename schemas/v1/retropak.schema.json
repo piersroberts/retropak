@@ -794,18 +794,9 @@
                         "$ref": "#/$defs/creditEntry"
                     }
                 },
-                "type": {
-                    "type": "string",
-                    "description": "Whether this is a standalone title or a compilation of multiple titles.",
-                    "enum": [
-                        "standalone",
-                        "compilation"
-                    ],
-                    "default": "standalone"
-                },
                 "contents": {
                     "type": "array",
-                    "description": "For compilations: list of titles included in this release.",
+                    "description": "For compilations: list of titles included in this release. Include \"compilation\" in the category array when using this field.",
                     "items": {
                         "$ref": "#/$defs/compilationTitle"
                     }

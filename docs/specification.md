@@ -424,7 +424,7 @@ Roles are freeform strings because job titles vary enormously across eras and re
 
 ```json
 {
-  "type": "compilation",
+  "category": ["game", "compilation"],
   "contents": [
     "Pac-Man",
     "Galaga",
@@ -433,7 +433,7 @@ Roles are freeform strings because job titles vary enormously across eras and re
 }
 ```
 
-For compilation discs, `type` switches to `"compilation"` and `contents` lists the included titles as simple strings.
+For compilation discs, include `"compilation"` in the `category` array and populate `contents` with the included titles as simple strings.
 
 **Why just strings?** - Originally we had full metadata for each included title, but it was overkill. If you need detailed info about Pac-Man, look up a Pac-Man retropak.
 

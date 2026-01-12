@@ -116,7 +116,7 @@ Include them in `docs/` as text files or add to `info.notes`.
 For compilations (like Namco Museum), use:
 
 ```json
-"type": "compilation",
+"category": ["game", "compilation"],
 "contents": ["Pac-Man", "Galaga", "Dig Dug"]
 ```
 

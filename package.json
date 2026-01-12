@@ -1,0 +1,29 @@
+{
+    "name": "@retropak/schema",
+    "version": "1.0.0",
+    "description": "Metadata specification for Retropak software containers",
+    "type": "module",
+    "exports": {
+        "./schema": "./schemas/v1/retropak.schema.json",
+        "./locales/en": "./locales/en.json",
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "schemas",
+        "locales"
+    ],
+    "keywords": [
+        "retropak",
+        "schema"
+    ],
+    "author": "piers@retropak.org",
+    "license": "CC0-1.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/retropak/retropak.git"
+    },
+    "bugs": {
+        "url": "https://github.com/retropak/retropak/issues"
+    },
+    "homepage": "https://retropak.org"
+}
