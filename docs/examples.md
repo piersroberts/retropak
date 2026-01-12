@@ -71,7 +71,7 @@ A fully featured package:
     },
     "rating": {
       "esrb": "e",
-      "pegi": 3
+      "pegi": "3"
     }
   },
   "media": [{

@@ -460,7 +460,7 @@ Supported databases: `igdb`, `mobygames`, `thegamesdb`, `screenscraper`, `rawg`,
   "rating": {
     "nsfw": false,
     "esrb": "e",
-    "pegi": 7
+    "pegi": "7"
   }
 }
 ```
@@ -472,9 +472,9 @@ Rating boards have different systems, so we support multiple:
 | `nsfw`    | boolean | Quick filter for adult content                    |
 | `minimum` | integer | Generic age (0-21) when no official rating exists |
 | `esrb`    | string  | `ec`, `e`, `e10`, `t`, `m`, `ao`, `rp`            |
-| `pegi`    | integer | `3`, `7`, `12`, `16`, `18`                        |
+| `pegi`    | string  | `3`, `7`, `12`, `16`, `18`                        |
 | `cero`    | string  | `a`, `b`, `c`, `d`, `z`                           |
-| `usk`     | integer | `0`, `6`, `12`, `16`, `18`                        |
+| `usk`     | string  | `0`, `6`, `12`, `16`, `18`                        |
 | `acb`     | string  | `g`, `pg`, `m`, `ma15`, `r18`, `rc`               |
 | `grac`    | string  | `all`, `12`, `15`, `18`                           |
 | `bbfc`    | string  | `u`, `pg`, `12`, `12a`, `15`, `18`, `r18`         |
@@ -879,7 +879,7 @@ Use cases:
     },
     "rating": {
       "esrb": "e",
-      "pegi": 3
+      "pegi": "3"
     }
   },
   "media": [
