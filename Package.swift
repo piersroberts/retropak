@@ -18,6 +18,7 @@ let package = Package(
     targets: [
         .target(
             name: "RetropakSchema",
+            path: "packages/swift/Sources/RetropakSchema",
             resources: [
                 .copy("schemas/v1/retropak.schema.json"),
                 .copy("locales/en.json")
