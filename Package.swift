@@ -7,7 +7,7 @@ let package = Package(
         .iOS(.v13),
         .macOS(.v10_15),
         .tvOS(.v13),
-        .watchOS(.v6)
+        .watchOS(.v6),
     ],
     products: [
         .library(
@@ -21,7 +21,7 @@ let package = Package(
             path: "packages/swift/Sources/RetropakSchema",
             resources: [
                 .copy("schemas/v1/retropak.schema.json"),
-                .copy("locales/en.json")
+                .copy("locales/en.json"),
             ]
         )
     ]
