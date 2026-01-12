@@ -380,8 +380,18 @@
         "18": "18",
         "r18": "R18"
     },
-    "type": {
-        "standalone": "Standalone",
-        "compilation": "Compilation"
+    "pegi": {
+        "3": "PEGI 3",
+        "7": "PEGI 7",
+        "12": "PEGI 12",
+        "16": "PEGI 16",
+        "18": "PEGI 18"
+    },
+    "usk": {
+        "0": "USK 0",
+        "6": "USK 6",
+        "12": "USK 12",
+        "16": "USK 16",
+        "18": "USK 18"
     }
 }

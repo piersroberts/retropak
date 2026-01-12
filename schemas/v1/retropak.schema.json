@@ -404,14 +404,14 @@
                     ]
                 },
                 "pegi": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "PEGI rating (Europe).",
                     "enum": [
-                        3,
-                        7,
-                        12,
-                        16,
-                        18
+                        "3",
+                        "7",
+                        "12",
+                        "16",
+                        "18"
                     ]
                 },
                 "cero": {
@@ -426,14 +426,14 @@
                     ]
                 },
                 "usk": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "USK rating (Germany).",
                     "enum": [
-                        0,
-                        6,
-                        12,
-                        16,
-                        18
+                        "0",
+                        "6",
+                        "12",
+                        "16",
+                        "18"
                     ]
                 },
                 "acb": {
