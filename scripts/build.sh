@@ -2,10 +2,11 @@
 set -e
 
 mkdir -p site
+mkdir -p docs/schemas/v1
+
+cp schemas/v1/retropak.schema.json docs/schemas/v1/retropak.schema.json
 
 mkdocs build
 
-mkdir -p site/schemas/v1
-cp schemas/v1/retropak.schema.json site/schemas/v1/retropak.schema.json
 
 echo "Build complete!"
