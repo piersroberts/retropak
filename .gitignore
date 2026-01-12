@@ -3,5 +3,9 @@ site/
 __pycache__/
 .DS_Store
 docs/schemas/
+
+# Swift Package Manager
 .build/
-Sources/
+.swiftpm/
+*.xcodeproj/
+*.xcworkspace/
