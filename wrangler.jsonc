@@ -2,17 +2,6 @@
     "name": "retropak",
     "compatibility_date": "2026-01-10",
     "assets": {
-        "directory": "./site",
-        "binding": "ASSETS",
-        "routes": [
-            {
-                "pattern": "/retropak.schema.json",
-                "path": "./schemas/v1/retropak.schema.json",
-                "headers": {
-                    "Content-Type": "application/schema+json",
-                    "Access-Control-Allow-Origin": "*"
-                }
-            }
-        ]
+        "directory": "./site"
     }
 }
