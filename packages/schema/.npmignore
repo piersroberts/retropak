@@ -1,4 +1,5 @@
-.DS_Store
-*.log
-.vscode/
-.idea/
+*
+!schemas/**/*.json
+!locales/*.json
+!package.json
+!README.md

@@ -13,10 +13,6 @@
         "schemas",
         "locales"
     ],
-    "scripts": {
-        "build": "echo 'Schema package has no build step'",
-        "validate": "node --input-type=module -e \"import Ajv from 'ajv'; const ajv = new Ajv(); const schema = await import('./schemas/v1/retropak.schema.json', { assert: { type: 'json' } }); const valid = ajv.compile(schema.default); console.log('Schema is valid:', valid.schema.$id);\""
-    },
     "keywords": [
         "retropak",
         "schema",

@@ -1,5 +1,0 @@
-*
-!schemas/**/*.json
-!locales/*.json
-!package.json
-!README.md
