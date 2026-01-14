@@ -659,6 +659,10 @@
                 "notes": {
                     "type": "string",
                     "description": "Additional notes about this specific media file (e.g. distribution method, requirements, known issues)."
+                },
+                "labelImage": {
+                    "$ref": "#/$defs/image",
+                    "description": "Image of the media label (e.g. disc label, cartridge label, cassette label)."
                 }
             }
         },

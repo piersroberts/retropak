@@ -220,17 +220,17 @@ All artwork should prioritize quality while remaining practical for distribution
 
 #### Size Guidelines
 
-| Asset Type        | Recommended Size  | Max Size  | Notes                                   |
-| ----------------- | ----------------- | --------- | --------------------------------------- |
-| `boxFront`        | 1000×1400         | 2000×2800 | ~1.4:1 ratio (varies by region)         |
-| `boxBack`         | 1000×1400         | 2000×2800 | Match front dimensions                  |
-| `boxSpine`        | 100×1400          | 200×2800  | Narrow strip                            |
-| `mediaItem.image` | 1000×1000         | 2000×2000 | Square for discs; rectangular for carts |
-| `logo`            | 800×400           | 1600×800  | Transparent PNG, width > height         |
-| `backdrop`        | 1920×1080         | 3840×2160 | 16:9 widescreen                         |
-| `titleScreen`     | Native resolution | 1920×1080 | Preserve original aspect ratio          |
-| `gameplay`        | Native resolution | 1920×1080 | Preserve original aspect ratio          |
-| `map`             | As needed         | 4000×4000 | Can be large for detailed maps          |
+| Asset Type             | Recommended Size  | Max Size  | Notes                                   |
+| ---------------------- | ----------------- | --------- | --------------------------------------- |
+| `boxFront`             | 1000×1400         | 2000×2800 | ~1.4:1 ratio (varies by region)         |
+| `boxBack`              | 1000×1400         | 2000×2800 | Match front dimensions                  |
+| `boxSpine`             | 100×1400          | 200×2800  | Narrow strip                            |
+| `mediaItem.labelImage` | 1000×1000         | 2000×2000 | Square for discs; rectangular for carts |
+| `logo`                 | 800×400           | 1600×800  | Transparent PNG, width > height         |
+| `backdrop`             | 1920×1080         | 3840×2160 | 16:9 widescreen                         |
+| `titleScreen`          | Native resolution | 1920×1080 | Preserve original aspect ratio          |
+| `gameplay`             | Native resolution | 1920×1080 | Preserve original aspect ratio          |
+| `map`                  | As needed         | 4000×4000 | Can be large for detailed maps          |
 
 !!! warning "Preserve Aspect Ratios"
     Never stretch screenshots! A 4:3 game should remain 4:3. Distorted screenshots look unprofessional and misrepresent the original game.
@@ -704,7 +704,7 @@ Physical media images (cartridges, discs, tapes, etc.) are attached directly to 
     {
       "filename": "software/game.bin",
       "type": "cdrom",
-      "image": {
+      "labelImage": {
         "file": "art/disc.png",
         "alt": "Disc label showing the game logo"
       }
@@ -1054,7 +1054,7 @@ All required string fields enforce non-empty values using `minLength: 1`. This p
 **Affected fields:**
 
 - `info.title` - Must have a visible title
-- File paths in all objects (`configFile.file`, `image.file`, `musicTrack.file`, `mediaItem.filename`, `mediaItem.image.file`) - Must reference an actual file
+- File paths in all objects (`configFile.file`, `image.file`, `musicTrack.file`, `mediaItem.filename`, `mediaItem.labelImage.file`) - Must reference an actual file
 - `creditEntry.name` - Credits must have actual names
 
 **Rationale:** Empty strings are almost always data errors. They break frontends, make archives harder to organize, and provide no value. If a field is optional, omit it entirely rather than using an empty string.
