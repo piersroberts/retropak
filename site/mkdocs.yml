@@ -49,6 +49,7 @@ markdown_extensions:
   - pymdownx.snippets:
       base_path: 
         - pages
+        - ..
   - attr_list
   - tables
 
