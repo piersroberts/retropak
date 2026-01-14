@@ -1,0 +1,950 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://retropak.org/schemas/v1/retropak.schema.json",
+    "version": "1-0-0",
+    "title": "Retropak Manifest",
+    "description": "Metadata specification for Retropak software containers",
+    "$defs": {
+        "platform": {
+            "type": "string",
+            "description": "Platform identifier.",
+            "enum": [
+                "32x",
+                "3do",
+                "3ds",
+                "a2600",
+                "a5200",
+                "a7800",
+                "a800",
+                "amiga",
+                "apple2",
+                "aquarius",
+                "archimedes",
+                "arduboy",
+                "astrocade",
+                "bbc",
+                "c128",
+                "c64",
+                "cd32",
+                "cdi",
+                "cdtv",
+                "channelf",
+                "coco",
+                "coleco",
+                "cpc",
+                "dos",
+                "dragon",
+                "dreamcast",
+                "einstein",
+                "electron",
+                "emerson",
+                "enterprise",
+                "fds",
+                "fmtowns",
+                "gamecom",
+                "gamecube",
+                "gamewave",
+                "gamate",
+                "gb",
+                "gba",
+                "gbc",
+                "gg",
+                "gizmondo",
+                "gnw",
+                "gp2x",
+                "gp32",
+                "gx4000",
+                "hyperscan",
+                "intellivision",
+                "jaguar",
+                "jaguarcd",
+                "laseractive",
+                "lynx",
+                "markiii",
+                "mcd",
+                "md",
+                "megaduck",
+                "microvision",
+                "mp1000",
+                "msx",
+                "msx2",
+                "n64",
+                "nds",
+                "nes",
+                "ng",
+                "ngage",
+                "ngcd",
+                "ngp",
+                "ngpc",
+                "nuon",
+                "o2",
+                "oric",
+                "pc88",
+                "pc98",
+                "pce",
+                "pcecd",
+                "pcfx",
+                "pet",
+                "pico",
+                "pippin",
+                "playdate",
+                "plus4",
+                "pokemini",
+                "ps2",
+                "ps3",
+                "ps4",
+                "ps5",
+                "psp",
+                "psx",
+                "pv1000",
+                "ql",
+                "sam",
+                "saturn",
+                "scv",
+                "sg1000",
+                "sgx",
+                "sms",
+                "snes",
+                "spectrum",
+                "st",
+                "studio2",
+                "supervision",
+                "switch",
+                "thomson",
+                "ti994a",
+                "tigerhandheld",
+                "trs80",
+                "tutor",
+                "vb",
+                "vcg",
+                "vectrex",
+                "vic20",
+                "videopac",
+                "vita",
+                "wii",
+                "wiiu",
+                "ws",
+                "wsc",
+                "x360",
+                "x68000",
+                "xavix",
+                "xbox",
+                "xone",
+                "xsx",
+                "zeebo",
+                "zx80",
+                "zx81"
+            ]
+        },
+        "genre": {
+            "type": "string",
+            "description": "Genre classification.",
+            "enum": [
+                "action_rpg",
+                "action",
+                "adventure",
+                "american_football",
+                "arcade",
+                "artillery",
+                "athletics",
+                "baseball",
+                "basketball",
+                "beat_em_up",
+                "billiards",
+                "block_puzzle",
+                "board_game",
+                "bowling",
+                "boxing",
+                "bullet_hell",
+                "card_game",
+                "casino",
+                "casual",
+                "cricket",
+                "cute_em_up",
+                "dating_sim",
+                "dungeon_crawler",
+                "educational",
+                "endless_runner",
+                "extreme_sports",
+                "fighting",
+                "fishing",
+                "flight",
+                "fps",
+                "golf",
+                "hack_and_slash",
+                "hockey",
+                "horror",
+                "horse_racing",
+                "life_sim",
+                "light_gun",
+                "logic_puzzle",
+                "mahjong",
+                "management",
+                "match_3",
+                "maze",
+                "mech",
+                "metroidvania",
+                "minigames",
+                "mmorpg",
+                "moba",
+                "music_rhythm",
+                "open_world",
+                "pachinko",
+                "party",
+                "pinball",
+                "platformer",
+                "point_and_click",
+                "pool",
+                "puzzle",
+                "quiz",
+                "racing",
+                "rail_shooter",
+                "real_time_strategy",
+                "roguelike",
+                "rpg",
+                "run_and_gun",
+                "sandbox",
+                "shoot_em_up",
+                "shooter",
+                "simulation",
+                "skateboarding",
+                "skiing",
+                "snooker",
+                "snowboarding",
+                "soccer",
+                "sports",
+                "stealth",
+                "strategy",
+                "surfing",
+                "survival",
+                "tactical_rpg",
+                "tennis",
+                "text_adventure",
+                "tower_defense",
+                "trivia",
+                "turn_based_strategy",
+                "twin_stick",
+                "vehicle_combat",
+                "visual_novel",
+                "volleyball",
+                "word_puzzle",
+                "wrestling"
+            ]
+        },
+        "category": {
+            "type": "string",
+            "description": "A classification for the type/nature of the software.",
+            "enum": [
+                "addon",
+                "application",
+                "beta",
+                "bios",
+                "compilation",
+                "coverdisk",
+                "demo",
+                "educational",
+                "firmware",
+                "freeware",
+                "game",
+                "homebrew",
+                "multimedia",
+                "promotional",
+                "prototype",
+                "scene_demo",
+                "shareware",
+                "unlicensed",
+                "utility"
+            ]
+        },
+        "feature": {
+            "type": "string",
+            "description": "Input device, peripheral, or capability.",
+            "enum": [
+                "analog_stick",
+                "arcade_stick",
+                "balance_board",
+                "bongos",
+                "buzzer",
+                "camera",
+                "crank",
+                "dance_mat",
+                "dongle",
+                "drums",
+                "fishing_rod",
+                "flight_stick",
+                "gamepad",
+                "guitar",
+                "instrument",
+                "keyboard_controller",
+                "keyboard",
+                "light_gun",
+                "link_cable",
+                "maracas",
+                "mech_controller",
+                "microphone",
+                "motion_controls",
+                "mouse",
+                "multitap",
+                "nfc_portal",
+                "online",
+                "paddle",
+                "pedals",
+                "pointer",
+                "rumble",
+                "save_file",
+                "spinner",
+                "steering_wheel",
+                "stylus",
+                "touch_screen",
+                "trackball",
+                "train_controller",
+                "turntable",
+                "twin_stick",
+                "vr_headset",
+                "zapper"
+            ]
+        },
+        "mediaType": {
+            "type": "string",
+            "description": "The format/medium type of the file.",
+            "enum": [
+                "archive",
+                "bluray",
+                "cartridge",
+                "cdrom",
+                "download",
+                "dvd",
+                "floppy",
+                "gd_rom",
+                "hdd_image",
+                "laserdisc",
+                "memory_card",
+                "tape",
+                "umd"
+            ]
+        },
+        "region": {
+            "type": "string",
+            "description": "Region encoding.",
+            "enum": [
+                "asia",
+                "australia",
+                "brazil",
+                "canada",
+                "china",
+                "europe",
+                "france",
+                "germany",
+                "hong-kong",
+                "india",
+                "italy",
+                "japan",
+                "korea",
+                "mexico",
+                "netherlands",
+                "ntsc-j",
+                "ntsc-u",
+                "pal-a",
+                "pal-b",
+                "pal-g",
+                "pal",
+                "russia",
+                "scandinavia",
+                "spain",
+                "taiwan",
+                "uk",
+                "usa",
+                "world"
+            ]
+        },
+        "dumpStatus": {
+            "type": "string",
+            "description": "Quality/status of the ROM dump.",
+            "enum": [
+                "alternate",
+                "bad",
+                "good",
+                "hacked",
+                "overdump",
+                "pirate",
+                "prototype",
+                "trained",
+                "translated",
+                "underdump",
+                "unknown",
+                "unlicensed"
+            ]
+        },
+        "ageRating": {
+            "type": "object",
+            "description": "Age/content ratings from various rating boards.",
+            "additionalProperties": false,
+            "properties": {
+                "nsfw": {
+                    "type": "boolean",
+                    "description": "Whether the title contains adult or explicit content.",
+                    "default": false
+                },
+                "minimum": {
+                    "type": "integer",
+                    "description": "Generic minimum recommended age when no official rating exists.",
+                    "minimum": 0,
+                    "maximum": 21
+                },
+                "esrb": {
+                    "type": "string",
+                    "description": "ESRB rating (North America).",
+                    "enum": [
+                        "ec",
+                        "e",
+                        "e10",
+                        "t",
+                        "m",
+                        "ao",
+                        "rp"
+                    ]
+                },
+                "pegi": {
+                    "type": "string",
+                    "description": "PEGI rating (Europe).",
+                    "enum": [
+                        "3",
+                        "7",
+                        "12",
+                        "16",
+                        "18"
+                    ]
+                },
+                "cero": {
+                    "type": "string",
+                    "description": "CERO rating (Japan).",
+                    "enum": [
+                        "a",
+                        "b",
+                        "c",
+                        "d",
+                        "z"
+                    ]
+                },
+                "usk": {
+                    "type": "string",
+                    "description": "USK rating (Germany).",
+                    "enum": [
+                        "0",
+                        "6",
+                        "12",
+                        "16",
+                        "18"
+                    ]
+                },
+                "acb": {
+                    "type": "string",
+                    "description": "ACB rating (Australia).",
+                    "enum": [
+                        "g",
+                        "pg",
+                        "m",
+                        "ma15",
+                        "r18",
+                        "rc"
+                    ]
+                },
+                "grac": {
+                    "type": "string",
+                    "description": "GRAC rating (South Korea).",
+                    "enum": [
+                        "all",
+                        "12",
+                        "15",
+                        "18"
+                    ]
+                },
+                "bbfc": {
+                    "type": "string",
+                    "description": "BBFC rating (United Kingdom).",
+                    "enum": [
+                        "u",
+                        "pg",
+                        "12",
+                        "12a",
+                        "15",
+                        "18",
+                        "r18"
+                    ]
+                }
+            }
+        },
+        "configFile": {
+            "type": "object",
+            "description": "An external configuration file for emulator or platform-specific settings.",
+            "additionalProperties": false,
+            "required": [
+                "file"
+            ],
+            "properties": {
+                "file": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Path to the configuration file."
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Target emulator, core, or platform (e.g. 'retroarch', 'mame', 'dolphin')."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "What this config file does or overrides."
+                }
+            }
+        },
+        "image": {
+            "type": "object",
+            "description": "An image file with optional alt text for accessibility.",
+            "additionalProperties": false,
+            "required": [
+                "file"
+            ],
+            "properties": {
+                "file": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Path to the image file."
+                },
+                "alt": {
+                    "type": "string",
+                    "description": "Alternative text describing the image for accessibility."
+                }
+            }
+        },
+        "creditEntry": {
+            "type": "object",
+            "description": "A person credited for work on the title.",
+            "additionalProperties": false,
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Person's name."
+                },
+                "roles": {
+                    "type": "array",
+                    "description": "Job titles or roles (e.g. 'Director', 'Lead Programmer', 'Composer').",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "musicTrack": {
+            "type": "object",
+            "description": "A soundtrack or audio file from the title.",
+            "additionalProperties": false,
+            "required": [
+                "file"
+            ],
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Display name of the music track."
+                },
+                "file": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Path to the audio file."
+                },
+                "background": {
+                    "type": "boolean",
+                    "description": "Whether this track is suitable for background/menu music when browsing titles.",
+                    "default": false
+                }
+            }
+        },
+        "physicalMediaImage": {
+            "type": "object",
+            "description": "An image of physical media (cartridge, disc, tape, etc.).",
+            "additionalProperties": false,
+            "required": [
+                "file"
+            ],
+            "properties": {
+                "file": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Path to the physical media image file."
+                },
+                "alt": {
+                    "type": "string",
+                    "description": "Alternative text describing the image for accessibility."
+                },
+                "type": {
+                    "$ref": "#/$defs/mediaType"
+                }
+            }
+        },
+        "mediaItem": {
+            "type": "object",
+            "description": "A media file (ROM, disc image, tape, etc.).",
+            "additionalProperties": false,
+            "required": [
+                "filename",
+                "type"
+            ],
+            "properties": {
+                "filename": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Relative path to the media file within the archive."
+                },
+                "label": {
+                    "type": "string",
+                    "description": "Display name for this specific media item (e.g. 'Disc 1')."
+                },
+                "type": {
+                    "$ref": "#/$defs/mediaType"
+                },
+                "bootable": {
+                    "type": "boolean",
+                    "description": "Whether the title can be started from this media. Set to false for data-only discs.",
+                    "default": true
+                },
+                "index": {
+                    "type": "integer",
+                    "description": "Sequence number for multi-part media."
+                },
+                "region": {
+                    "$ref": "#/$defs/region"
+                },
+                "md5": {
+                    "type": "string",
+                    "pattern": "^[a-fA-F0-9]{32}$",
+                    "description": "MD5 checksum of the media file for verification."
+                },
+                "sha1": {
+                    "type": "string",
+                    "pattern": "^[a-fA-F0-9]{40}$",
+                    "description": "SHA-1 checksum of the media file for verification."
+                },
+                "crc32": {
+                    "type": "string",
+                    "pattern": "^[a-fA-F0-9]{8}$",
+                    "description": "CRC32 checksum of the media file for verification."
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version identifier for this ROM/media (e.g. 'Rev A', '1.1', 'v1.0')."
+                },
+                "status": {
+                    "$ref": "#/$defs/dumpStatus"
+                },
+                "verified": {
+                    "type": "boolean",
+                    "description": "Whether this dump has been verified against a known database (No-Intro, Redump, etc.)."
+                },
+                "source": {
+                    "type": "string",
+                    "description": "Source database or group that verified the dump (e.g. 'No-Intro', 'Redump', 'TOSEC')."
+                },
+                "productCode": {
+                    "type": "string",
+                    "description": "Official product code or catalog number from the original media (e.g. 'SLUS-00594', 'MK-1491', 'DOL-GALE-USA')."
+                },
+                "notes": {
+                    "type": "string",
+                    "description": "Additional notes about this specific media file (e.g. distribution method, requirements, known issues)."
+                }
+            }
+        },
+        "compilationTitle": {
+            "type": "string",
+            "description": "Name of a title included in a compilation release."
+        },
+        "players": {
+            "type": "object",
+            "description": "Multiplayer capabilities.",
+            "additionalProperties": false,
+            "properties": {
+                "min": {
+                    "type": "integer",
+                    "description": "Minimum number of players required to play.",
+                    "default": 1
+                },
+                "max": {
+                    "type": "integer",
+                    "description": "Maximum number of simultaneous players supported."
+                },
+                "coop": {
+                    "type": "boolean",
+                    "description": "Whether cooperative play is supported."
+                }
+            }
+        },
+        "features": {
+            "type": "object",
+            "description": "Input devices, peripherals, and capabilities.",
+            "additionalProperties": false,
+            "properties": {
+                "required": {
+                    "type": "array",
+                    "description": "Features required to use this title.",
+                    "items": {
+                        "$ref": "#/$defs/feature"
+                    }
+                },
+                "supported": {
+                    "type": "array",
+                    "description": "Optional features the title supports.",
+                    "items": {
+                        "$ref": "#/$defs/feature"
+                    }
+                }
+            }
+        }
+    },
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schemaVersion",
+        "info",
+        "media"
+    ],
+    "properties": {
+        "schemaVersion": {
+            "type": "string",
+            "pattern": "^\\d+-\\d+-\\d+$",
+            "description": "The schema version this manifest conforms to, using schemaver format MODEL-REVISION-ADDITION (e.g., '1-0-0')."
+        },
+        "manifestVersion": {
+            "type": "string",
+            "pattern": "^\\d+(\\.\\d+)*$",
+            "description": "Version of this manifest file, for tracking revisions (e.g., '1', '2.1')."
+        },
+        "info": {
+            "type": "object",
+            "description": "Title metadata and information.",
+            "additionalProperties": false,
+            "required": [
+                "title",
+                "platform"
+            ],
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The primary display name of the title."
+                },
+                "alternativeTitles": {
+                    "type": "array",
+                    "description": "Alternative names (e.g. regional titles, translated names).",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "platform": {
+                    "$ref": "#/$defs/platform",
+                    "description": "Unique identifier for the platform."
+                },
+                "developer": {
+                    "type": "string",
+                    "description": "The studio or individual who developed the title."
+                },
+                "publisher": {
+                    "type": "string",
+                    "description": "The company that published the title."
+                },
+                "country": {
+                    "type": "string",
+                    "pattern": "^[a-z]{2}$",
+                    "description": "Country of origin where the title was developed (ISO 3166-1 alpha-2 code, e.g. 'jp', 'us', 'gb')."
+                },
+                "releaseDate": {
+                    "type": "string",
+                    "format": "date",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "description": "Original release date in ISO 8601 format (YYYY-MM-DD)."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A text summary or synopsis of the title."
+                },
+                "category": {
+                    "type": "array",
+                    "description": "One or more classifications for the type/nature of the software.",
+                    "items": {
+                        "$ref": "#/$defs/category"
+                    }
+                },
+                "genre": {
+                    "type": "array",
+                    "description": "One or more genre classifications.",
+                    "items": {
+                        "$ref": "#/$defs/genre"
+                    }
+                },
+                "players": {
+                    "$ref": "#/$defs/players"
+                },
+                "features": {
+                    "$ref": "#/$defs/features"
+                },
+                "languages": {
+                    "type": "array",
+                    "description": "Languages supported (ISO 639-1 codes, e.g. 'en', 'ja', 'de').",
+                    "items": {
+                        "type": "string",
+                        "pattern": "^[a-z]{2}$"
+                    }
+                },
+                "credits": {
+                    "type": "array",
+                    "description": "People who worked on the title.",
+                    "items": {
+                        "$ref": "#/$defs/creditEntry"
+                    }
+                },
+                "contents": {
+                    "type": "array",
+                    "description": "For compilations: list of titles included in this release. Include \"compilation\" in the category array when using this field.",
+                    "items": {
+                        "$ref": "#/$defs/compilationTitle"
+                    }
+                },
+                "externalIds": {
+                    "type": "object",
+                    "description": "Identifiers from external databases for cross-referencing.",
+                    "additionalProperties": false,
+                    "properties": {
+                        "igdb": {
+                            "type": "integer",
+                            "description": "IGDB (Internet Game Database) ID."
+                        },
+                        "mobygames": {
+                            "type": "integer",
+                            "description": "MobyGames ID."
+                        },
+                        "thegamesdb": {
+                            "type": "integer",
+                            "description": "TheGamesDB ID."
+                        },
+                        "screenscraper": {
+                            "type": "integer",
+                            "description": "ScreenScraper ID."
+                        },
+                        "rawg": {
+                            "type": "integer",
+                            "description": "RAWG ID."
+                        },
+                        "gamefaqs": {
+                            "type": "integer",
+                            "description": "GameFAQs ID."
+                        }
+                    }
+                },
+                "rating": {
+                    "$ref": "#/$defs/ageRating"
+                },
+                "ean": {
+                    "type": "string",
+                    "pattern": "^[0-9]{13}$",
+                    "description": "European Article Number (EAN-13) barcode from product packaging. Also covers JAN (Japanese Article Number)."
+                },
+                "upc": {
+                    "type": "string",
+                    "pattern": "^[0-9]{12}$",
+                    "description": "Universal Product Code (UPC-A) barcode from product packaging."
+                },
+                "isbn": {
+                    "type": "string",
+                    "pattern": "^(97[89][0-9]{10}|[0-9]{9}[0-9X])$",
+                    "description": "International Standard Book Number (ISBN-10 or ISBN-13) if applicable."
+                },
+                "issn": {
+                    "type": "string",
+                    "pattern": "^[0-9]{4}-[0-9]{3}[0-9X]$",
+                    "description": "International Standard Serial Number (ISSN) for magazine coverdisks."
+                },
+                "notes": {
+                    "type": "string",
+                    "description": "Additional notes, warnings, or information (e.g. access codes, compatibility notes, copy protection details)."
+                }
+            }
+        },
+        "media": {
+            "type": "array",
+            "description": "The media files (ROMs, disc images, tapes, etc.) included in this package.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/$defs/mediaItem"
+            }
+        },
+        "assets": {
+            "type": "object",
+            "description": "Artwork, documentation, and other supplementary files.",
+            "additionalProperties": false,
+            "properties": {
+                "boxFront": {
+                    "$ref": "#/$defs/image",
+                    "description": "Front box/case cover image."
+                },
+                "boxBack": {
+                    "$ref": "#/$defs/image",
+                    "description": "Back box/case cover image."
+                },
+                "boxSpine": {
+                    "$ref": "#/$defs/image",
+                    "description": "Box/case spine image."
+                },
+                "physicalMedia": {
+                    "type": "array",
+                    "description": "Images of the physical media (cartridge, disc, tape, floppy, etc.).",
+                    "items": {
+                        "$ref": "#/$defs/physicalMediaImage"
+                    }
+                },
+                "logo": {
+                    "$ref": "#/$defs/image",
+                    "description": "Logo/wordmark with transparent background."
+                },
+                "backdrop": {
+                    "$ref": "#/$defs/image",
+                    "description": "Widescreen background artwork for TV/big screen interfaces. Should be free of text or logos."
+                },
+                "titleScreen": {
+                    "$ref": "#/$defs/image",
+                    "description": "Title screen screenshot."
+                },
+                "gameplay": {
+                    "type": "array",
+                    "description": "Gameplay screenshots.",
+                    "items": {
+                        "$ref": "#/$defs/image"
+                    }
+                },
+                "manual": {
+                    "type": "string",
+                    "description": "Path to the manual (PDF, image, html or text)."
+                },
+                "map": {
+                    "$ref": "#/$defs/image",
+                    "description": "Map or world chart image."
+                },
+                "music": {
+                    "type": "array",
+                    "description": "Soundtrack or audio files from the game.",
+                    "items": {
+                        "$ref": "#/$defs/musicTrack"
+                    }
+                }
+            }
+        },
+        "config": {
+            "type": "array",
+            "description": "External configuration files for emulators or platforms.",
+            "items": {
+                "$ref": "#/$defs/configFile"
+            }
+        }
+    }
+}

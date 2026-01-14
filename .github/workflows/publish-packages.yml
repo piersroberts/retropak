@@ -1,0 +1,90 @@
+name: Publish Packages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/*/package.json'
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      schema-changed: ${{ steps.filter.outputs.schema }}
+      types-changed: ${{ steps.filter.outputs.types }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check which packages changed
+        id: filter
+        run: |
+          if git diff HEAD~1 HEAD --name-only | grep -q "packages/schema/package.json"; then
+            echo "schema=true" >> $GITHUB_OUTPUT
+          else
+            echo "schema=false" >> $GITHUB_OUTPUT
+          fi
+          
+          if git diff HEAD~1 HEAD --name-only | grep -q "packages/types/package.json"; then
+            echo "types=true" >> $GITHUB_OUTPUT
+          else
+            echo "types=false" >> $GITHUB_OUTPUT
+          fi
+
+  publish-schema:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.schema-changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: packages/schema
+
+      - name: Validate schema
+        run: npm run validate
+        working-directory: packages/schema
+
+      - name: Publish to npm
+        run: npm publish --access public
+        working-directory: packages/schema
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-types:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.types-changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build package
+        run: npm run build
+        working-directory: packages/types
+
+      - name: Publish to npm
+        run: npm publish --access public
+        working-directory: packages/types
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

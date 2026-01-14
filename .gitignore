@@ -1,12 +1,12 @@
 # MkDocs build output
-site/
+
 __pycache__/
 .DS_Store
 docs/schemas/
 
 # Synced schema files (source of truth is packages/schema/)
-schemas/
-locales/
+/schemas/
+/locales/
 packages/swift/Sources/RetropakSchema/schemas/
 packages/swift/Sources/RetropakSchema/locales/
 
@@ -30,3 +30,5 @@ yarn-error.log*
 
 # Generated files
 packages/types/src/generated.ts
+
+dist

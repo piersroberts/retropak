@@ -7,14 +7,7 @@
         "packages/schema",
         "packages/types"
     ],
-    "scripts": {
-        "sync": "scripts/sync-schema.sh",
-        "presync": "echo '⚠️  Remember: packages/schema/ is the source of truth'",
-        "build": "npm run sync && npm run build --workspaces",
-        "test": "npm run test --workspaces --if-present",
-        "validate": "npm run validate --workspaces --if-present",
-        "validate:sync": "scripts/validate-sync.sh"
-    },
+    "scripts": {},
     "keywords": [
         "retropak",
         "schema"
