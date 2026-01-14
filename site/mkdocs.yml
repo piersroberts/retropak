@@ -3,6 +3,7 @@ site_description: Official documentation for Retropak
 site_author: Piers Roberts
 repo_url: https://github.com/piersroberts/retropak
 repo_name: piersroberts/retropak
+docs_dir: pages
 
 theme:
   name: material
