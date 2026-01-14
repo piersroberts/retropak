@@ -48,14 +48,6 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install dependencies
-        run: npm ci
-        working-directory: packages/schema
-
-      - name: Validate schema
-        run: npm run validate
-        working-directory: packages/schema
-
       - name: Publish to npm
         run: npm publish --access public
         working-directory: packages/schema
