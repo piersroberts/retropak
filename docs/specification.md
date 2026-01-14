@@ -339,16 +339,7 @@ Category is an array because software can be multiple things—a "game" that's a
 
 #### Categories
 
-`addon`, `application`, `beta`, `bios`, `compilation`, `coverdisk`, `demo`, `educational`, `enhanced`, `firmware`, `freeware`, `game`, `homebrew`, `multimedia`, `port`, `promotional`, `prototype`, `remake`, `remaster`, `rerelease`, `scene_demo`, `shareware`, `unlicensed`, `utility`
-
-??? info "Rerelease Categories"
-    - **`enhanced`** - Enhanced editions with patches, DLC, or improvements (e.g., Director's Cut, GOTY Edition)
-    - **`port`** - Game ported to another platform with minimal changes
-    - **`remaster`** - Enhanced graphics/audio but same core gameplay (e.g., HD remasters)
-    - **`remake`** - Game rebuilt from scratch, may have gameplay changes
-    - **`rerelease`** - Re-released on a new platform/medium with minimal changes
-
-    These can be combined: `["game", "remaster"]` or `["compilation", "rerelease"]`
+`addon`, `application`, `beta`, `bios`, `compilation`, `coverdisk`, `demo`, `educational`, `firmware`, `freeware`, `game`, `homebrew`, `multimedia`, `promotional`, `prototype`, `scene_demo`, `shareware`, `unlicensed`, `utility`
 
 #### Genres
 
@@ -490,39 +481,6 @@ Rating boards have different systems, so we support multiple:
 
 **Why `nsfw` inside rating?** - It's a content classification. Keeping all content filtering in one place makes frontend implementation simpler.
 
-### License
-
-```json
-{
-  "license": "freeware"
-}
-```
-
-Indicates the software license type. Particularly useful for distinguishing freeware, shareware, and homebrew with specific open source licenses.
-
-| License Type          | Description                                           |
-| --------------------- | ----------------------------------------------------- |
-| `commercial`          | Standard commercial software                          |
-| `freeware`            | Free to use                                           |
-| `shareware`           | Try before you buy                                    |
-| `public_domain`       | No copyright restrictions                             |
-| `open_source`         | Generic open source                                   |
-| `gpl`, `gpl2`, `gpl3` | GNU General Public License variants                   |
-| `lgpl`                | GNU Lesser General Public License                     |
-| `mit`                 | MIT License                                           |
-| `bsd`                 | BSD License                                           |
-| `apache`              | Apache License                                        |
-| `creative_commons`    | Generic Creative Commons                              |
-| `cc_by`               | Creative Commons Attribution                          |
-| `cc_by_sa`            | Creative Commons Attribution-ShareAlike               |
-| `cc_by_nc`            | Creative Commons Attribution-NonCommercial            |
-| `cc_by_nc_sa`         | Creative Commons Attribution-NonCommercial-ShareAlike |
-| `cc0`                 | Creative Commons Zero (Public Domain)                 |
-| `proprietary`         | Proprietary license                                   |
-| `unknown`             | License status unclear                                |
-
-**Note**: `freeware` and `shareware` appear in both `category` and `license` because they describe both the distribution model (category) and legal terms (license).
-
 ### Product Identifiers
 
 ```json
@@ -637,7 +595,6 @@ Start from Disc 1, swap when prompted:
   "type": "cartridge",
   "md5": "d41d8cd98f00b204e9800998ecf8427e",
   "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
-  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "crc32": "00000000",
   "version": "Rev A",
   "status": "good",
@@ -647,7 +604,7 @@ Start from Disc 1, swap when prompted:
 }
 ```
 
-- `md5`, `sha1`, `sha256`, `crc32` - Checksums for verification
+- `md5`, `sha1`, `crc32` - Checksums for verification
 - `version` - ROM revision (e.g., "Rev A", "v1.1")
 - `status` - Dump quality: `good`, `bad`, `overdump`, `underdump`, `alternate`, `hacked`, `trained`, `translated`, `prototype`, `unlicensed`, `pirate`, `unknown`
 - `verified` - Whether validated against a known database

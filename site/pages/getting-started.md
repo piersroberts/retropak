@@ -253,6 +253,7 @@ Add checksums for verification:
   "type": "cartridge",
   "md5": "d41d8cd98f00b204e9800998ecf8427e",
   "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "status": "good",
   "verified": true,
   "source": "No-Intro"
@@ -263,6 +264,7 @@ Checksums must be valid hexadecimal strings:
 
 - **MD5**: 32 characters (e.g., `d41d8cd98f00b204e9800998ecf8427e`)
 - **SHA-1**: 40 characters (e.g., `da39a3ee5e6b4b0d3255bfef95601890afd80709`)
+- **SHA-256**: 64 characters (e.g., `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`)
 - **CRC32**: 8 characters (e.g., `00000000`)
 
 Generate checksums:
@@ -270,6 +272,7 @@ Generate checksums:
 ```bash
 md5sum game.rom
 sha1sum game.rom
+sha256sum game.rom
 crc32 game.rom
 ```
 

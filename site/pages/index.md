@@ -84,7 +84,7 @@ unzip mygame.rpk
 - **120 supported platforms**: From Atari 2600 to Xbox Series X
 - **Comprehensive metadata**: Genre, players, features, ratings, credits
 - **Multi-disc support**: Handles CD swapping, boot disks, compilations
-- **ROM verification**: MD5/SHA1/CRC32 checksums with database validation
+- **ROM verification**: MD5/SHA-1/SHA-256/CRC32 checksums with database validation
 - **Cryptographic signing**: GPG and SSH signatures for authenticity
 - **Accessibility**: Alt text for all images
 - **Preservation**: Version tracking, dump status, source attribution

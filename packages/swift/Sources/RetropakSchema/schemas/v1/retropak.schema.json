@@ -627,6 +627,11 @@
                     "pattern": "^[a-fA-F0-9]{40}$",
                     "description": "SHA-1 checksum of the media file for verification."
                 },
+                "sha256": {
+                    "type": "string",
+                    "pattern": "^[a-fA-F0-9]{64}$",
+                    "description": "SHA-256 checksum of the media file for verification."
+                },
                 "crc32": {
                     "type": "string",
                     "pattern": "^[a-fA-F0-9]{8}$",
