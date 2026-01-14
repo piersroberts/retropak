@@ -243,13 +243,18 @@
                 "coverdisk",
                 "demo",
                 "educational",
+                "enhanced",
                 "firmware",
                 "freeware",
                 "game",
                 "homebrew",
                 "multimedia",
+                "port",
                 "promotional",
                 "prototype",
+                "remake",
+                "remaster",
+                "rerelease",
                 "scene_demo",
                 "shareware",
                 "unlicensed",
@@ -373,6 +378,32 @@
                 "underdump",
                 "unknown",
                 "unlicensed"
+            ]
+        },
+        "license": {
+            "type": "string",
+            "description": "Software license type.",
+            "enum": [
+                "commercial",
+                "freeware",
+                "shareware",
+                "public_domain",
+                "open_source",
+                "gpl",
+                "gpl2",
+                "gpl3",
+                "lgpl",
+                "mit",
+                "bsd",
+                "apache",
+                "creative_commons",
+                "cc_by",
+                "cc_by_sa",
+                "cc_by_nc",
+                "cc_by_nc_sa",
+                "cc0",
+                "proprietary",
+                "unknown"
             ]
         },
         "ageRating": {
@@ -844,6 +875,10 @@
                 },
                 "rating": {
                     "$ref": "#/$defs/ageRating"
+                },
+                "license": {
+                    "$ref": "#/$defs/license",
+                    "description": "The software license (e.g., 'freeware', 'shareware', 'commercial', 'gpl', 'mit')."
                 },
                 "ean": {
                     "type": "string",
