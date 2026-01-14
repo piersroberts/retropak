@@ -566,6 +566,13 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "characters": {
+                    "type": "array",
+                    "description": "Character names portrayed by this person (for voice actors, motion capture actors, etc.).",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             }
         },

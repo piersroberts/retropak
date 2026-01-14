@@ -1,6 +1,6 @@
 {
     "name": "@retropak/types",
-    "version": "1.0.0-draft9",
+    "version": "1.0.0-draft10",
     "description": "TypeScript type definitions for Retropak manifests",
     "type": "module",
     "main": "./dist/index.js",

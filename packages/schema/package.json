@@ -1,6 +1,6 @@
 {
     "name": "@retropak/schema",
-    "version": "1.0.0-draft8",
+    "version": "1.0.0-draft10",
     "description": "Metadata specification for Retropak software containers",
     "type": "module",
     "main": "./schemas/v1/retropak.schema.json",

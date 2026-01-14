@@ -422,12 +422,15 @@ ISO 639-1 codes. Freeform because language support varies wildly—some titles h
 {
   "credits": [
     { "name": "Shigeru Miyamoto", "roles": ["Producer", "Director"] },
-    { "name": "Koji Kondo", "roles": ["Composer"] }
+    { "name": "Koji Kondo", "roles": ["Composer"] },
+    { "name": "Charles Martinet", "roles": ["Voice Actor"], "characters": ["Mario", "Luigi"] }
   ]
 }
 ```
 
 Roles are freeform strings because job titles vary enormously across eras and regions. Trying to enumerate every possible role would be futile.
+
+The optional `characters` array can be used to specify which characters a person portrayed (useful for voice actors, motion capture performers, etc.).
 
 ### Compilations
 
