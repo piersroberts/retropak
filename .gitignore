@@ -10,6 +10,6 @@ dist/
 
 # Generated files
 packages/types/src/generated.ts
-
 dist
 .build
+.wrangler
