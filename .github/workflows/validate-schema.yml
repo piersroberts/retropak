@@ -4,11 +4,13 @@ on:
   push:
     branches: [ main ]
     paths:
+      - 'packages/schema/**/*.json'
       - 'schemas/**/*.json'
       - '.github/workflows/validate-schema.yml'
   pull_request:
     branches: [ main ]
     paths:
+      - 'packages/schema/**/*.json'
       - 'schemas/**/*.json'
       - '.github/workflows/validate-schema.yml'
 
@@ -19,6 +21,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      
+    - name: Validate schema files are in sync
+      run: |
+        chmod +x scripts/validate-sync.sh
+        npm run validate:sync
       
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -31,8 +38,8 @@ jobs:
     
     - name: Validate schema against JSON Schema Draft 7
       run: |
-        echo "Validating schemas/v1/retropak.schema.json..."
-        check-jsonschema --check-metaschema schemas/v1/retropak.schema.json
+        echo "Validating packages/schema/schemas/v1/retropak.schema.json (source of truth)..."
+        check-jsonschema --check-metaschema packages/schema/schemas/v1/retropak.schema.json
     
     - name: Check schema files are valid JSON
       run: |

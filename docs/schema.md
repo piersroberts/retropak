@@ -43,3 +43,29 @@ Retropak uses [Schemaver](https://snowplowanalytics.com/blog/2014/05/13/introduc
 - `ADDITION` - Backward-compatible additions
 
 The current schema version is **1-0-0**. See the [specification](specification.md#versioning) for details.
+
+## Validation Rules
+
+The schema enforces strict validation to ensure data quality and prevent common errors.
+
+### Required Strings Cannot Be Empty
+
+All required string fields use `minLength: 1` to reject empty strings:
+
+- `info.title` - Titles must have actual text
+- All file paths - Must reference actual files, not empty strings
+- `creditEntry.name` - Credits must have names
+
+This catches data errors early. If a field is optional, omit it entirely rather than using `""`.
+
+### No Unknown Properties
+
+All objects use `additionalProperties: false` to reject unexpected properties:
+
+- Catches typos: `"titl"` instead of `"title"` will fail validation
+- Prevents namespace pollution from custom fields
+- Ensures strict specification compliance
+
+If you need custom metadata, use the `notes` field or store separate files in the archive.
+
+See the [specification](specification.md#validation) for detailed rationale.

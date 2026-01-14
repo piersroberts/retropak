@@ -71,6 +71,14 @@ MAME and other arcade emulators already have robust distribution formats. Retrop
 
 Use the JSON schema with any standard JSON Schema validator. A dedicated validation tool does not currently exist but contributions are welcome.
 
+### Why does validation reject empty strings?
+
+The schema requires non-empty values for all required string fields (like `title` and file paths). Empty strings are almost always data errors that break frontends and reduce archive quality. If a field is optional, omit it entirely rather than using `""`.
+
+### Why does validation reject my custom field?
+
+The schema uses strict validation (`additionalProperties: false`) to catch typos and prevent namespace pollution. Custom fields would fragment the ecosystem and break portability. Use the `notes` field for additional information, or store custom data in separate files within the archive.
+
 ### What's the maximum file size?
 
 ZIP format supports up to 4GB (ZIP64 extends this to 16EB, though practical limits apply).

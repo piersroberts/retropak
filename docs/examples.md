@@ -72,7 +72,8 @@ A fully featured package:
     "rating": {
       "esrb": "e",
       "pegi": "3"
-    }
+    },
+    "upc": "010086015010"
   },
   "media": [{
     "filename": "software/sonic.bin",
@@ -83,22 +84,13 @@ A fully featured package:
     "status": "good",
     "verified": true,
     "source": "No-Intro",
-    "serial": "MK-1491"
+    "productCode": "MK-1491",
+    "image": {
+      "file": "art/cartridge.jpg",
+      "alt": "Black Mega Drive cartridge with Sonic artwork"
+    }
   }],
   "assets": {
-    "boxFront": {
-      "file": "art/box_front.jpg",
-      "alt": "Sonic pointing forward with the game logo above"
-    },
-    "boxBack": {
-      "file": "art/box_back.jpg",
-      "alt": "Screenshots showing Green Hill Zone and Special Stage"
-    },
-    "physicalMedia": [{
-      "file": "art/cartridge.jpg",
-      "alt": "Black Mega Drive cartridge with Sonic artwork",
-      "type": "cartridge"
-    }],
     "logo": {
       "file": "art/logo.png",
       "alt": "Sonic the Hedgehog logo with blue blur effect"
@@ -155,59 +147,47 @@ PlayStation game with multiple discs:
       "filename": "software/ff7_disc1.bin",
       "label": "Disc 1",
       "type": "cdrom",
-      "index": 1, // (1)!
-      "bootable": true, // (2)!
-      "region": "ntsc-u"
+      "bootable": true, // (1)!
+      "region": "ntsc-u",
+      "image": {
+        "file": "art/disc1.jpg",
+        "alt": "Disc 1 with Cloud artwork"
+      }
     },
     {
       "filename": "software/ff7_disc2.bin",
       "label": "Disc 2",
       "type": "cdrom",
-      "index": 2,
-      "bootable": false, // (3)!
-      "region": "ntsc-u"
+      "bootable": false, // (2)!
+      "region": "ntsc-u",
+      "image": {
+        "file": "art/disc2.jpg",
+        "alt": "Disc 2 with Aerith artwork"
+      }
     },
     {
       "filename": "software/ff7_disc3.bin",
       "label": "Disc 3",
       "type": "cdrom",
-      "index": 3,
       "bootable": false,
-      "region": "ntsc-u"
+      "region": "ntsc-u",
+      "image": {
+        "file": "art/disc3.jpg",
+        "alt": "Disc 3 with Sephiroth artwork"
+      }
     }
   ],
   "assets": {
     "boxFront": {
       "file": "art/box_front.jpg",
       "alt": "Cloud Strife with Meteor in background"
-    },
-    "physicalMedia": [
-      {
-        "file": "art/disc1.jpg",
-        "alt": "Disc 1 with Cloud artwork",
-        "mediaId": "disc1",
-        "type": "cdrom"
-      },
-      {
-        "file": "art/disc2.jpg",
-        "alt": "Disc 2 with Aerith artwork",
-        "mediaId": "disc2",
-        "type": "cdrom"
-      },
-      {
-        "file": "art/disc3.jpg",
-        "alt": "Disc 3 with Sephiroth artwork",
-        "mediaId": "disc3",
-        "type": "cdrom"
-      }
-    ]
+    }
   }
 }
 ```
 
-1. Order matters! Use sequential indices starting at 1
-2. Only the first disc is bootable - this is what the emulator loads initially
-3. Subsequent discs are swapped during gameplay
+1. Only the first disc is bootable - this is what the emulator loads initially
+2. Subsequent discs are swapped during gameplay
 
 !!! info "Multi-Disc Games"
     For sequential disc games, only mark the first disc as `bootable: true`. The emulator will prompt for disc swaps when needed.

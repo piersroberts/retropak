@@ -225,7 +225,7 @@ All artwork should prioritize quality while remaining practical for distribution
 | `boxFront`      | 1000×1400         | 2000×2800 | ~1.4:1 ratio (varies by region)         |
 | `boxBack`       | 1000×1400         | 2000×2800 | Match front dimensions                  |
 | `boxSpine`      | 100×1400          | 200×2800  | Narrow strip                            |
-| `physicalMedia` | 1000×1000         | 2000×2000 | Square for discs; rectangular for carts |
+| `mediaItem.image` | 1000×1000       | 2000×2000 | Square for discs; rectangular for carts |
 | `logo`          | 800×400           | 1600×800  | Transparent PNG, width > height         |
 | `backdrop`      | 1920×1080         | 3840×2160 | 16:9 widescreen                         |
 | `titleScreen`   | Native resolution | 1920×1080 | Preserve original aspect ratio          |
@@ -481,6 +481,28 @@ Rating boards have different systems, so we support multiple:
 
 **Why `nsfw` inside rating?** - It's a content classification. Keeping all content filtering in one place makes frontend implementation simpler.
 
+### Product Identifiers
+
+```json
+{
+  "ean": "5060004761364",
+  "upc": "047875840423",
+  "isbn": "978-0-7615-3977-7",
+  "issn": "1234-5678"
+}
+```
+
+Barcode and standard identifiers from physical product packaging:
+
+| Field  | Format      | Description                                                   |
+| ------ | ----------- | ------------------------------------------------------------- |
+| `ean`  | 13 digits   | European Article Number (EAN-13). Also covers JAN (Japan)    |
+| `upc`  | 12 digits   | Universal Product Code (UPC-A) for North American products   |
+| `isbn` | ISBN format | International Standard Book Number (for PC games sold as books) |
+| `issn` | XXXX-XXXX   | International Standard Serial Number (for magazine coverdisks) |
+
+These identify the physical release packaging, not the software itself. Useful for cataloging physical collections and matching to retail databases.
+
 ---
 
 ## The `media` Array
@@ -578,7 +600,7 @@ Start from Disc 1, swap when prompted:
   "status": "good",
   "verified": true,
   "source": "No-Intro",
-  "serial": "SNS-MV-0"
+  "productCode": "SNS-MV-0"
 }
 ```
 
@@ -587,7 +609,7 @@ Start from Disc 1, swap when prompted:
 - `status` - Dump quality: `good`, `bad`, `overdump`, `underdump`, `alternate`, `hacked`, `trained`, `translated`, `prototype`, `unlicensed`, `pirate`, `unknown`
 - `verified` - Whether validated against a known database
 - `source` - Which database verified it (No-Intro, Redump, TOSEC)
-- `serial` - Official product serial from the original media
+- `productCode` - Official product code or catalog number from the original media
 
 ### Regions
 
@@ -621,7 +643,6 @@ All image fields use an object format with optional alt text:
 | `boxFront`      | Front cover                             |
 | `boxBack`       | Back cover                              |
 | `boxSpine`      | Spine                                   |
-| `physicalMedia` | Images of cartridges, discs, tapes      |
 | `logo`          | Title logo with transparency            |
 | `backdrop`      | Widescreen background for TV interfaces |
 | `titleScreen`   | Title screen screenshot                 |
@@ -632,20 +653,24 @@ All image fields use an object format with optional alt text:
 
 ### Physical Media Images
 
+Physical media images (cartridges, discs, tapes, etc.) are attached directly to each `mediaItem` object:
+
 ```json
 {
-  "physicalMedia": [
+  "media": [
     {
-      "file": "art/disc1.png",
-      "alt": "Disc 1 label showing the game logo",
-      "mediaId": "disc1",
-      "type": "cdrom"
+      "filename": "software/game.bin",
+      "type": "cdrom",
+      "image": {
+        "file": "art/disc.png",
+        "alt": "Disc label showing the game logo"
+      }
     }
   ]
 }
 ```
 
-The `mediaId` links the image to a specific entry in the `media` array.
+This approach ensures each media item is directly linked to its image, avoiding any confusion with multi-disc or multi-cartridge releases.
 
 ### Backdrop
 
@@ -915,13 +940,6 @@ Use cases:
       { "file": "art/screen1.png", "alt": "Sonic running through Green Hill Zone" },
       { "file": "art/screen2.png", "alt": "Sonic collecting rings" }
     ],
-    "physicalMedia": [
-      {
-        "file": "art/cartridge.png",
-        "alt": "Black Mega Drive cartridge with Sonic artwork",
-        "type": "cartridge"
-      }
-    ],
     "manual": "docs/manual.pdf",
     "music": [
       { "title": "Green Hill Zone", "file": "audio/green_hill.mp3", "background": true }
@@ -976,6 +994,50 @@ Example:
 - **manifestVersion** - Flexible versioning supporting integers or dot-separated numbers (e.g., `1`, `2.1`, `3.2.1`)
 
 These patterns ensure data consistency and make validation reliable across different tools and implementations.
+
+### String Validation
+
+All required string fields enforce non-empty values using `minLength: 1`. This prevents common data quality issues:
+
+```json
+{
+  "info": {
+    "title": "",  // ❌ Invalid - empty strings not allowed
+    "title": "Sonic the Hedgehog"  // ✅ Valid
+  }
+}
+```
+
+**Affected fields:**
+
+- `info.title` - Must have a visible title
+- File paths in all objects (`configFile.file`, `image.file`, `musicTrack.file`, `mediaItem.filename`, `mediaItem.image.file`) - Must reference an actual file
+- `creditEntry.name` - Credits must have actual names
+
+**Rationale:** Empty strings are almost always data errors. They break frontends, make archives harder to organize, and provide no value. If a field is optional, omit it entirely rather than using an empty string.
+
+### Strict Property Validation
+
+All object definitions use `additionalProperties: false` to reject unexpected or unknown properties:
+
+```json
+{
+  "info": {
+    "title": "Sonic",
+    "platform": "md",
+    "customField": "value"  // ❌ Invalid - unknown property
+  }
+}
+```
+
+**Rationale:**
+
+1. **Catch typos early** - `"titl": "Sonic"` will fail validation instead of being silently ignored
+2. **Prevent namespace pollution** - Custom fields would fragment the ecosystem and break portability
+3. **Forward compatibility** - When new fields are added in future schema versions, old validators won't accidentally accept them
+4. **Clear specification** - The schema explicitly defines what's allowed; there's no ambiguity
+
+**What if I need custom data?** Use the `notes` field to store additional information as structured text. For tool-specific metadata, store it in a separate file in the archive (e.g., `config/mytool.json`).
 
 ---
 

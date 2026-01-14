@@ -1,0 +1,36 @@
+{
+    "name": "@retropak/schema",
+    "version": "1.0.0-draft4",
+    "description": "Metadata specification for Retropak software containers",
+    "type": "module",
+    "main": "./schemas/v1/retropak.schema.json",
+    "exports": {
+        "./schema": "./schemas/v1/retropak.schema.json",
+        "./locales/en": "./locales/en.json",
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "schemas",
+        "locales"
+    ],
+    "scripts": {
+        "build": "echo 'Schema package has no build step'",
+        "validate": "node --input-type=module -e \"import Ajv from 'ajv'; const ajv = new Ajv(); const schema = await import('./schemas/v1/retropak.schema.json', { assert: { type: 'json' } }); const valid = ajv.compile(schema.default); console.log('Schema is valid:', valid.schema.$id);\""
+    },
+    "keywords": [
+        "retropak",
+        "schema",
+        "json-schema"
+    ],
+    "author": "piers@retropak.org",
+    "license": "CC0-1.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/piersroberts/retropak.git",
+        "directory": "packages/schema"
+    },
+    "bugs": {
+        "url": "https://github.com/piersroberts/retropak/issues"
+    },
+    "homepage": "https://retropak.org"
+}

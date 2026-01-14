@@ -1,17 +1,20 @@
 {
-    "name": "@retropak/schema",
-    "version": "1.0.0-draft",
+    "name": "retropak",
     "description": "Metadata specification for Retropak software containers",
+    "private": true,
     "type": "module",
-    "exports": {
-        "./schema": "./schemas/v1/retropak.schema.json",
-        "./locales/en": "./locales/en.json",
-        "./package.json": "./package.json"
-    },
-    "files": [
-        "schemas",
-        "locales"
+    "workspaces": [
+        "packages/schema",
+        "packages/types"
     ],
+    "scripts": {
+        "sync": "scripts/sync-schema.sh",
+        "presync": "echo '⚠️  Remember: packages/schema/ is the source of truth'",
+        "build": "npm run sync && npm run build --workspaces",
+        "test": "npm run test --workspaces --if-present",
+        "validate": "npm run validate --workspaces --if-present",
+        "validate:sync": "scripts/validate-sync.sh"
+    },
     "keywords": [
         "retropak",
         "schema"
@@ -25,5 +28,8 @@
     "bugs": {
         "url": "https://github.com/piersroberts/retropak/issues"
     },
-    "homepage": "https://retropak.org"
+    "homepage": "https://retropak.org",
+    "devDependencies": {
+        "ajv": "^8.12.0"
+    }
 }

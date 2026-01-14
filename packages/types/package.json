@@ -1,0 +1,51 @@
+{
+    "name": "@retropak/types",
+    "version": "1.0.0-draft4",
+    "description": "TypeScript type definitions for Retropak manifests",
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist",
+        "src"
+    ],
+    "scripts": {
+        "prebuild": "rm -rf dist",
+        "build": "npm run generate && tsc",
+        "generate": "json2ts -i ../schema/schemas/v1/retropak.schema.json -o src/generated.ts",
+        "validate": "tsc --noEmit",
+        "prepublishOnly": "npm run build"
+    },
+    "keywords": [
+        "retropak",
+        "types",
+        "typescript"
+    ],
+    "author": "piers@retropak.org",
+    "license": "CC0-1.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/piersroberts/retropak.git",
+        "directory": "packages/types"
+    },
+    "bugs": {
+        "url": "https://github.com/piersroberts/retropak/issues"
+    },
+    "homepage": "https://retropak.org",
+    "dependencies": {
+        "@retropak/schema": "*"
+    },
+    "devDependencies": {
+        "json-schema-to-typescript": "^13.1.2",
+        "typescript": "^5.3.3"
+    },
+    "peerDependencies": {
+        "typescript": ">=4.5.0"
+    }
+}
