@@ -25,6 +25,9 @@ jobs:
         run: mkdocs build
         working-directory: site
 
+      - name: Copy schema files to site
+        run: cp -R packages/schema/schemas site/dist
+
       - name: Deploy to Cloudflare Pages
         run: npx wrangler deploy
         working-directory: site
