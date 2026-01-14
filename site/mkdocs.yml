@@ -4,6 +4,7 @@ site_author: Piers Roberts
 repo_url: https://github.com/piersroberts/retropak
 repo_name: piersroberts/retropak
 docs_dir: pages
+site_dir: dist
 
 theme:
   name: material
