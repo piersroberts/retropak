@@ -600,28 +600,6 @@
                 }
             }
         },
-        "physicalMediaImage": {
-            "type": "object",
-            "description": "An image of physical media (cartridge, disc, tape, etc.).",
-            "additionalProperties": false,
-            "required": [
-                "file"
-            ],
-            "properties": {
-                "file": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Path to the physical media image file."
-                },
-                "alt": {
-                    "type": "string",
-                    "description": "Alternative text describing the image for accessibility."
-                },
-                "type": {
-                    "$ref": "#/$defs/mediaType"
-                }
-            }
-        },
         "mediaItem": {
             "type": "object",
             "description": "A media file (ROM, disc image, tape, etc.).",
@@ -951,7 +929,7 @@
                     "type": "array",
                     "description": "Images of the physical media (cartridge, disc, tape, floppy, etc.).",
                     "items": {
-                        "$ref": "#/$defs/physicalMediaImage"
+                        "$ref": "#/$defs/image"
                     }
                 },
                 "logo": {
