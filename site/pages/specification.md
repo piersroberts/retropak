@@ -91,36 +91,12 @@ A `.rpk` file is a standard ZIP archive. The extension must be `.rpk`.
 
 Most files in a Retropak archive should use **DEFLATE compression** to minimize file sizes. However, large disk images that require random access must use **STORE mode** (uncompressed) to enable efficient seeking without decompression overhead.
 
-#### Media Types Requiring STORE Mode
-
-The following media types **MUST** use STORE mode (uncompressed) in the ZIP archive:
-
-- `bluray` - Blu-ray disc images (4.7GB to 50GB+)
-- `cdrom` - CD-ROM disc images (~650-700MB)
-- `disk_image` - Generic disk images not covered by other types
-- `dvd` - DVD disc images (4.7GB to 8.5GB)
-- `flash_image` - Flash storage images (USB drives, SD cards, CompactFlash, etc.)
-- `gd_rom` - Dreamcast GD-ROM images (~1GB)
-- `hdd_image` - Hard disk drive images (typically multi-GB)
-- `laserdisc` - LaserDisc images (large capacity)
-- `optical_disk` - Generic optical disc images not covered by other types
-- `umd` - PSP UMD disc images (~900MB to 1.8GB)
-
-!!! info "Why STORE Mode for Optical/HDD Media?"
-    Emulators need random access to read arbitrary sectors from disc and hard drive images. With DEFLATE compression, reading a single sector requires decompressing from the start or caching the entire decompressed file (hundreds of MB to GB). STORE mode allows direct byte-offset access within the ZIP, enabling efficient random reads without memory overhead.
-
-#### Media Types Allowing DEFLATE
-
-All other media types **MAY** use DEFLATE compression:
-
-- `cartridge` - ROM cartridges (typically KB to a few MB)
-- `floppy` - Floppy disk images (360KB to 2.88MB - small enough for RAM decompression)
-- `tape` - Cassette tape images (typically small)
-- `memory_card` - Memory card save files (typically KB)
-- `archive` - Pre-compressed archives (`.zip`, `.7z`)
-- `download` - Downloaded software packages
-
-**Rationale:** These media types are either small enough to decompress entirely into RAM without performance impact, or are accessed sequentially rather than requiring random access patterns.
+!!! info "STORE vs DEFLATE"
+    **STORE mode (🔴 uncompressed)** is required for optical discs, hard drives, and large disk images. Emulators need random access to read arbitrary sectors - with DEFLATE compression, this would require decompressing from the start or caching the entire file (hundreds of MB to GB). STORE mode allows direct byte-offset access within the ZIP.
+    
+    **DEFLATE mode (🟢 compressed)** can be used for cartridges, floppies, tapes, and other small media that are either small enough to decompress entirely into RAM or are accessed sequentially.
+    
+    See the [Media Types](#media-types) table for the complete list of which compression mode each media type requires.
 
 ### Directory Structure
 
@@ -219,9 +195,9 @@ Signing establishes:
 
 Software files should be stored in their original, unmodified format. Do not re-compress ROMs inside the archive - the ZIP container handles compression.
 
-#### Recommended Formats by Platform Type
+#### Recommended Formats
 
-| Platform Type   | Formats                                                                      | Notes                                               |
+| Type            | Formats                                                                      | Notes                                               |
 | --------------- | ---------------------------------------------------------------------------- | --------------------------------------------------- |
 | **Cartridge**   | `.bin`, `.rom`, `.nes`, `.sfc`, `.md`, `.gb`, `.gba`, `.n64`, `.z64`, `.v64` | Use platform-standard extensions                    |
 | **Floppy Disk** | `.adf`, `.d64`, `.g64`, `.dsk`, `.ima`, `.img`                               | Preserve original disk images                       |
@@ -238,10 +214,10 @@ Software files should be stored in their original, unmodified format. Do not re-
 
 - **Do not** use `.zip` or `.7z` for individual ROMs inside the archive - double compression wastes space and slows loading.
 - Keep multi-file disc images together (e.g., `.bin` + `.cue`, `.mds` + `.mdf`).
-- Remember: Uncompressed disc formats (`.iso`, `.bin`) must use STORE mode in the ZIP for random access. Use CHD instead for better overall compression.
+- Uncompressed disc formats (`.iso`, `.bin`) require special handling. Use CHD instead for better compression.
 
 !!! note "BIN/CUE Disc Images"
-    For BIN/CUE disc images, include **both** files in the `software/` folder. Only reference the `.bin` file in the manifest's `media.filename` field - emulators will automatically locate the corresponding `.cue` file by name. The `.bin` file must use STORE mode (uncompressed) in the ZIP.
+    For BIN/CUE disc images, include **both** files in the `software/` folder. Only reference the `.bin` file in the manifest's `media.filename` field - emulators will automatically locate the corresponding `.cue` file by name.
 
 ### Image Files
 
@@ -378,7 +354,8 @@ Category is an array because software can be multiple things—a "game" that's a
 
 #### Categories
 
-`addon`, `application`, `beta`, `bios`, `compilation`, `coverdisk`, `demo`, `educational`, `enhanced`, `firmware`, `freeware`, `game`, `homebrew`, `multimedia`, `port`, `promotional`, `prototype`, `remake`, `remaster`, `rerelease`, `scene_demo`, `shareware`, `unlicensed`, `utility`
+??? abstract "Available Category Values"
+    `addon`, `application`, `beta`, `bios`, `compilation`, `coverdisk`, `demo`, `educational`, `enhanced`, `firmware`, `freeware`, `game`, `homebrew`, `multimedia`, `port`, `promotional`, `prototype`, `remake`, `remaster`, `rerelease`, `scene_demo`, `shareware`, `unlicensed`, `utility`
 
 ??? info "Rerelease Categories"
     - **`enhanced`** - Editions with patches, DLC, or improvements (e.g., Director's Cut, GOTY Edition)
@@ -391,7 +368,8 @@ Category is an array because software can be multiple things—a "game" that's a
 
 #### Genres
 
-`action`, `action_rpg`, `adventure`, `american_football`, `arcade`, `artillery`, `athletics`, `baseball`, `basketball`, `beat_em_up`, `billiards`, `block_puzzle`, `board_game`, `bowling`, `boxing`, `bullet_hell`, `card_game`, `casino`, `casual`, `cricket`, `cute_em_up`, `dating_sim`, `dungeon_crawler`, `educational`, `endless_runner`, `extreme_sports`, `fighting`, `fishing`, `flight`, `fps`, `golf`, `hack_and_slash`, `hockey`, `horse_racing`, `horror`, `life_sim`, `light_gun`, `logic_puzzle`, `mahjong`, `management`, `match_3`, `maze`, `mech`, `metroidvania`, `minigames`, `mmorpg`, `moba`, `music_rhythm`, `open_world`, `pachinko`, `party`, `pinball`, `platformer`, `point_and_click`, `pool`, `puzzle`, `quiz`, `racing`, `rail_shooter`, `real_time_strategy`, `roguelike`, `rpg`, `run_and_gun`, `sandbox`, `shoot_em_up`, `shooter`, `simulation`, `skateboarding`, `skiing`, `snooker`, `snowboarding`, `soccer`, `sports`, `stealth`, `strategy`, `surfing`, `survival`, `tactical_rpg`, `tennis`, `text_adventure`, `tower_defense`, `trivia`, `turn_based_strategy`, `twin_stick`, `vehicle_combat`, `visual_novel`, `volleyball`, `word_puzzle`, `wrestling`
+??? abstract "Available Genre Values"
+    `action`, `action_rpg`, `adventure`, `american_football`, `arcade`, `artillery`, `athletics`, `baseball`, `basketball`, `beat_em_up`, `billiards`, `block_puzzle`, `board_game`, `bowling`, `boxing`, `bullet_hell`, `card_game`, `casino`, `casual`, `cricket`, `cute_em_up`, `dating_sim`, `dungeon_crawler`, `educational`, `endless_runner`, `extreme_sports`, `fighting`, `fishing`, `flight`, `fps`, `golf`, `hack_and_slash`, `hockey`, `horse_racing`, `horror`, `life_sim`, `light_gun`, `logic_puzzle`, `mahjong`, `management`, `match_3`, `maze`, `mech`, `metroidvania`, `minigames`, `mmorpg`, `moba`, `music_rhythm`, `open_world`, `pachinko`, `party`, `pinball`, `platformer`, `point_and_click`, `pool`, `puzzle`, `quiz`, `racing`, `rail_shooter`, `real_time_strategy`, `roguelike`, `rpg`, `run_and_gun`, `sandbox`, `shoot_em_up`, `shooter`, `simulation`, `skateboarding`, `skiing`, `snooker`, `snowboarding`, `soccer`, `sports`, `stealth`, `strategy`, `surfing`, `survival`, `tactical_rpg`, `tennis`, `text_adventure`, `tower_defense`, `trivia`, `turn_based_strategy`, `twin_stick`, `vehicle_combat`, `visual_novel`, `volleyball`, `word_puzzle`, `wrestling`
 
 ### Players
 
@@ -429,7 +407,8 @@ Features include input devices, peripherals, and capabilities. We separate requi
 
 #### Feature Values
 
-`analog_stick`, `arcade_stick`, `balance_board`, `bongos`, `buzzer`, `camera`, `crank`, `dance_mat`, `dongle`, `drums`, `fishing_rod`, `flight_stick`, `gamepad`, `guitar`, `keyboard`, `keyboard_controller`, `light_gun`, `link_cable`, `maracas`, `mech_controller`, `microphone`, `motion_controls`, `mouse`, `multitap`, `nfc_portal`, `online`, `paddle`, `pedals`, `pointer`, `rumble`, `save_file`, `spinner`, `steering_wheel`, `stylus`, `touch_screen`, `trackball`, `train_controller`, `turntable`, `twin_stick`, `vr_headset`, `zapper`
+??? abstract "Available Feature Values"
+    `analog_stick`, `arcade_stick`, `balance_board`, `bongos`, `buzzer`, `camera`, `crank`, `dance_mat`, `dongle`, `drums`, `fishing_rod`, `flight_stick`, `gamepad`, `guitar`, `keyboard`, `keyboard_controller`, `light_gun`, `link_cable`, `maracas`, `mech_controller`, `microphone`, `motion_controls`, `mouse`, `multitap`, `nfc_portal`, `online`, `paddle`, `pedals`, `pointer`, `rumble`, `save_file`, `spinner`, `steering_wheel`, `stylus`, `touch_screen`, `trackball`, `train_controller`, `turntable`, `twin_stick`, `vr_headset`, `zapper`
 
 **Why is `online` a feature?** - It's a capability, like rumble support. Putting it here keeps player counts simple (local players only) while still indicating network play was available.
 
@@ -442,8 +421,6 @@ Features include input devices, peripherals, and capabilities. We separate requi
 ```
 
 ISO 3166-1 alpha-2 country code indicating where the title was originally developed. This is different from `region` (which describes the release region of this specific copy).
-
-Common codes: `jp` (Japan), `us` (United States), `gb` (United Kingdom), `fr` (France), `de` (Germany), `ca` (Canada), `au` (Australia), `kr` (South Korea), `cn` (China), `se` (Sweden), `fi` (Finland), `nl` (Netherlands), `es` (Spain), `it` (Italy), `ru` (Russia), `pl` (Poland), `cz` (Czech Republic), `ua` (Ukraine).
 
 ### Languages
 
@@ -616,22 +593,25 @@ The following media type values are supported:
 
 | Media Type     | Description                                                     | Compression |
 | -------------- | --------------------------------------------------------------- | ----------- |
-| `archive`      | Pre-compressed archive files (`.zip`, `.7z`, etc.)              | DEFLATE     |
-| `bluray`       | Blu-ray disc images (BD-ROM)                                    | STORE       |
-| `cartridge`    | ROM cartridges for console and handheld systems                 | DEFLATE     |
-| `cdrom`        | CD-ROM disc images                                              | STORE       |
-| `disk_image`   | Generic disk image format not covered by specific types         | STORE       |
-| `download`     | Software distributed as downloadable files                      | DEFLATE     |
-| `dvd`          | DVD-ROM disc images                                             | STORE       |
-| `flash_image`  | Flash storage images (USB drives, SD cards, CompactFlash, etc.) | STORE       |
-| `floppy`       | Floppy disk images (3.5", 5.25", 8", etc.)                      | DEFLATE     |
-| `gd_rom`       | Sega Dreamcast GD-ROM disc images                               | STORE       |
-| `hdd_image`    | Hard disk drive images                                          | STORE       |
-| `laserdisc`    | LaserDisc images                                                | STORE       |
-| `memory_card`  | Memory card or save file data                                   | DEFLATE     |
-| `optical_disk` | Generic optical disc format not covered by specific types       | STORE       |
-| `tape`         | Cassette tape images (audio or data)                            | DEFLATE     |
-| `umd`          | PlayStation Portable UMD disc images                            | STORE       |
+| `archive`      | Pre-compressed archive files (`.zip`, `.7z`, etc.)              | 🟢 DEFLATE   |
+| `bluray`       | Blu-ray disc images (BD-ROM)                                    | 🔴 STORE     |
+| `cartridge`    | ROM cartridges for console and handheld systems                 | 🟢 DEFLATE   |
+| `cdrom`        | CD-ROM disc images                                              | 🔴 STORE     |
+| `disk_image`   | Generic disk image format not covered by specific types         | 🔴 STORE     |
+| `download`     | Software distributed as downloadable files                      | 🟢 DEFLATE   |
+| `dvd`          | DVD-ROM disc images                                             | 🔴 STORE     |
+| `flash_image`  | Flash storage images (USB drives, SD cards, CompactFlash, etc.) | 🔴 STORE     |
+| `floppy`       | Floppy disk images (3.5", 5.25", 8", etc.)                      | 🟢 DEFLATE   |
+| `gd_rom`       | Sega Dreamcast GD-ROM disc images                               | 🔴 STORE     |
+| `hdd_image`    | Hard disk drive images                                          | 🔴 STORE     |
+| `laserdisc`    | LaserDisc images                                                | 🔴 STORE     |
+| `memory_card`  | Memory card or save file data                                   | 🟢 DEFLATE   |
+| `optical_disk` | Generic optical disc format not covered by specific types       | 🔴 STORE     |
+| `tape`         | Cassette tape images (audio or data)                            | 🟢 DEFLATE   |
+| `umd`          | PlayStation Portable UMD disc images                            | 🔴 STORE     |
+
+🔴 **STORE** = Uncompressed (required for random access)  
+🟢 **DEFLATE** = Compressed (saves space)
 
 See [Compression Requirements](#compression-requirements) for details on STORE vs DEFLATE modes.
 
@@ -719,7 +699,8 @@ Start from Disc 1, swap when prompted:
 
 ### Regions
 
-`asia`, `australia`, `brazil`, `canada`, `china`, `europe`, `france`, `germany`, `hong-kong`, `india`, `italy`, `japan`, `korea`, `mexico`, `netherlands`, `ntsc-j`, `ntsc-u`, `pal`, `pal-a`, `pal-b`, `pal-g`, `russia`, `scandinavia`, `spain`, `taiwan`, `uk`, `usa`, `world`
+??? abstract "Available Region Values"
+    `asia`, `australia`, `brazil`, `canada`, `china`, `europe`, `france`, `germany`, `hong-kong`, `india`, `italy`, `japan`, `korea`, `mexico`, `netherlands`, `ntsc-j`, `ntsc-u`, `pal`, `pal-a`, `pal-b`, `pal-g`, `russia`, `scandinavia`, `spain`, `taiwan`, `uk`, `usa`, `world`
 
 ---
 
