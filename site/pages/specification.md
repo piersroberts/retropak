@@ -356,15 +356,16 @@ Category is an array because software can be multiple things—a "game" that's a
 
 ??? abstract "Available Category Values"
     `addon`, `application`, `beta`, `bios`, `compilation`, `coverdisk`, `demo`, `educational`, `enhanced`, `firmware`, `freeware`, `game`, `homebrew`, `multimedia`, `port`, `promotional`, `prototype`, `remake`, `remaster`, `rerelease`, `scene_demo`, `shareware`, `unlicensed`, `utility`
-
-??? info "Rerelease Categories"
+    
+    **Rerelease Types:**
+    
     - **`enhanced`** - Editions with patches, DLC, or improvements (e.g., Director's Cut, GOTY Edition)
-    - **`port`** - Game ported to another platform with minimal changes
+    - **`port`** - Software ported to another platform with minimal changes
     - **`remaster`** - Improved graphics/audio but same core gameplay (e.g., HD remasters)
-    - **`remake`** - Game rebuilt from scratch, may have gameplay changes
+    - **`remake`** - Software rebuilt from scratch, may have gameplay changes
     - **`rerelease`** - Re-released on a new platform/medium with minimal changes
-
-    These can be combined: `["game", "remaster"]` or `["compilation", "rerelease"]`
+    
+    Categories can be combined: `["game", "remaster"]` or `["compilation", "rerelease"]`
 
 #### Genres
 
