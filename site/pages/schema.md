@@ -46,7 +46,7 @@ The current schema version is **1-0-0**. See the [specification](specification.m
 
 ## Validation Rules
 
-The schema enforces strict validation to ensure data quality and prevent common errors.
+The schema enforces strict validation to maintain data quality and prevent common errors.
 
 ### Required Strings Cannot Be Empty
 
@@ -64,7 +64,7 @@ All objects use `additionalProperties: false` to reject unexpected properties:
 
 - Catches typos: `"titl"` instead of `"title"` will fail validation
 - Prevents namespace pollution from custom fields
-- Ensures strict specification compliance
+- Enforces strict specification compliance
 
 If you need custom metadata, use the `notes` field or store separate files in the archive.
 

@@ -71,7 +71,7 @@ The current schema version is **1-0-0** (initial release). This version must be 
 
 - Schema files are organized by MODEL version: `/schemas/v1/`, `/schemas/v2/`
 - The URL `https://retropak.org/schemas/v1/retropak.schema.json` always points to the latest `1-x-x` version
-- This ensures frontends can validate against `v1` and accept any `1-x-x` manifest
+- This allows frontends to validate against `v1` and accept any `1-x-x` manifest
 
 ### Why Schemaver?
 
@@ -85,7 +85,42 @@ Schemaver provides critical clarity for data formats:
 
 ## Container Format
 
-A `.rpk` file is a standard ZIP archive using Deflate compression. The extension must be `.rpk`.
+A `.rpk` file is a standard ZIP archive. The extension must be `.rpk`.
+
+### Compression Requirements
+
+Most files in a Retropak archive should use **DEFLATE compression** to minimize file sizes. However, large disk images that require random access must use **STORE mode** (uncompressed) to enable efficient seeking without decompression overhead.
+
+#### Media Types Requiring STORE Mode
+
+The following media types **MUST** use STORE mode (uncompressed) in the ZIP archive:
+
+- `bluray` - Blu-ray disc images (4.7GB to 50GB+)
+- `cdrom` - CD-ROM disc images (~650-700MB)
+- `disk_image` - Generic disk images not covered by other types
+- `dvd` - DVD disc images (4.7GB to 8.5GB)
+- `flash_image` - Flash storage images (USB drives, SD cards, CompactFlash, etc.)
+- `gd_rom` - Dreamcast GD-ROM images (~1GB)
+- `hdd_image` - Hard disk drive images (typically multi-GB)
+- `laserdisc` - LaserDisc images (large capacity)
+- `optical_disk` - Generic optical disc images not covered by other types
+- `umd` - PSP UMD disc images (~900MB to 1.8GB)
+
+!!! info "Why STORE Mode for Optical/HDD Media?"
+    Emulators need random access to read arbitrary sectors from disc and hard drive images. With DEFLATE compression, reading a single sector requires decompressing from the start or caching the entire decompressed file (hundreds of MB to GB). STORE mode allows direct byte-offset access within the ZIP, enabling efficient random reads without memory overhead.
+
+#### Media Types Allowing DEFLATE
+
+All other media types **MAY** use DEFLATE compression:
+
+- `cartridge` - ROM cartridges (typically KB to a few MB)
+- `floppy` - Floppy disk images (360KB to 2.88MB - small enough for RAM decompression)
+- `tape` - Cassette tape images (typically small)
+- `memory_card` - Memory card save files (typically KB)
+- `archive` - Pre-compressed archives (`.zip`, `.7z`)
+- `download` - Downloaded software packages
+
+**Rationale:** These media types are either small enough to decompress entirely into RAM without performance impact, or are accessed sequentially rather than requiring random access patterns.
 
 ### Directory Structure
 
@@ -102,13 +137,13 @@ A `.rpk` file is a standard ZIP archive using Deflate compression. The extension
 ??? question "Why these specific names?"
     **Why `retropak.json`?** - We avoided the generic `manifest.json` (used by PWAs, Chrome extensions, etc.) to make files immediately identifiable and prevent format collisions.
 
-    **Why `software/`?** - The folder contains ROMs, disc images, and executables—not just "games." Using `software/` reflects our inclusive terminology.
+    **Why `software/`?** - The folder contains ROMs, disc images, and executables - not just "games." Using `software/` reflects our inclusive terminology.
 
 ---
 
 ## Signing and Verification
 
-Retropak supports cryptographic signing to ensure archive integrity and authenticity. A signed `.rpk` guarantees that no files have been modified, deleted, or added since the creator signed it.
+Retropak supports cryptographic signing to verify archive integrity and authenticity. A signed `.rpk` guarantees that no files have been modified, deleted, or added since the creator signed it.
 
 ### How It Works
 
@@ -162,8 +197,8 @@ A compliant verifier must:
 
 1. **Verify the signature** - Confirm `retropak.sig` is a valid signature over `retropak.checksums`
 2. **Check for modifications** - Verify each file's SHA-256 hash matches the checksums
-3. **Check for deletions** - Ensure all files listed in checksums exist in the archive
-4. **Check for additions** - Ensure no files exist in the archive that aren't in the checksums (excluding `retropak.sig`, `retropak.sig.info`, `retropak.checksums`)
+3. **Check for deletions** - Verify all files listed in checksums exist in the archive
+4. **Check for additions** - Verify no files exist in the archive that aren't in the checksums (excluding `retropak.sig`, `retropak.sig.info`, `retropak.checksums`)
 
 ### Trust Model
 
@@ -174,7 +209,7 @@ Signing establishes:
 3. **Non-repudiation** - The signer cannot deny signing (with their key)
 
 !!! warning "Trust Is Not Automatic"
-    Signature verification proves the archive is unmodified, but you must trust the signer's public key through your own verification process. A valid signature doesn't mean the content is safe—only that it hasn't been altered since signing!
+    Signature verification proves the archive is unmodified, but you must trust the signer's public key through your own verification process. A valid signature doesn't mean the content is safe - only that it hasn't been altered since signing!
 
 ---
 
@@ -182,7 +217,7 @@ Signing establishes:
 
 ### Software Files
 
-Software files should be stored in their original, unmodified format. Do not re-compress ROMs inside the archive—the ZIP container handles compression.
+Software files should be stored in their original, unmodified format. Do not re-compress ROMs inside the archive - the ZIP container handles compression.
 
 #### Recommended Formats by Platform Type
 
@@ -199,10 +234,14 @@ Software files should be stored in their original, unmodified format. Do not re-
 #### Compression Notes
 
 !!! tip "CHD for Disc Images"
-    CHD (Compressed Hunks of Data) is highly recommended for optical media. It provides lossless compression with 40-60% size reduction and is widely supported by modern emulators like RetroArch.
+    CHD (Compressed Hunks of Data) is highly recommended for optical media. It provides lossless compression with 40-60% size reduction and is widely supported by modern emulators like RetroArch. CHD files can be stored with DEFLATE compression in the ZIP since they're already compressed internally.
 
-- **Do not** use `.zip` or `.7z` for individual ROMs inside the archive—double compression wastes space and slows loading.
+- **Do not** use `.zip` or `.7z` for individual ROMs inside the archive - double compression wastes space and slows loading.
 - Keep multi-file disc images together (e.g., `.bin` + `.cue`, `.mds` + `.mdf`).
+- Remember: Uncompressed disc formats (`.iso`, `.bin`) must use STORE mode in the ZIP for random access. Use CHD instead for better overall compression.
+
+!!! note "BIN/CUE Disc Images"
+    For BIN/CUE disc images, include **both** files in the `software/` folder. Only reference the `.bin` file in the manifest's `media.filename` field - emulators will automatically locate the corresponding `.cue` file by name. The `.bin` file must use STORE mode (uncompressed) in the ZIP.
 
 ### Image Files
 
@@ -342,9 +381,9 @@ Category is an array because software can be multiple things—a "game" that's a
 `addon`, `application`, `beta`, `bios`, `compilation`, `coverdisk`, `demo`, `educational`, `enhanced`, `firmware`, `freeware`, `game`, `homebrew`, `multimedia`, `port`, `promotional`, `prototype`, `remake`, `remaster`, `rerelease`, `scene_demo`, `shareware`, `unlicensed`, `utility`
 
 ??? info "Rerelease Categories"
-    - **`enhanced`** - Enhanced editions with patches, DLC, or improvements (e.g., Director's Cut, GOTY Edition)
+    - **`enhanced`** - Editions with patches, DLC, or improvements (e.g., Director's Cut, GOTY Edition)
     - **`port`** - Game ported to another platform with minimal changes
-    - **`remaster`** - Enhanced graphics/audio but same core gameplay (e.g., HD remasters)
+    - **`remaster`** - Improved graphics/audio but same core gameplay (e.g., HD remasters)
     - **`remake`** - Game rebuilt from scratch, may have gameplay changes
     - **`rerelease`** - Re-released on a new platform/medium with minimal changes
 
@@ -573,7 +612,28 @@ This is where the actual software files are defined.
 
 ### Media Types
 
-`archive`, `bluray`, `cartridge`, `cdrom`, `download`, `dvd`, `floppy`, `gd_rom`, `hdd_image`, `laserdisc`, `memory_card`, `tape`, `umd`
+The following media type values are supported:
+
+| Media Type     | Description                                                     | Compression |
+| -------------- | --------------------------------------------------------------- | ----------- |
+| `archive`      | Pre-compressed archive files (`.zip`, `.7z`, etc.)              | DEFLATE     |
+| `bluray`       | Blu-ray disc images (BD-ROM)                                    | STORE       |
+| `cartridge`    | ROM cartridges for console and handheld systems                 | DEFLATE     |
+| `cdrom`        | CD-ROM disc images                                              | STORE       |
+| `disk_image`   | Generic disk image format not covered by specific types         | STORE       |
+| `download`     | Software distributed as downloadable files                      | DEFLATE     |
+| `dvd`          | DVD-ROM disc images                                             | STORE       |
+| `flash_image`  | Flash storage images (USB drives, SD cards, CompactFlash, etc.) | STORE       |
+| `floppy`       | Floppy disk images (3.5", 5.25", 8", etc.)                      | DEFLATE     |
+| `gd_rom`       | Sega Dreamcast GD-ROM disc images                               | STORE       |
+| `hdd_image`    | Hard disk drive images                                          | STORE       |
+| `laserdisc`    | LaserDisc images                                                | STORE       |
+| `memory_card`  | Memory card or save file data                                   | DEFLATE     |
+| `optical_disk` | Generic optical disc format not covered by specific types       | STORE       |
+| `tape`         | Cassette tape images (audio or data)                            | DEFLATE     |
+| `umd`          | PlayStation Portable UMD disc images                            | STORE       |
+
+See [Compression Requirements](#compression-requirements) for details on STORE vs DEFLATE modes.
 
 ### Multi-Disc Handling
 
@@ -716,7 +776,7 @@ Physical media images (cartridges, discs, tapes, etc.) are attached directly to 
 }
 ```
 
-This approach ensures each media item is directly linked to its image, avoiding any confusion with multi-disc or multi-cartridge releases.
+This approach links each media item directly to its image, avoiding confusion with multi-disc or multi-cartridge releases.
 
 ### Backdrop
 

@@ -29,11 +29,11 @@ Retropak bundles everything in an open, standardized way.
 !!! tip "One Format, All Platforms"
     Every Retropak uses `.rpk` regardless of whether it contains NES, PlayStation, or DOS software. This design choice has important benefits.
 
-**File format consistency** — Retropak is a container format, not a platform-specific format. Just like `.zip` works for any files inside, `.rpk` works for any platform. All platform information is stored in the JSON manifest's `platform` field inside the archive, not encoded in the file extension.
+**File format consistency** - Retropak is a container format, not a platform-specific format. Just like `.zip` works for any files inside, `.rpk` works for any platform. All platform information is stored in the JSON manifest's `platform` field inside the archive, not encoded in the file extension.
 
-**Simplified tooling** — Emulators and frontends only need to recognize one extension (`.rpk`). They open the archive, read `retropak.json`, and determine the platform from the manifest—no filename parsing or extension variants needed.
+**Simplified tooling** - Emulators and frontends only need to recognize one extension (`.rpk`). They open the archive, read `retropak.json`, and determine the platform from the manifest - no filename parsing or extension variants needed.
 
-**Flexible naming** — You can still include platform information in the filename if you want. For example: `Sonic.md.rpk`, `Zelda (NES).rpk`, or `Final Fantasy VII (PSX).rpk`. The filename is up to you—only the `.rpk` extension matters for file associations. Tools ignore the filename and read the platform from the manifest.
+**Flexible naming** - You can still include platform information in the filename if you want. For example: `Sonic.md.rpk`, `Zelda (NES).rpk`, or `Final Fantasy VII (PSX).rpk`. The filename is up to you - only the `.rpk` extension matters for file associations. Tools ignore the filename and read the platform from the manifest.
 
 The platform-specific software files (ROMs, ISOs, etc.) inside each Retropak still retain their original extensions for emulator compatibility.
 
@@ -90,10 +90,10 @@ ZIP format supports up to 4GB (ZIP64 extends this to 16EB, though practical limi
 
 If your Retropak exceeds 4GB (common with CD/DVD games), you have two options:
 
-**Use ZIP64** — Modern ZIP tools like 7-Zip, WinZip, and `zip` on Linux/macOS support ZIP64, which extends the limit to 16 exabytes. Most archiving tools created after 2006 support ZIP64 automatically.
+**Use ZIP64** - Modern ZIP tools like 7-Zip, WinZip, and `zip` on Linux/macOS support ZIP64, which extends the limit to 16 exabytes. Most archiving tools created after 2006 support ZIP64 automatically.
 
 
-**Compression levels** — Use maximum compression to reduce file size. Uncompressed audio (soundtracks) can be compressed externally before adding to the Retropak.
+**Compression levels** - Use maximum compression to reduce file size. Uncompressed audio (soundtracks) can be compressed externally before adding to the Retropak.
 
 Most extraction tools and emulators support ZIP64, but verify compatibility with your target tools before distributing large Retropaks.
 
@@ -144,10 +144,10 @@ Create separate Retropaks. Consider noting the relationship:
 
 ### Where do I find metadata?
 
-- **IGDB** — [igdb.com](https://www.igdb.com/)
-- **MobyGames** — [mobygames.com](https://www.mobygames.com/)
-- **No-Intro** — [datomatic.no-intro.org](https://datomatic.no-intro.org/)
-- **Redump** — [redump.org](http://redump.org/)
+- **IGDB** - [igdb.com](https://www.igdb.com/)
+- **MobyGames** - [mobygames.com](https://www.mobygames.com/)
+- **No-Intro** - [datomatic.no-intro.org](https://datomatic.no-intro.org/)
+- **Redump** - [redump.org](http://redump.org/)
 
 ### Do I have to fill in every field?
 
@@ -214,7 +214,7 @@ The format is open, but content may be restricted:
 
 ### What's the license for the specification?
 
-CC0 1.0 Universal — public domain. Use it however you want.
+CC0 1.0 Universal - public domain. Use it however you want.
 
 ### Do I need permission to implement Retropak support?
 
@@ -226,7 +226,7 @@ No. The specification is open. Build tools, emulators, or frontends freely.
 
 ### Why sign Retropaks?
 
-Signing ensures:
+Signing verifies:
 
 - Files haven't been modified
 - No malware added after signing
@@ -238,8 +238,8 @@ No. Signing is optional but recommended for distribution.
 
 ### What signature formats are supported?
 
-- **GPG/PGP** — Traditional web of trust
-- **SSH** — Simple key-based signing (OpenSSH 8.0+)
+- **GPG/PGP** - Traditional web of trust
+- **SSH** - Simple key-based signing (OpenSSH 8.0+)
 
 ### How do users verify signatures?
 
@@ -257,9 +257,9 @@ Sign it. Your cryptographic signature is your identity. The `retropak.sig.info` 
 
 There is no author/packager name field in `retropak.json` because:
 
-- **Names can be spoofed** — Anyone could claim to be anyone
-- **Cryptographic identity is verifiable** — Key fingerprints cannot be faked without the private key
-- **Separation of concerns** — The JSON describes the software, signatures describe the package
+- **Names can be spoofed** - Anyone could claim to be anyone
+- **Cryptographic identity is verifiable** - Key fingerprints cannot be faked without the private key
+- **Separation of concerns** - The JSON describes the software, signatures describe the package
 
 If you want to be known, publish your public key with your name on your website, GitHub, or Keybase. Build reputation through your fingerprint.
 

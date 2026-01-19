@@ -18,11 +18,11 @@ Rich metadata includes developer info, genre, player counts, peripheral requirem
 
 ### Tamper-Proof
 
-Optional cryptographic signing ensures files have not been modified, deleted, or added since the creator approved them.
+Optional cryptographic signing verifies files have not been modified, deleted, or added since the creator approved them.
 
 ### Accessible
 
-Built-in alt text support for all images ensures screen reader compatibility.
+Built-in alt text support for all images provides screen reader compatibility.
 
 ### Frontend-Friendly
 
@@ -82,7 +82,7 @@ unzip mygame.rpk
 ## Features
 
 - **120 supported platforms**: From Atari 2600 to Xbox Series X
-- **Comprehensive metadata**: Genre, players, features, ratings, credits
+- **Complete metadata**: Genre, players, features, ratings, credits
 - **Multi-disc support**: Handles CD swapping, boot disks, compilations
 - **ROM verification**: MD5/SHA-1/SHA-256/CRC32 checksums with database validation
 - **Cryptographic signing**: GPG and SSH signatures for authenticity

@@ -311,19 +311,22 @@
         },
         "mediaType": {
             "type": "string",
-            "description": "The format/medium type of the file.",
+            "description": "The format/medium type of the file. Note: Files with media types 'bluray', 'cdrom', 'disk_image', 'dvd', 'flash_image', 'gd_rom', 'hdd_image', 'laserdisc', 'optical_disk', and 'umd' MUST use STORE mode (uncompressed) in the ZIP archive to enable efficient random access. Other media types MAY use DEFLATE compression.",
             "enum": [
                 "archive",
                 "bluray",
                 "cartridge",
                 "cdrom",
+                "disk_image",
                 "download",
                 "dvd",
+                "flash_image",
                 "floppy",
                 "gd_rom",
                 "hdd_image",
                 "laserdisc",
                 "memory_card",
+                "optical_disk",
                 "tape",
                 "umd"
             ]

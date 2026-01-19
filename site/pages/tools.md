@@ -4,6 +4,16 @@ Tools and libraries for working with Retropak files.
 
 ---
 
+## Official Tools
+
+### Retropak Editor
+
+[editor.retropak.org](https://editor.retropak.org)
+
+Web-based editor for creating and editing Retropak manifests. Build your `.rpk` files with validation and instant feedback.
+
+---
+
 ## Implementations
 
 ### Libraries
@@ -16,7 +26,7 @@ We would like to hear from emulator developers interested in adding native `.rpk
 
 - Load software directly from `.rpk` archives
 - Display embedded metadata and artwork
-- Handle multi-disc titles seamlessly
+- Handle multi-disc titles
 - Verify ROM authenticity through checksums
 
 If you develop or maintain an emulator and would like to integrate Retropak support, please get in touch via the [Retropak Discord]({{ extra.discord_url }}).

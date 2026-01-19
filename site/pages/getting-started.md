@@ -320,7 +320,7 @@ Common examples: `en` (English), `ja` (Japanese), `de` (German), `fr` (French), 
 
 ## Signing Your Retropak
 
-Cryptographic signing ensures your package hasn't been tampered with:
+Cryptographic signing verifies your package hasn't been tampered with:
 
 ```bash
 # Sign with GPG
