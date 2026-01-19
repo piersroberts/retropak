@@ -355,15 +355,30 @@ Category is an array because software can be multiple things—a "game" that's a
 #### Categories
 
 ??? abstract "Available Category Values"
-    `addon`, `application`, `beta`, `bios`, `compilation`, `coverdisk`, `demo`, `educational`, `enhanced`, `firmware`, `freeware`, `game`, `homebrew`, `multimedia`, `port`, `promotional`, `prototype`, `remake`, `remaster`, `rerelease`, `scene_demo`, `shareware`, `unlicensed`, `utility`
-    
-    **Rerelease Types:**
-    
+    - **`addon`** - Additional content that extends or enhances existing software
+    - **`application`** - Productivity or utility software (not games)
+    - **`beta`** - Pre-release testing version
+    - **`bios`** - System firmware or Basic Input/Output System
+    - **`compilation`** - Collection of multiple titles bundled together
+    - **`coverdisk`** - Software distributed with magazines or publications
+    - **`demo`** - Limited demonstration version of software
+    - **`educational`** - Software designed for learning or instruction
     - **`enhanced`** - Editions with patches, DLC, or improvements (e.g., Director's Cut, GOTY Edition)
+    - **`firmware`** - Low-level system software embedded in hardware
+    - **`freeware`** - Free to use software
+    - **`game`** - Interactive entertainment software
+    - **`homebrew`** - Unofficial software created by independent developers
+    - **`multimedia`** - Software focused on audio, video, or mixed media presentation
     - **`port`** - Software ported to another platform with minimal changes
-    - **`remaster`** - Improved graphics/audio but same core gameplay (e.g., HD remasters)
+    - **`promotional`** - Marketing or advertising material
+    - **`prototype`** - Early development version or proof-of-concept
     - **`remake`** - Software rebuilt from scratch, may have gameplay changes
+    - **`remaster`** - Improved graphics/audio but same core gameplay (e.g., HD remasters)
     - **`rerelease`** - Re-released on a new platform/medium with minimal changes
+    - **`scene_demo`** - Artistic or technical demonstration by demoscene groups
+    - **`shareware`** - Try-before-you-buy software with limited functionality
+    - **`unlicensed`** - Software released without official authorization
+    - **`utility`** - Tool or helper software
     
     Categories can be combined: `["game", "remaster"]` or `["compilation", "rerelease"]`
 
