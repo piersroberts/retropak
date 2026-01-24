@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.14)
 project(retropak LANGUAGES NONE)
 
+# This is a data-only package (schemas and locales)
+set(VCPKG_POLICY_EMPTY_INCLUDE_FOLDER enabled)
+
 # Install schema files
 install(
     DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/packages/schema/schemas/"
