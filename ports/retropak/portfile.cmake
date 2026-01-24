@@ -1,11 +1,14 @@
 # This portfile is for reference when submitting to the vcpkg registry
 # It should be placed in the vcpkg/ports/retropak directory
 
+# This is a data-only package (schemas and locales)
+set(VCPKG_POLICY_EMPTY_INCLUDE_FOLDER enabled)
+
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO piersroberts/retropak
     REF v${VERSION}
-    SHA512 7d5b1d053a65813d41bd8627a63387071e7b9b336a8452363b46c769db6adedc2b99b19dfcaf8a526a8bc4a07996c61e572a2a3a4a09a3442c2d970b640a39fb
+    SHA512 34f6e5199204901861dfd49162f7d68c45606ee5b5bd42214c19ed3bbd5baa7013b4c8f0734af23fc5fdadb3fa2134bada16c7e718b57d463dcf15a431f1d76c
     HEAD_REF main
 )
 
