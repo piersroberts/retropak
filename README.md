@@ -14,8 +14,22 @@ Retropak (`.rpk`) is an open standard for distributing retro software with every
 
 ## Quick Start
 
+### TypeScript/JavaScript
 ```bash
 npm install @retropak/types
+```
+
+### Swift
+```swift
+// Package.swift
+dependencies: [
+    .package(url: "https://github.com/piersroberts/retropak.git", from: "1.0.0")
+]
+```
+
+### C++ (vcpkg)
+```bash
+vcpkg install retropak
 ```
 
 ## Documentation
@@ -27,6 +41,7 @@ Visit [retropak.org](https://retropak.org) for the full specification, examples,
 - [`@retropak/schema`](packages/schema) — JSON Schema definition
 - [`@retropak/types`](packages/types) — TypeScript types
 - [`RetropakSchema`](packages/swift) — Swift package
+- [`retropak`](packages/vcpkg) — vcpkg package for C++ projects
 
 ## License
 

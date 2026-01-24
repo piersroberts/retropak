@@ -1,0 +1,15 @@
+@PACKAGE_INIT@
+
+# Retropak schema and locale file locations
+set(RETROPAK_SCHEMA_DIR "${PACKAGE_PREFIX_DIR}/share/retropak/schemas")
+set(RETROPAK_LOCALE_DIR "${PACKAGE_PREFIX_DIR}/share/retropak/locales")
+
+# Check that schema files exist
+if(NOT EXISTS "${RETROPAK_SCHEMA_DIR}")
+    set(${CMAKE_FIND_PACKAGE_NAME}_FOUND FALSE)
+    set(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE 
+        "Retropak schema directory not found at ${RETROPAK_SCHEMA_DIR}")
+    return()
+endif()
+
+check_required_components(retropak)

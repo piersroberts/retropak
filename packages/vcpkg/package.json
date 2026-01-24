@@ -1,0 +1,22 @@
+{
+    "name": "@retropak/vcpkg",
+    "version": "1.0.0",
+    "description": "vcpkg port for Retropak schema files",
+    "private": true,
+    "keywords": [
+        "retropak",
+        "vcpkg",
+        "cmake",
+        "schema"
+    ],
+    "author": "piers@retropak.org",
+    "license": "CC0-1.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/piersroberts/retropak.git"
+    },
+    "bugs": {
+        "url": "https://github.com/piersroberts/retropak/issues"
+    },
+    "homepage": "https://retropak.org"
+}
