@@ -37,6 +37,13 @@ theme:
     - content.code.copy
     - content.code.annotate
 
+extra:
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/VUgHZkESWr
+      name: Join our Discord
+  discord_url: https://discord.gg/VUgHZkESWr
+
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -68,6 +75,3 @@ nav:
 
 extra_css:
   - stylesheets/custom.css
-
-extra:
-  discord_url: https://discord.gg/VUgHZkESWr
