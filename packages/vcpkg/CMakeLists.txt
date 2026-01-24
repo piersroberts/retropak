@@ -6,14 +6,14 @@ set(VCPKG_POLICY_EMPTY_INCLUDE_FOLDER enabled)
 
 # Install schema files
 install(
-    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/packages/schema/schemas/"
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/../schema/schemas/"
     DESTINATION "share/retropak/schemas"
     FILES_MATCHING PATTERN "*.json"
 )
 
 # Install locale files
 install(
-    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/packages/schema/locales/"
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/../schema/locales/"
     DESTINATION "share/retropak/locales"
     FILES_MATCHING PATTERN "*.json"
 )
