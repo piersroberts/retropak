@@ -13,3 +13,6 @@ packages/types/src/generated.ts
 dist
 .build
 .wrangler
+
+.vscode/
+.idea/

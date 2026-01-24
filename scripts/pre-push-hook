@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Pre-push hook to ensure Swift package is synced and vcpkg port is valid
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+echo ""
+echo -e "${BLUE}→ Running pre-push checks...${NC}"
+echo ""
+
+# Check if Swift package needs syncing
+SCHEMA_SOURCE="$ROOT_DIR/packages/schema"
+SWIFT_TARGET="$ROOT_DIR/packages/swift/Sources/RetropakSchema"
+
+if [ -d "$SCHEMA_SOURCE" ] && [ -d "$SWIFT_TARGET" ]; then
+    # Check if there are differences
+    if ! diff -r "$SCHEMA_SOURCE/schemas" "$SWIFT_TARGET/schemas" > /dev/null 2>&1 || \
+       ! diff -r "$SCHEMA_SOURCE/locales" "$SWIFT_TARGET/locales" > /dev/null 2>&1; then
+        echo -e "${YELLOW}⚠${NC}  Swift package is out of sync with schema package"
+        echo -e "${BLUE}→${NC} Syncing Swift package..."
+        "$ROOT_DIR/scripts/sync-swift-package.sh"
+        
+        # Check if sync created changes
+        if [ -n "$(git status --porcelain packages/swift/)" ]; then
+            echo ""
+            echo -e "${RED}✗${NC} Swift package was synced but changes are not committed"
+            echo -e "${YELLOW}Please commit the synced files and push again:${NC}"
+            echo "  git add packages/swift/"
+            echo "  git commit -m 'chore: sync Swift package resources'"
+            echo "  git push"
+            exit 1
+        fi
+        
+        echo -e "${GREEN}✓${NC} Swift package synced successfully"
+    else
+        echo -e "${GREEN}✓${NC} Swift package is in sync"
+    fi
+fi
+
+echo ""
+echo -e "${GREEN}✓ Pre-push checks passed!${NC}"
+echo ""
+
+exit 0

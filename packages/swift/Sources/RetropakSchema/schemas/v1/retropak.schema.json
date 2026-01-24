@@ -243,13 +243,18 @@
                 "coverdisk",
                 "demo",
                 "educational",
+                "enhanced",
                 "firmware",
                 "freeware",
                 "game",
                 "homebrew",
                 "multimedia",
+                "port",
                 "promotional",
                 "prototype",
+                "remake",
+                "remaster",
+                "rerelease",
                 "scene_demo",
                 "shareware",
                 "unlicensed",
@@ -306,19 +311,22 @@
         },
         "mediaType": {
             "type": "string",
-            "description": "The format/medium type of the file.",
+            "description": "The format/medium type of the file. Note: Files with media types 'bluray', 'cdrom', 'disk_image', 'dvd', 'flash_image', 'gd_rom', 'hdd_image', 'laserdisc', 'optical_disk', and 'umd' MUST use STORE mode (uncompressed) in the ZIP archive to enable efficient random access. Other media types MAY use DEFLATE compression.",
             "enum": [
                 "archive",
                 "bluray",
                 "cartridge",
                 "cdrom",
+                "disk_image",
                 "download",
                 "dvd",
+                "flash_image",
                 "floppy",
                 "gd_rom",
                 "hdd_image",
                 "laserdisc",
                 "memory_card",
+                "optical_disk",
                 "tape",
                 "umd"
             ]
@@ -373,6 +381,32 @@
                 "underdump",
                 "unknown",
                 "unlicensed"
+            ]
+        },
+        "license": {
+            "type": "string",
+            "description": "Software license type.",
+            "enum": [
+                "commercial",
+                "freeware",
+                "shareware",
+                "public_domain",
+                "open_source",
+                "gpl",
+                "gpl2",
+                "gpl3",
+                "lgpl",
+                "mit",
+                "bsd",
+                "apache",
+                "creative_commons",
+                "cc_by",
+                "cc_by_sa",
+                "cc_by_nc",
+                "cc_by_nc_sa",
+                "cc0",
+                "proprietary",
+                "unknown"
             ]
         },
         "ageRating": {
@@ -532,6 +566,13 @@
                 "roles": {
                     "type": "array",
                     "description": "Job titles or roles (e.g. 'Director', 'Lead Programmer', 'Composer').",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "characters": {
+                    "type": "array",
+                    "description": "Character names portrayed by this person (for voice actors, motion capture actors, etc.).",
                     "items": {
                         "type": "string"
                     }
@@ -831,6 +872,10 @@
                 },
                 "rating": {
                     "$ref": "#/$defs/ageRating"
+                },
+                "license": {
+                    "$ref": "#/$defs/license",
+                    "description": "The software license (e.g., 'freeware', 'shareware', 'commercial', 'gpl', 'mit')."
                 },
                 "ean": {
                     "type": "string",

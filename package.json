@@ -7,7 +7,13 @@
         "packages/schema",
         "packages/types"
     ],
-    "scripts": {},
+    "scripts": {
+        "update-vcpkg": "./scripts/update-vcpkg-port.sh",
+        "sync-swift": "./scripts/sync-swift-package.sh",
+        "install-hooks": "./scripts/install-hooks.sh",
+        "validate-locales": "./scripts/validate-locales.sh",
+        "prepare": "npm run install-hooks"
+    },
     "keywords": [
         "retropak",
         "schema"
